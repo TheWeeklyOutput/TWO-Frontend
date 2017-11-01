@@ -3,4 +3,4 @@
 *.log
 log.txt
 
-/dist
+dist/*

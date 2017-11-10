@@ -4,3 +4,4 @@
 log.txt
 
 dist/*
+!dist/.keep

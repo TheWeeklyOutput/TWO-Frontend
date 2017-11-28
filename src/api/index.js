@@ -4,13 +4,25 @@ import { log } from '../utils.js'
 
 export default {
   state: {
+    currentArticle: {
+      title: '',
+      text: '',
+      author: '',
+      imageURL: ''
+    },
+    topStoriesOfDay: [],
+    newestStories: [],
+    
   },
   getters: {
   },
   actions: {
-    // [acts.ACTION] ({ state, dispatch, commit, getters }, { arg }) {
-    //   
-    // }
+    /* [acts.GET_ARTICLE] ({ state, dispatch, commit, getters }, { listType }) {
+      let parser = require('rss-parser')
+      parser.parseURL('https://www.reddit.com/.rss', function(err, parsed) {
+        state.currentArticle.title = parsed.feed.title
+        state.currentArticle.text = parsed.feed.
+      })*/
   },
   mutations: {
     // [muts.MUTATION] (state, arg) {

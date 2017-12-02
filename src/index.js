@@ -8,6 +8,7 @@ import routes from './routes'
 import store from './store'
 import Vuetify from 'vuetify'
 
+
 // vuetify
 Vue.use(Vuetify)
 

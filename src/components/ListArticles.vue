@@ -1,9 +1,9 @@
-<<template>
-    <div id="article-list">
-        <div v-for="article in api.articles.topArticles" class="article">
+<template>
+    <div class="article-list">
+        <div v-for="article in articles.articleArray" class="article">
             <img :src="article.thumbnail">
             <div class="article-text">
-                <router-link :to="{ name: 'article', params: {  id: article.id }}" class="article-link">
+                <router-link :to="{ name: 'article', params: {  category: categoryToRender, id: article.id }}" class="article-link">
                     <p><span class="list-title">{{ article.title }}</span></p>
                     <p><span class="list-text">{{ article.text }}</span></p>
                 </router-link>
@@ -14,17 +14,33 @@
 </template>
 
 <script>
+    import apiMixin from '../mixins/api.js'
+    import * as apiMuts from '../api/mutation-types.js'
+    import * as apiActs from '../api/action-types.js'
     import {
         mapState
     } from 'vuex'
+    import * as muts from '../store/mutation-types.js'
+    
+    
     export default {
+        props: {
+            categoryToRender: String
+        },
         data: function() {
             return {}
         },
         computed: {
+            articles() {
+                return {
+                    articleArray: this.api.articles[this.categoryToRender],
+                    category: this.categoryToRenders
+                }
+            },
             ...mapState({
                 api: state => state.api
-            }),
+            })
+    
         },
     
     }

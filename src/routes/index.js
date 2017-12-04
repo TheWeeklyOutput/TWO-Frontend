@@ -8,9 +8,10 @@ export default {
       name: 'home',
       component: Home
     }, {
-      path: '/articles/:id',
+      path: '/articles/:category/:id',
       name: 'article',
       component: () => import('../views/Article'),
+      props: true
     }
   ]
 }

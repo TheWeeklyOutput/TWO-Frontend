@@ -1,39 +1,41 @@
 <template>
     <div>
-        <navbar></navbar>
         <div class="recent-articles">
             <div class="list-article-wrapper">
-                <RecentArticles></RecentArticles>
+                <RecentArticles :categoryToRender="categoriesToRender[0]"></RecentArticles>
             </div>
         </div>
-        <FooterBar></FooterBar>
     
     </div>
 </template>
 
 <script>
-    import { mapState } from 'vuex'
-    import Navbar from '../components/Navbar'
-    import FooterBar from '../components/Footer'
+    import {
+        mapState
+    } from 'vuex'
     import RecentArticles from '../components/ListArticles'
+    import apiMixin from '../mixins/api.js'
+    import * as apiMuts from '../api/mutation-types.js'
+    import * as apiActs from '../api/action-types.js'
+    
+    
     export default {
+        mixins: [apiMixin],
         components: {
-            Navbar,
-            FooterBar,
             RecentArticles
         },
-        props: {
-            '': Boolean,
+        props: {},
+        created() {
+            this.$store.dispatch(apiActs.GET_ARTICLES_BY_CATEGORIES, {
+                categories: this.categoriesToRender
+            })
         },
-        computed: {
-            ...mapState({
-                api: state => state.api
-            }),
-        },
-        created () {
-            this.$store.dispatch('GET_ARTICLES_BY_CATEGORY', { id: this.id });
+        data() {
+            return {
+                categoriesToRender: ['topArticles']
+            }
         }
-
+    
     }
 </script>
 
@@ -56,6 +58,12 @@
     .recent-articles {
         margin: 0 auto;
         max-width: 1300px;
+    }
+    
+    @media (min-width: 600px) {
+        h1 {
+            font-size: calc(1em * 1.250 * 1.250 * 1.250 * 1.250);
+        }
     }
     
     .list-article-wrapper {

@@ -1,11 +1,12 @@
 <template>
     <div id="navbar">
-        <div id="logo">
-            The Weekly Output
-        </div>
-        <div id="theme-switcher-dropdown">
-            
-        </div>
+        <router-link :to="'/'">
+            <div id="logo">
+                The Weekly Output
+            </div>
+            <div id="theme-switcher-dropdown">
+            </div>
+        </router-link>
     </div>
 </template>
 

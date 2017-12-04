@@ -3,7 +3,7 @@
         <div class="recent-articles">
             <div class="list-article-wrapper">
                 <h1>Top Stories of the week</h1>
-                <RecentArticles :categoryToRender="categoriesToRender[0]" :showText="true" :showAuthor="true" :imageStyle="'next-to-article'"></RecentArticles>
+                <RecentArticles :categoryToRender="categoriesToRender[0]" :showText="false" :showAuthor="true" :imageStyle="'next-to-article'"></RecentArticles>
             </div>
         </div>
     

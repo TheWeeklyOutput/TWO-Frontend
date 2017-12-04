@@ -35,6 +35,13 @@ Vue.use(Router)
 const router = new Router(routes)
 Vue.router = router
 
+Vue.router.beforeEach(function (to, from, next) {
+  document.title = to.meta.title
+  window.scrollTo(0, 0);
+  next();
+});
+
+
 sync(store, router)
 
 const app = new Vue({

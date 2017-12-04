@@ -232,6 +232,7 @@
     .logo-style-1 {
         height: 50px;
         width: auto;
+        max-width: 100%;
     }
     
     .next-to-article {
@@ -239,6 +240,8 @@
         width: auto;
         height: 10px;
     }
-    
-    
+
+    .recent-articles .article-text {
+        padding: 16px
+    }
 </style>

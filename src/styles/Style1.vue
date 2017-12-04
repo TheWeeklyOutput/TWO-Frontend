@@ -228,4 +228,17 @@
         width: 100%;
         height: auto;
     }
+    
+    .logo-style-1 {
+        height: 50px;
+        width: auto;
+    }
+    
+    .next-to-article {
+        float: left;
+        width: auto;
+        height: 10px;
+    }
+    
+    
 </style>

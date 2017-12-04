@@ -4,10 +4,12 @@
             <div class="article-text">
                 <router-link :to="{ name: 'article', params: {  category: categoryToRender, id: article.id }}" class="article-link">
                     <span>
-                            <img :srcset="article.image" :class="imageStyle" v-if="(imageStyle === 'no-image') == false">
-                        </span>
-                    <p><span class="list-title">{{ article.title }}</span></p>
+                                    <img :srcset="article.image" :class="imageStyle" v-if="(imageStyle === 'no-image') == false">
+                                </span>
+                    <span class="list-text">
+                                    <p><span class="list-title">{{ article.title }}</span></p>
                     <p v-if="showText"><span class="list-text">{{ article.text }}</span></p>
+                    </span>
                 </router-link>
                 <p v-if="showAuthor"><span class="list-author">by <a :href="'/' + article.authorSlur">{{ article.author }}</a></span> <span class="list-timestamp"> - {{ article.timestamp }}</span></p>
             </div>
@@ -49,6 +51,16 @@
             })
     
         },
+        methods: {
+            range: function(min, max, array) {
+                let j = 0;
+                for (var i = min; i <= max; i++) {
+                    array[j] = i;
+                    j++;
+                }
+                return array;
+            }
+        }
     
     }
 </script>

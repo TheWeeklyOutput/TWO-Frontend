@@ -10,6 +10,8 @@
         margin: 0;
         padding: 0;
         border: 0;
+        line-height: 1.2;
+        letter-spacing: normal
     }
     
      :root {
@@ -22,11 +24,12 @@
     
     h1 {
         font-size: calc(1em * 1.250 * 1.250 * 1.250);
-        font-weight: 500
+        font-weight: 500;
+        margin-bottom: .6rem;
     }
     
     h2 {
-        font-size: .9375em;
+        font-size: calc(1em * 1.250 * 1.250);
     }
     
     h3 {
@@ -49,13 +52,12 @@
     }
     
     .list-title {
-        font-size: 1.2em;
+        font-size: 1em;
         margin-bottom: .3rem;
     }
     
     .list-text {
         font-size: 1em;
-        height: 20px;
         text-overflow: ellipsis;
     }
     
@@ -74,12 +76,12 @@
     }
     
     .article-text {
-        padding: 16px 0
+        padding: 0
     }
     
     .article-link {
         text-decoration: none;
-        color: var(--main-text-color)
+        color: var(--main-text-color);
     }
     
     footer {
@@ -92,6 +94,7 @@
     
     p {
         font-size: 1.2em;
+        margin-bottom: 1.2rem;
     }
     
     .sidebar {
@@ -236,12 +239,29 @@
     }
     
     .next-to-article {
-        float: left;
-        width: auto;
-        height: 10px;
+        width: 100%;
+        height: 80%;
+        object-fit: cover;
     }
-
-    .recent-articles .article-text {
-        padding: 16px
+    
+    .text-next-to-article-container {
+        -webkit-box-align: start;
+        -webkit-align-items: flex-start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        width: 100%;
     }
+    
+    .next-to-article-image-wrapper {
+        height: auto;
+        width: 25%;
+        margin: 0;
+        margin-right: 10px
+    }
+    
+    .recent-articles .article-text {}
 </style>

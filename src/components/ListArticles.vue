@@ -3,15 +3,17 @@
         <div v-for="article in articles.articleArray" class="article">
             <div class="article-text">
                 <router-link :to="{ name: 'article', params: {  category: categoryToRender, id: article.id }}" class="article-link">
-                    <span>
-                                    <img :srcset="article.image" :class="imageStyle" v-if="(imageStyle === 'no-image') == false">
-                                </span>
-                    <span class="list-text">
-                                    <p><span class="list-title">{{ article.title }}</span></p>
-                    <p v-if="showText"><span class="list-text">{{ article.text }}</span></p>
-                    </span>
+                    <div :class="'text-' + imageStyle + '-container'">
+                        <span :class="imageStyle + '-image-wrapper'">
+                            <img :srcset="article.image" :class="imageStyle" v-if="(imageStyle === 'no-image') == false">
+                        </span>
+                        <span class="list-text">
+                            <p><span class="list-title">{{ article.title }}</span></p>
+                            <p v-if="showText"><span class="list-text">{{ article.text }}</span></p>
+                            <p v-if="showAuthor"><span class="list-author">by <router-link :to="{ name: 'author', params: {  name: article.authorid }}" >{{ article.author }}</router-link></span> <span class="list-timestamp"> - {{ article.timestamp }}</span></p>
+                        </span>
+                    </div>
                 </router-link>
-                <p v-if="showAuthor"><span class="list-author">by <a :href="'/' + article.authorSlur">{{ article.author }}</a></span> <span class="list-timestamp"> - {{ article.timestamp }}</span></p>
             </div>
         </div>
     </div>

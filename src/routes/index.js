@@ -13,6 +13,12 @@ export default {
       component: () => import('../views/Article'),
       props: true,
       meta: {title: 'Article'}            
+    }, {
+      path: '/author/:name',
+      name: 'author',
+      component: () => import('../views/Author'),
+      props: true,
+      meta: {title: 'Author'}      
     }
   ]
 }

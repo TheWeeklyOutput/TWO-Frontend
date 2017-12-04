@@ -1,28 +1,29 @@
 import * as muts from './mutation-types.js'
 import * as acts from './action-types.js'
 import { log } from '../utils.js'
+import testArticles from './articles.js'
 
 export default {
   state: {
-    currentArticle: {
-      title: '',
-      text: '',
-      author: '',
-      imageURL: ''
-    },
-    topStoriesOfDay: [],
-    newestStories: [],
-    
+    articles: {
+      topArticles: [],    
+      mostShared: [],
+      mostLiked: [],
+      newest: [],
+      currentArticle: {}    
+    }
   },
   getters: {
   },
   actions: {
-    /* [acts.GET_ARTICLE] ({ state, dispatch, commit, getters }, { listType }) {
-      let parser = require('rss-parser')
-      parser.parseURL('https://www.reddit.com/.rss', function(err, parsed) {
-        state.currentArticle.title = parsed.feed.title
-        state.currentArticle.text = parsed.feed.
-      })*/
+    [acts.GET_ARTICLES_BY_CATEGORIES] ({ state, dispatch, commit, getters }, { category }) {
+      state.articles[category] = testArticles.articles[category]
+      console.log(id)
+    },
+    [acts.GET_ARTICLE_BY_ID] ({ state, dispatch, commit, getters }, { id }) {
+      state.articles.currentArticle = testArticles.articles.currentArticle
+      console.log(id)      
+    }
   },
   mutations: {
     // [muts.MUTATION] (state, arg) {

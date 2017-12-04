@@ -3,7 +3,8 @@
         <div id="logo">
             The Weekly Output
         </div>
-        <div id="theme-switcher">
+        <div id="theme-switcher-dropdown">
+            
         </div>
     </div>
 </template>

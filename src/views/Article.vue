@@ -3,7 +3,7 @@
         <navbar></navbar>
         <div class="recent-articles">
             <div class="list-article-wrapper">
-                <RecentArticles></RecentArticles>
+                {{ currentArticle.title }}
             </div>
         </div>
         <FooterBar></FooterBar>
@@ -12,10 +12,13 @@
 </template>
 
 <script>
-    import { mapState } from 'vuex'
+    import {
+        mapState
+    } from 'vuex'
     import Navbar from '../components/Navbar'
     import FooterBar from '../components/Footer'
     import RecentArticles from '../components/ListArticles'
+    import apiActs from '../api/action-types.js'
     export default {
         components: {
             Navbar,
@@ -23,17 +26,24 @@
             RecentArticles
         },
         props: {
-            '': Boolean,
+            'id': String,
         },
+        created () {
+            this.$store.dispatch('GET_CURRENT_ARTICLE', { id: this.id });
+        },
+
         computed: {
+            currentArticle () {
+                return this.api.currentArticle
+
+            },
+
             ...mapState({
                 api: state => state.api
             }),
         },
-        created () {
-            this.$store.dispatch('GET_ARTICLES_BY_CATEGORY', { id: this.id });
-        }
-
+        
+    
     }
 </script>
 

@@ -7,6 +7,10 @@ export default {
       path: '/',
       name: 'home',
       component: Home
+    }, {
+      path: '/articles/:id',
+      name: 'article',
+      component: () => import('../views/Article'),
     }
   ]
 }

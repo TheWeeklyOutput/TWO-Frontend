@@ -47,35 +47,4 @@
 </script>
 
 <style>
-    .list-title {
-        font-size: 1.2em;
-        margin-bottom: .3rem;
-    }
-    
-    .list-text {
-        font-size: 1em;
-    }
-    
-    .list-author {
-        font-size: 0.9em
-    }
-    
-    .list-timestamp {
-        font-size: 0.9em
-    }
-    
-    .article {
-        background-color: #ffffff;
-        border-top: 1px solid #e7e7e8;
-        margin-bottom: 8px;
-    }
-    
-    .article-text {
-        padding: 16px;
-    }
-    
-    .article-link {
-        text-decoration: none;
-        color: black
-    }
 </style>

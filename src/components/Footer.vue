@@ -11,10 +11,4 @@
 </script>
 
 <style scoped>
-    footer {
-        background-color: #000;
-        color: #fff;
-        border-top: 1px solid #343434;
-        max-width: 100%;
-    }
 </style>

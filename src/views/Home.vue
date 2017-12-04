@@ -40,34 +40,4 @@
 </script>
 
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        border: 0;
-    }
-    
-    p {
-        font-size: 1.2em;
-    }
-    
-    footer {
-        width: 100vw;
-        height: 8em;
-    }
-    
-    .recent-articles {
-        margin: 0 auto;
-        max-width: 1300px;
-    }
-    
-    @media (min-width: 600px) {
-        h1 {
-            font-size: calc(1em * 1.250 * 1.250 * 1.250 * 1.250);
-        }
-    }
-    
-    .list-article-wrapper {
-        margin: 0 auto;
-        max-width: 1100px;
-    }
 </style>

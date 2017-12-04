@@ -14,6 +14,7 @@
   import FooterBar from './components/Footer'
   import Navbar from './components/Navbar'
   import Style1 from './styles/Style1'
+  import * as apiActs from './api/action-types.js'
   
   export default {
     components: {
@@ -24,6 +25,11 @@
     data() {
       return {
       } 
+    },
+    created() {
+      this.$store.dispatch(apiActs.GET_ARTICLES_BY_CATEGORIES, {
+          categories: ['topArticles']
+      })
     }
   }
 </script>

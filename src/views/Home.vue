@@ -2,7 +2,8 @@
     <div>
         <div class="recent-articles">
             <div class="list-article-wrapper">
-                <RecentArticles :categoryToRender="categoriesToRender[0]"></RecentArticles>
+                <h1>Top Stories of the week</h1>
+                <RecentArticles :categoryToRender="categoriesToRender[0]" :showText="true" :showAuthor="true" :imageStyle="'no-image'"></RecentArticles>
             </div>
         </div>
     
@@ -25,11 +26,6 @@
             RecentArticles
         },
         props: {},
-        created() {
-            this.$store.dispatch(apiActs.GET_ARTICLES_BY_CATEGORIES, {
-                categories: this.categoriesToRender
-            })
-        },
         data() {
             return {
                 categoriesToRender: ['topArticles']

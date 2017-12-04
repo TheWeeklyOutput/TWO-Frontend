@@ -1,24 +1,26 @@
 <template>
     <div class="site-wrapper">
+        <p class="headline-single-article">
+            <h1>{{ currentArticle.title }}</h1>
+        </p>
+        <p>
+            by {{ currentArticle.author }}
+        </p>
+    
         <div class="article-wrapper">
+    
             <div class="article-text-wrapper">
-                <p class="headline-single-article">
-                    <h1>{{ currentArticle.title }}</h1>
-                </p>
-                <p>
-                    by {{ currentArticle.author }}
-                </p>
-    
-                <img :srcset="currentArticle.image" class="article-image-full">
-    
-                <p>
-                    {{ currentArticle.text }}
+                <span class="article-image-wrapper">
+                    <img :srcset="currentArticle.image" class="article-image-full">
+                    <p class="image-credit">photo by {{ currentArticle.imageCredit }}</p>
+                </span>
+                <p v-html="currentArticle.text">
                 </p>
             </div>
-            <div class="article-sidebar-wrapper">
+            <div class="article-sidebar-wrapper desktop-only">
                 <h2>Top Stories</h2>
     
-                <TopArticles class="sidebar" :categoryToRender="'topArticles'">
+                <TopArticles class="sidebar" :categoryToRender="'topArticles'" :showText="false" :showAuthor="false" :imageStyle="'image-above-article'">
                 </TopArticles>
             </div>
     

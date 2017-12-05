@@ -1,4 +1,5 @@
-import Home from '../views/Home'
+import Home from '../views/Home.vue'
+import DevTools from '../views/DevTools.vue'
 
 export default {
   mode: 'hash',
@@ -7,6 +8,11 @@ export default {
       path: '/',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/dev',
+      name: 'dev',
+      component: DevTools
     }
   ]
 }

@@ -13,7 +13,22 @@ const state = {
 }
 
 const mutations = {
-    // Mutations
+  [muts.UPDATE_MESSAGES] (state, messages) {
+    log.info(muts.UPDATE_MESSAGES, '')
+    log.dir(messages)
+    state.messages = messages
+  },
+  [muts.UPDATE_ERRORS] (state, res) {
+    log.error(muts.UPDATE_ERRORS, '')
+    log.dir(res.data)
+    state.errors = res.data
+  },
+  [muts.CLEAR_ERRORS] (state) {
+    state.errors = ''
+  },
+  [muts.CLEAR_MESSAGES] (state) {
+    state.messages = ''
+  }
 }
 
 const actions = {

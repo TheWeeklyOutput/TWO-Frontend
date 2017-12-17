@@ -10,8 +10,8 @@
                         <span :class="mode + 'text'">
                             <span><h2 :class="mode + 'title'">{{ article.title }}</h2></span>
                             <span v-if="showText"><h3 :class="mode + 'text'">{{ article.text.substring(0, 200) }}...</h3></span>
-                            <span :class="mode + 'author'" v-if="showAuthor">by <router-link :to="{ name: 'author', params: {  name: article.authorid }}" >{{ article.author }}</router-link></span> 
-                            <span class="list-timestamp" v-if="showAuthor"> - {{ article.timestamp }}</span>
+                            <span :class="mode + 'author'" v-if="showAuthor">By <router-link :to="{ name: 'author', params: {  name: article.authorid }}" >{{ article.author }}</router-link></span> 
+                            <span class="list-timestamp" v-if="showAuthor"> {{ article.timestamp }}</span>
                         </span>
                     </div>
                 </router-link>

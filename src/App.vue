@@ -1,8 +1,11 @@
 <template>
   <div id="app">
-    <Navbar v-on:click="test1 = false">
-    </Navbar>
-    <router-view></router-view>
+    <div class="site-wrapper">
+      <Navbar v-on:click="test1 = false">
+      </Navbar>
+
+      <router-view></router-view>
+    </div>
     <FooterBar></FooterBar>
 
     <style1></style1>
@@ -28,7 +31,7 @@
     },
     created() {
       this.$store.dispatch(apiActs.GET_ARTICLES_BY_CATEGORIES, {
-          categories: ['topArticles']
+          categories: ['all']
       })
     }
   }

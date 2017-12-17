@@ -1,1 +1,1 @@
-// export const MUTATION_TYPE = 'MUTATION_TYPE'
+export const SET_STYLE = 'SET_STYLE'

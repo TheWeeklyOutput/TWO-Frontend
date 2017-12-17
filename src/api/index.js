@@ -6,30 +6,53 @@ import testArticles from './articles.js'
 export default {
   state: {
     articles: {
+      highlights: [],
       topArticles: [],    
       mostShared: [],
       mostLiked: [],
       newest: [],
       currentArticle: {}    
-    }
+    },
+    categories: [{
+      name: 'Top Stories',
+      label: 'topArticles'
+    },
+    {      
+      name: 'Most Shared',
+      label: 'mostShared'
+    },
+    {      
+      name: 'Most Liked',
+      label: 'mostLiked'
+    },
+    {      
+      name: 'Newest',
+      label: 'newest'
+    }],
+    currentStyle: 1
   },
   getters: {
   },
   actions: {
     [acts.GET_ARTICLES_BY_CATEGORIES] ({ state, dispatch, commit, getters }, { categories }) {
+      if(categories[0] === 'all') {
+          state.articles = testArticles.articles
+          state.categories.forEach (function(category) {
+            state.articles[category.label] = testArticles.articles[category.label]
+          })
+      }
       categories.forEach (function(category) {
         state.articles[category] = testArticles.articles[category]
       })
     },
     [acts.GET_ARTICLE_BY_ID] ({ state, dispatch, commit, getters }, { category, id }) {
-      // state.articles.currentArticle = testArticles.articles.currentArticle
       const article = testArticles.articles[category].find(art => art.id === (id))
       state.articles.currentArticle = article      
     }
   },
   mutations: {
-    // [muts.MUTATION] (state, arg) {
-    // 
-    // }
+    [muts.SET_STYLE] (state, payload) {
+      state.currentStyle = payload.style   
+    }
   }
 }

@@ -1,38 +1,35 @@
 <template>
-    <div class="site-wrapper">
-        <p class="headline-single-article">
-            <h1>{{ currentArticle.title }}</h1>
-        </p>
-        <p>
+    <div class="component-wrapper article-wrapper">
+        <span class="headline-single-article">
+            <h1 class="article-heading">{{ currentArticle.title }}</h1>
+        </span>
+        <p class="article-author">
             by {{ currentArticle.author }}
         </p>
     
-        <div class="article-wrapper">
+        <div class="article-body">
     
             <div class="article-text-wrapper">
                 <span class="article-image-wrapper">
-                    <img :srcset="currentArticle.image" class="article-image-full">
-                    <p class="image-credit">photo by {{ currentArticle.imageCredit }}</p>
-                </span>
-                <p v-html="currentArticle.text">
+                        <img :srcset="currentArticle.image" class="article-image-full">
+                        <h3 class="image-credit">photo by {{ currentArticle.imageCredit }}</h3>
+                    </span>
+                <p class="article-text">
+                    {{ currentArticle.text }}
                 </p>
             </div>
-            <div class="article-sidebar-wrapper desktop-only">
-                <h2>Top Stories</h2>
     
-                <TopArticles class="sidebar" :categoryToRender="'topArticles'" :showText="false" :showAuthor="false" :imageStyle="'image-above-article'">
-                </TopArticles>
-            </div>
     
         </div>
-    
+        <div class="article-sidebar-wrapper desktop-only">
+            <h1>Top Stories</h1>
+            <TopArticles class="sidebar" :categoryToRender="'topArticles'" :showText="false" :showAuthor="false" :mode="'list-'" :imageStyle="'image-above-article'">
+            </TopArticles>
+        </div>
     </div>
 </template>
 
 <script>
-    import {
-        mapState
-    } from 'vuex'
     import RecentArticles from '../components/ListArticles'
     import apiMixin from '../mixins/api.js'
     import * as apiMuts from '../api/mutation-types.js'
@@ -46,6 +43,8 @@
             RecentArticles,
             TopArticles
         },
+        mixins: [apiMixin],
+    
         props: {
             category: {
                 type: String,
@@ -66,12 +65,8 @@
                 })
                 return this.api.articles.currentArticle
     
-            },
-    
-            ...mapState({
-                api: state => state.api
-            }),
-        },
+            }
+        }
     
     
     }

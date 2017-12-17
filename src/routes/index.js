@@ -19,6 +19,12 @@ export default {
       component: () => import('../views/Author'),
       props: true,
       meta: {title: 'Author'}      
+    }, {
+      path: '/articles/:category',
+      name: 'category',
+      component: () => import('../views/Category'),
+      props: true,
+      meta: {title: 'Category'}      
     }
   ]
 }

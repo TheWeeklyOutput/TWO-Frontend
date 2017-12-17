@@ -35,12 +35,12 @@
     h2 {
         font-size: calc(1em * 1.250 * 1.250);
         font-weight: 600;
-        font-family: 'Lora', serif;
+        font-family: 'Georgia', serif;
     }
     
     h3 {
         font-size: .8125em;
-        font-family: 'Lora', serif;
+        font-family: 'Georgia', serif;
     }
     
     hr {

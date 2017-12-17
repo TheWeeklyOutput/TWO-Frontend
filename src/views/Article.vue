@@ -24,7 +24,7 @@
         </div>
         <div class="article-sidebar-wrapper desktop-only">
             <h1>Top Stories</h1>
-            <TopArticles class="sidebar" :categoryToRender="'topArticles'" :showText="false" :showAuthor="false" :mode="'list-'" :imageStyle="'image-above-article'">
+            <TopArticles class="sidebar" :categoryToRender="'highlights'" :showText="false" :showAuthor="false" :mode="'list-'" :imageStyle="'image-above-article'">
             </TopArticles>
         </div>
     </div>

@@ -1,14 +1,14 @@
 <template>
     <div>
         <div class="component-wrapper">
-            <Topper class="topper" :categoryToRender="categoriesToRender[1]">
+            <Topper class="topper" :categoryToRender="categoriesToRender[0]">
             </Topper>
                 
             <div class="newest-list">
-                <h1>{{ categoriesToRender[0].name }}</h1>
+                <h1>{{ categoriesToRender[1].name }}</h1>
                 <hr>
                 <div class="list-article-wrapper">
-                    <ListArticles :categoryToRender="categoriesToRender[0].label" :showText="false" :showAuthor="true" :imageStyle="'next-to-article'" :mode="'list-'"></ListArticles>
+                    <ListArticles :categoryToRender="categoriesToRender[1].label" :showText="false" :showAuthor="true" :imageStyle="'next-to-article'" :mode="'list-'"></ListArticles>
                 </div>
             </div>
     
@@ -36,11 +36,11 @@
         data() {
             return {
                 categoriesToRender: [{
-                    label: 'topArticles',
-                    name: 'Top Articles'
-                }, {
                     label: 'highlights',
                     name: 'Highlights'
+                }, {
+                    label: 'trending',
+                    name: 'Trending'
                 }]
             }
         }

@@ -14,20 +14,28 @@ export default {
       currentArticle: {}    
     },
     categories: [{
-      name: 'Top Stories',
+      name: 'Highlights',
       label: 'topArticles'
     },
     {      
-      name: 'Most Shared',
-      label: 'mostShared'
+      name: 'Trending',
+      label: 'trending'
     },
     {      
-      name: 'Most Liked',
-      label: 'mostLiked'
+      name: 'World',
+      label: 'world'
     },
     {      
-      name: 'Newest',
-      label: 'newest'
+      name: 'Recent',
+      label: 'recent'
+    },
+    {      
+      name: 'Politics',
+      label: 'politics'
+    },
+    {      
+      name: 'Business',
+      label: 'Business'
     }],
     currentStyle: 1
   },

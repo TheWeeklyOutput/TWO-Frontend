@@ -19,11 +19,13 @@
      :root {
         --main-text-color: black;
         --grey-stuff: #ecf0f1;
-        --second-grey-stuff: grey
+        --second-grey-stuff: grey;
+        --bg-color: #f8f6f7;
     }
     
     body {
         font-size: 1em;
+        background-color: var(--bg-color)
     }
     
     h1 {
@@ -36,6 +38,7 @@
         font-size: calc(1em * 1.250 * 1.250);
         font-weight: 600;
         font-family: 'Georgia', serif;
+        padding-bottom: 10px
     }
     
     h3 {
@@ -108,6 +111,7 @@
         margin-bottom: .6rem;
         grid-row: 1;
         grid-column: 1 / 5;
+        padding-left: 20px;
     }
     
     .logo-style-1 {
@@ -147,10 +151,11 @@
     
     
     /* HOME GRID */
+    
     .topper {
         padding-bottom: 50px
     }
-
+    
     @media (min-width: 600px) {
         h1 {
             font-size: calc(1em * 1.250 * 1.250 * 1.250 * 1.250);
@@ -165,7 +170,6 @@
             grid-template-columns: 100%;
             grid-auto-rows: minmax(125px, auto);
         }
-
         .topper-article-wrapper {
             padding-bottom: 20px
         }
@@ -211,7 +215,6 @@
             font-size: 1em;
             padding-top: 10px
         }
-
         .topper> :nth-child(2) .topper-text {
             grid-column: 1 / span 2;
             grid-row: 1;
@@ -231,11 +234,9 @@
         .topper-single-container {
             display: grid
         }
-
         .topper-article-text {
             padding-top: 20px
         }
-
         .twitter-sidebar {
             grid-column: 4 / 5;
             grid-row: 3 / 4;
@@ -353,6 +354,10 @@
         grid-column: 2/ span 3;
     }
     
+    .list-description {
+        text-align: justify
+    }
+    
     
     /* ARTICLE GRID */
     
@@ -377,7 +382,8 @@
     
     .article-image-wrapper {
         display: inline-block;
-        margin-bottom: 32px
+        margin-bottom: 32px;
+        grid-column: 1 / span 4;
     }
     
     .article-author {
@@ -387,7 +393,14 @@
     
     .article-text {
         font-size: 18px;
-        text-align: justify
+        text-align: justify;
+        grid-column: 1 / span 3;
+        padding-right: 20px;
+        padding-left: 20px
+    }
+
+    .article-heading {
+        font-family: 'Georgia', 'serif'
     }
     
     @media (min-width: 600px) {
@@ -411,5 +424,9 @@
             grid-row: 3;
             padding-right: 20px;
         }
+    }
+    
+    .list-no-image-wrapper {
+        display: none;
     }
 </style>

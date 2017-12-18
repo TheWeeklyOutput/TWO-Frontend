@@ -7,8 +7,8 @@
             </p>
     
             </span>
-        <div class="article-body">
-            <div class="article-text-wrapper">
+        <!--<div class="article-body">
+            <div class="article-text-wrapper">-->
                 <span class="article-image-wrapper">
                             <img :srcset="currentArticle.image" class="article-image-full">
                             <h3 class="image-credit">photo by {{ currentArticle.imageCredit }}</h3>
@@ -16,11 +16,10 @@
                 <p class="article-text">
                     {{ currentArticle.text }}
                 </p>
-            </div>
-        </div>
+            <!--</div>
+        </div>-->
         <div class="article-sidebar-wrapper desktop-only">
-            <h1>Top Stories</h1>
-            <TopArticles class="sidebar" :categoryToRender="'highlights'" :showText="false" :showAuthor="false" :mode="'list-'" :imageStyle="'image-above-article'">
+            <TopArticles class="sidebar" :categoryToRender="'highlights'" :showText="true" :showAuthor="false" :mode="'list-'" :imageStyle="'no'">
             </TopArticles>
         </div>
     </div>

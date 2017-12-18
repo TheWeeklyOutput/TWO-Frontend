@@ -18,7 +18,7 @@
     
      :root {
         --main-text-color: black;
-        --grey-stuff: #ecf0f1;
+        --grey-stuff: #e3e3e3;
         --second-grey-stuff: grey;
         --bg-color: #f8f6f7;
     }
@@ -110,8 +110,10 @@
         text-transform: none;
         margin-bottom: .6rem;
         grid-row: 1;
-        grid-column: 1 / 5;
+        grid-column: 1 / 4;
         padding-left: 20px;
+        border-right: 2px solid var(--grey-stuff);
+        border-bottom: 2px solid var(--grey-stuff)
     }
     
     .logo-style-1 {
@@ -365,6 +367,7 @@
         display: grid;
         margin: 16px 0 0;
         padding: 16px 16px 0;
+        border-left: 2px solid var(--grey-stuff)
     }
     
     .article-image-full {
@@ -375,7 +378,7 @@
     
     .article-sidebar-wrapper {
         grid-column: 4 / 5;
-        grid-row: 3 / 4;
+        grid-row: 4;
         padding-left: 20px;
         border-left: 1px solid var(--grey-stuff);
     }
@@ -385,10 +388,17 @@
         margin-bottom: 32px;
         grid-column: 1 / span 4;
     }
+    .article-heading-filler {
+        grid-column: 4;
+        grid-row: 1;
+        border-bottom: 2px solid var(--grey-stuff);
+        margin-bottom: 0.6rem;
+    }
     
-    .article-author {
-        grid-column: 1 / span 3;
+    .article-headline-info {
+        grid-column: 1;
         grid-row: 2 / auto;
+        padding-left: 20px
     }
     
     .article-text {
@@ -398,9 +408,10 @@
         padding-right: 20px;
         padding-left: 20px
     }
-
+    
     .article-heading {
-        font-family: 'Georgia', 'serif'
+        font-family: 'Georgia', 'serif';
+        border-bottom: var(--grey-stuff)
     }
     
     @media (min-width: 600px) {

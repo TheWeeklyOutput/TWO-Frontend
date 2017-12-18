@@ -3,13 +3,11 @@
         <span class="headline-single-article">
             <h1 class="article-heading">{{ currentArticle.title }}</h1>
             <p class="article-author">
-                by {{ currentArticle.author }}
+                By {{ currentArticle.author }}
             </p>
     
             </span>
-    
         <div class="article-body">
-    
             <div class="article-text-wrapper">
                 <span class="article-image-wrapper">
                             <img :srcset="currentArticle.image" class="article-image-full">
@@ -19,8 +17,6 @@
                     {{ currentArticle.text }}
                 </p>
             </div>
-    
-    
         </div>
         <div class="article-sidebar-wrapper desktop-only">
             <h1>Top Stories</h1>

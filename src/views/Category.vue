@@ -1,12 +1,10 @@
 <template>
     <div class="component-wrapper">
-        <h1>{{ category }}</h1>
+        <h1>{{ api.categories.find(art => art.label === (category)).name }}</h1>
         <hr>
         <CategoryList class="" :categoryToRender="category" :showText="true" :showAuthor="true" :mode="'list-'" :imageStyle="'next-to-article'">
         </CategoryList>
-    
     </div>
-    
 </template>
 
 <script>
@@ -28,11 +26,9 @@
             }
         },
         mounted() {},
-    
+
         computed: {
         }
-    
-    
     }
 </script>
 

@@ -15,7 +15,7 @@ export default {
     },
     categories: [{
       name: 'Highlights',
-      label: 'topArticles'
+      label: 'highlights'
     },
     {      
       name: 'Trending',

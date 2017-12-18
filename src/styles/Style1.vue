@@ -165,6 +165,10 @@
             grid-template-columns: 100%;
             grid-auto-rows: minmax(125px, auto);
         }
+
+        .topper-article-wrapper {
+            padding-bottom: 20px
+        }
     }
     
     @media (min-width: 880px) {

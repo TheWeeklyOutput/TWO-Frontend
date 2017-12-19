@@ -88,7 +88,6 @@
         border-top: 1px solid var(--grey-stuff);
         max-width: 100%;
         margin-top: 40px;
-        width: 100vw;
         padding: 50px 20px;
     }
     
@@ -438,7 +437,8 @@
     }
     
     .footer-logo {
-        float: left
+        float: left;
+        width: 300px
     }
     
     .footer-logo path {
@@ -446,16 +446,15 @@
     }
     
     .footer-li {
-        display: inline-block;
         vertical-align: top;
         float: left;
     }
     
     .footer-ul {
-        display: block;
+        margin-left: 50%;
         height: 40px;
-        float: right
     }
+
     
     .footer-li a {
         text-decoration: none;

@@ -3,8 +3,6 @@
 </template>
 
 <style>
-    @import url('https://fonts.googleapis.com/css?family=Lora');
-    @import url('https://fonts.googleapis.com/css?family=Ramaraja');
     * {
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-weight: 500;
@@ -79,7 +77,7 @@
     }
     
     .nav-categories li a {
-        font-family: 'Lora', serif !important;
+        font-family: 'Georgia', serif !important;
         text-decoration: none;
         font-weight: 500
     }
@@ -90,17 +88,15 @@
         border-top: 1px solid var(--grey-stuff);
         max-width: 100%;
         margin-top: 40px;
+        width: 100vw;
+        padding: 50px 20px;
     }
     
     p {
         font-size: 1.2em;
         margin-bottom: 32px;
     }
-    
-    footer {
-        width: 100vw;
-        height: 8em;
-    }
+
     
     .headline-single-article {
         font-style: normal;
@@ -138,7 +134,6 @@
     .component-wrapper {
         margin: 0 auto;
         max-width: 1300px;
-        ;
     }
     
     .hr-logo {
@@ -388,6 +383,7 @@
         margin-bottom: 32px;
         grid-column: 1 / span 4;
     }
+    
     .article-heading-filler {
         grid-column: 4;
         grid-row: 1;
@@ -439,5 +435,41 @@
     
     .list-no-image-wrapper {
         display: none;
+    }
+    
+    .footer-logo {
+        float: left
+    }
+    
+    .footer-logo path {
+        fill: white
+    }
+    
+    .footer-li {
+        display: inline-block;
+        vertical-align: top;
+        float: left;
+    }
+    
+    .footer-ul {
+        display: block;
+        height: 40px;
+        float: right
+    }
+    
+    .footer-li a {
+        text-decoration: none;
+        font-weight: 500
+    }
+    
+    .footer-li:after {
+        content: "\2022";
+        display: inline-block;
+        margin: 0 8px;
+    }
+    
+    .footer-li:last-child:after {
+        content: "";
+        margin: 0;
     }
 </style>

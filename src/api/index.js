@@ -2,6 +2,7 @@ import * as mainMuts from '../store/mutation-types.js'
 import * as muts from './mutation-types.js'
 import * as acts from './action-types.js'
 import { log } from '../utils.js'
+import testArticles from './articles.js'
 
 const apiCallbackFunction = ({ getters, commit }, { success, action, message, next }) => {
   const notificationMutation = success ? mainMuts.UPDATE_MESSAGES : mainMuts.UPDATE_ERRORS
@@ -26,22 +27,39 @@ export default {
     },
     topStoriesOfDay: [],
     newestStories: [],
-  },
-  getters: {
-    getMessagesFromRes: () => (res) => {
-      if (res.data) {
-        return res.data.messages
-      } else {
-        return ''
-      }
+    articles: {
+      highlights: [],
+      topArticles: [],    
+      mostShared: [],
+      mostLiked: [],
+      newest: [],
+      currentArticle: {}    
     },
-    getErrorsFromRes: () => (res) => {
-      if (res) {
-        return res
-      } else {
-        return ''
-      }
-    }
+    categories: [{
+      name: 'Highlights',
+      label: 'highlights'
+    },
+    {      
+      name: 'Trending',
+      label: 'trending'
+    },
+    {      
+      name: 'World',
+      label: 'world'
+    },
+    {      
+      name: 'Recent',
+      label: 'recent'
+    },
+    {      
+      name: 'Politics',
+      label: 'politics'
+    },
+    {      
+      name: 'Business',
+      label: 'Business'
+    }],
+    currentStyle: 1
   },
   actions: {
     [acts.REST_CALL] ({ commit, getters }, { promise, action, context, onSuccess, onError }) {
@@ -92,6 +110,24 @@ export default {
         author: 'No Autor',
         imageURL: 'No Image'
       }
+    },
+    [acts.GET_ARTICLES_BY_CATEGORIES] ({ state, dispatch, commit, getters }, { categories }) {
+      if(categories[0] === 'all') {
+          state.articles = testArticles.articles
+          state.categories.forEach (function(category) {
+            state.articles[category.label] = testArticles.articles[category.label]
+          })
+      }
+      categories.forEach (function(category) {
+        state.articles[category] = testArticles.articles[category]
+      })
+    },
+    [acts.GET_ARTICLE_BY_ID] ({ state, dispatch, commit, getters }, { category, id }) {
+      const article = testArticles.articles[category].find(art => art.id === (id))
+      state.articles.currentArticle = article      
+    },
+    [muts.SET_STYLE] (state, payload) {
+      state.currentStyle = payload.style   
     }
   }
 }

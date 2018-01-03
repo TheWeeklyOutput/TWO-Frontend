@@ -50,6 +50,15 @@
         </textarea>
         <button v-on:click="getText()">Get Text</button>
         <span>{{ currentArticle }}</span>
+        <br>
+        <textarea
+            placeholder="Category" 
+            rows="1" 
+            v-model="genertation_category"
+            autocomplete="off" 
+            required="" maxlength="200">
+        </textarea>
+        <button v-on:click="generateText()">Generate</button>
     </div>
 </template>
 
@@ -67,7 +76,8 @@ export default {
           category: 'politics',
           outlet: 'www.cnn.com',
         },
-        slug: 'trumps-russia-defense-in-disarray'
+        slug: 'trumps-russia-defense-in-disarray',
+        genertation_category: 'politics'
       }
     },
     computed: {
@@ -86,6 +96,12 @@ export default {
            this.$store.dispatch(apiActs.GET_TEXT, { 
                 context: this, 
                 slug: this.slug
+            })  
+        },
+        generateText() {
+           this.$store.dispatch(apiActs.GENERATE_TEXT, { 
+                context: this, 
+                category: this.category
             })  
         }
     }

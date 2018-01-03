@@ -20,6 +20,7 @@ export default {
     currentArticle: {
       title: '',
       text: '',
+      entities: '',
       author: '',
       imageURL: ''
     },
@@ -70,6 +71,16 @@ export default {
           commit(muts.UPDATE_CURRENT_ARTICLE, { article: res.body })
         }, onError (res) {}
       })
+    },
+    [acts.GENERATE_TEXT] ({ commit, dispatch }, { context, category }) {
+      dispatch(acts.REST_CALL, {
+        promise: context.$http.get('mangler/generate/' + category),
+        action: acts.GENERATE_TEXT, context,
+        onSuccess (res) {
+          log.dir(res)
+          commit(muts.UPDATE_CURRENT_ARTICLE, { article: res.body })
+        }, onError (res) {}
+      })
     }
   },
   mutations: {
@@ -77,6 +88,7 @@ export default {
       state.currentArticle = {
         title: article.title,
         text: article.text,
+        entities: article.entities,
         author: 'No Autor',
         imageURL: 'No Image'
       }

@@ -7,14 +7,14 @@
         </span>
 
         <span class="article-headline-info">
-            <p class="article-author">
+            <p class="article-author">1
                 By {{ currentArticle.author }}
             </p>
         </span>
         <span class="article-image-wrapper">
-                                        <img :srcset="currentArticle.image" class="article-image-full">
-                                        <h3 class="image-credit">photo by {{ currentArticle.imageCredit }}</h3>
-                                    </span>
+            <img :srcset="currentArticle.image" class="article-image-full">
+            <h3 class="image-credit">photo by {{ currentArticle.imageCredit }}</h3>
+        </span>
         <p class="article-text">
             {{ currentArticle.text }}
         </p>
@@ -29,19 +29,17 @@
 
 <script>
     import RecentArticles from '../components/ListArticles'
-    import apiMixin from '../mixins/api.js'
-    import * as apiMuts from '../api/mutation-types.js'
-    import * as apiActs from '../api/action-types.js'
+    import articleHandlerMixin from '../mixins/articlehandler.js'
     import TopArticles from '../components/ListArticles'
-    
-    
+    import * as articleHandlerMuts from '../api/articlehandler/mutation-types.js'
+    import * as articleHandlerActs from '../api/articlehandler/action-types.js'    
     
     export default {
         components: {
             RecentArticles,
             TopArticles
         },
-        mixins: [apiMixin],
+        mixins: [articleHandlerMixin],
     
         props: {
             category: {
@@ -57,11 +55,11 @@
     
         computed: {
             currentArticle() {
-                this.$store.dispatch(apiActs.GET_ARTICLE_BY_ID, {
+                this.$store.dispatch(articleHandlerActs.GET_ARTICLE_BY_ID, {
                     category: this.category,
                     id: this.id
                 })
-                return this.api.articles.currentArticle
+                return this.articleHandler.articles.currentArticle
     
             }
         }

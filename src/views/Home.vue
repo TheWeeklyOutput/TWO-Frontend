@@ -20,13 +20,11 @@
 
 <script>
     import Topper from '../components/Topper'
-    import apiMixin from '../mixins/api.js'
-    import * as apiMuts from '../api/mutation-types.js'
-    import * as apiActs from '../api/action-types.js'
+    import articleHandlerMixin from '../mixins/articlehandler.js'
     import ListArticles from '../components/ListArticles'
 
     export default {
-        mixins: [apiMixin],
+        mixins: [articleHandlerMixin],
         components: {
             Topper,
             ListArticles

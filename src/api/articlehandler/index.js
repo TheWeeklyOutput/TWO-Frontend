@@ -1,6 +1,6 @@
 import * as muts from './mutation-types.js'
 import * as acts from './action-types.js'
-import { log } from '../utils.js'
+import { log } from '../../utils.js'
 import testArticles from './articles.js'
 
 export default {
@@ -37,7 +37,6 @@ export default {
       name: 'Business',
       label: 'Business'
     }],
-    currentStyle: 1
   },
   getters: {
   },
@@ -58,9 +57,5 @@ export default {
       state.articles.currentArticle = article      
     }
   },
-  mutations: {
-    [muts.SET_STYLE] (state, payload) {
-      state.currentStyle = payload.style   
-    }
-  }
+
 }

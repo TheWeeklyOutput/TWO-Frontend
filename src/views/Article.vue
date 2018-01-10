@@ -7,7 +7,7 @@
         </span>
 
         <span class="article-headline-info">
-            <p class="article-author">1
+            <p class="article-author">
                 By {{ currentArticle.author }}
             </p>
         </span>

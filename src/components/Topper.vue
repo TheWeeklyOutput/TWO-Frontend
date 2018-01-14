@@ -10,19 +10,21 @@
     
                 <div :class="'topper-single-container'">
                     <span :class="'topper-image-wrapper'">
-                                    <img :src="article.image" :class="'topper-image'">
-                                </span>
+                                        <img :src="article.image" :class="'topper-image'">
+                                    </span>
                     <span :class="'topper-text'">
-                                    <h2 :class="'topper-article-title'">{{ article.title }}</h2>
-                                    <span class="topper-author-timestap-wrapper desktop-only">
-                                        <span :class="'topper-author'" >By 
-                                            <router-link :to="{ name: 'author', params: {  name: article.authorid }}" transition="fade">
-                                                {{ article.author }}
-                                            </router-link>
-                                        </span>
+                                        <h2 :class="'topper-article-title'">{{ article.title }}</h2>
+                                        <span class="topper-author-timestap-wrapper desktop-only">
+                                            <span :class="'topper-author'" >By 
+                                                <router-link :to="{ name: 'author', params: {  name: article.authorid }}" transition="fade">
+                                                    {{ article.author }}
+                                                </router-link>
+                                            </span>
                     <span class="list-timestamp"> {{ article.timestamp }}</span>
                     </span>
                     <h3 :class="'topper-article-text'">{{ article.text.substring(0, 200) }}...</h3>
+                    <twitter-shares :shares="0"></twitter-shares>
+    
                     </span>
                 </div>
             </router-link>
@@ -32,6 +34,7 @@
 
 <script>
     import ListArticles from './ListArticles'
+    import TwitterShares from './TwitterShares'
     import articleHandlerMixin from '../mixins/articlehandler.js'
     import * as articleHandlerMuts from '../api/articlehandler/mutation-types.js'
     import * as articleHandlerActs from '../api/articlehandler/action-types.js'
@@ -40,7 +43,8 @@
         mixins: [articleHandlerMixin],
     
         components: {
-            ListArticles
+            ListArticles,
+            TwitterShares
         },
         computed: {
             articles() {

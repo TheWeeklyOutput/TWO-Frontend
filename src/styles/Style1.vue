@@ -145,7 +145,7 @@
         height: auto
     }
     
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 880px) {
         .style-1 h1 {
             font-size: calc(1em * 1.250 * 1.250 * 1.250 * 1.250);
         }
@@ -165,7 +165,7 @@
             border-bottom: 1px solid var(--grey-stuff);
         }
         .style-1 .topper-text {
-            padding: 15px 15px 0 15px
+            padding: 18px 18px 0 18px
         }
         .style-1 .topper> :nth-child(2) .topper-article-title {
             font-size: 2em;

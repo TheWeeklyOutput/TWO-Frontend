@@ -90,6 +90,7 @@
         max-width: 100%;
         margin-top: 40px;
         padding: 50px 20px;
+        display: grid;
     }
     
     .style-1 p {
@@ -112,7 +113,7 @@
     }
     
     .style-1 .logo-style-1 {
-        height: 40px;
+        height: 60px;
         width: auto;
         max-width: 100%;
     }
@@ -152,6 +153,11 @@
         padding-bottom: 50px
     }
     
+    .style-1 .topper-headline-text {
+        width: 100%;
+        height: auto
+    }
+    
     @media (min-width: 600px) {
         .style-1 h1 {
             font-size: calc(1em * 1.250 * 1.250 * 1.250 * 1.250);
@@ -186,7 +192,9 @@
             grid-column: 1 /span 4;
         }
         .style-1 .topper-headline-text {
-            padding-left: 12px
+            padding-left: 12px;
+            width: 200px;
+            padding-bottom: 10px
         }
         .style-1 .topper> :nth-child(2) {
             grid-column: 1 / span 4;
@@ -233,9 +241,13 @@
         .style-1 .topper-article-text {
             padding-top: 20px
         }
+
+        .style-1 .home-bottom {
+            display: grid;
+        }
+
         .style-1 .twitter-sidebar {
             grid-column: 4 / 5;
-            grid-row: 3 / 4;
             padding-left: 12px;
             border-left: 1px solid var(--grey-stuff);
             width: 300px;
@@ -445,19 +457,15 @@
         fill: white
     }
     
-    .style-1 .footer-li {
-        vertical-align: top;
-        float: left;
-    }
-    
-    .style-1 .footer-ul {
-        margin-left: 50%;
-        height: 40px;
+    .stlye-1 .footer-ul {
+        display: inline-block;
     }
     
     .style-1 .footer-li a {
         text-decoration: none;
-        font-weight: 500
+        font-weight: 500;
+        text-align: center;
+        color: white
     }
     
     .style-1 .footer-li:after {
@@ -474,5 +482,16 @@
     .style-1 .footer-wrapper {
         max-width: 1300px;
         margin: auto auto
+    }
+    
+    .style-1 .footer-li {
+        display: inline-block;
+        vertical-align: top;
+        list-style-type: none;
+        text-align: center;
+    }
+    
+    .style-1 .footer-logo-link {
+        display: inline-block;
     }
 </style>

@@ -13,35 +13,14 @@ export default {
       newest: [],
       currentArticle: {}    
     },
-    categories: [{
-      name: 'Highlights',
-      label: 'highlights'
-    },
-    {      
-      name: 'Trending',
-      label: 'trending'
-    },
-    {      
-      name: 'World',
-      label: 'world'
-    },
-    {      
-      name: 'Recent',
-      label: 'recent'
-    },
-    {      
-      name: 'Politics',
-      label: 'politics'
-    },
-    {      
-      name: 'Business',
-      label: 'Business'
-    }],
+    categories: {}
   },
   getters: {
   },
   actions: {
     [acts.GET_ARTICLES_BY_CATEGORIES] ({ state, dispatch, commit, getters }, { categories }) {
+      state.categories = testArticles.categories
+      
       if(categories[0] === 'all') {
           state.articles = testArticles.articles
           state.categories.forEach (function(category) {

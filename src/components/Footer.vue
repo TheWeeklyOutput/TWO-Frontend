@@ -2,21 +2,45 @@
     <div id="footer">
         <footer>
             <div class="footer-wrapper">
-                <router-link :to="'/'">
+                <router-link :to="'/'" class="footer-logo-link">
                     <LogoStyle1 class="footer-logo"></LogoStyle1>
                 </router-link>
                 <div>
                     <ul class="footer-ul">
-                        <li class="footer-li">Terms of Use</li>
-                        <li class="footer-li">Privacy Policy</li>
-                        <li class="footer-li">Terms of Use</li>
-                        <li class="footer-li">Contact</li>
+                        <li class="footer-li">
+                            <router-link :to="'/'" class="footer-li-link">
+                                Terms of Use
+                            </router-link>
+                        </li>
+                        <li class="footer-li">
+                            <router-link :to="'/'" class="footer-li-link">
+                                Privacy Policy
+                            </router-link>
+                        </li>
+                        <li class="footer-li">
+                            <router-link :to="'/'" class="footer-li-link">
+                                Contact
+                            </router-link>
+                        </li>
     
                     </ul>
                     <ul class="footer-ul">
-                        <li class="footer-li">Tip Us</li>
-                        <li class="footer-li">About Us</li>
-                        <li class="footer-li">Ethics Statement</li>
+                        <li class="footer-li">
+                            <router-link :to="'/'" class="footer-li-link">
+                                Tip Us
+                            </router-link>
+                        </li>
+                        <li class="footer-li">
+                            <router-link :to="'/'" class="footer-li-link">
+                                About Us
+                            </router-link>
+                        </li>
+                        <li class="footer-li">
+                            <router-link :to="'/'" class="footer-li-link">
+                                Source Code
+                            </router-link>
+                        </li>
+    
                     </ul>
                 </div>
             </div>

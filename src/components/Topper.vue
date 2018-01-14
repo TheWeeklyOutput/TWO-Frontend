@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="topper-headline">
+        <div class="topper-headline desktop-only">
             <!--<h1 class="topper-headline-text">{{ categoryToRender.name }}</h1>-->
             <component :is="$store.state.TitleList[categoryToRender.name]" class="topper-headline-text"></component>
             <hr>
@@ -14,7 +14,7 @@
                                 </span>
                     <span :class="'topper-text'">
                                     <h2 :class="'topper-article-title'">{{ article.title }}</h2>
-                                    <span class="topper-author-timestap-wrapper">
+                                    <span class="topper-author-timestap-wrapper desktop-only">
                                         <span :class="'topper-author'" >By 
                                             <router-link :to="{ name: 'author', params: {  name: article.authorid }}" transition="fade">
                                                 {{ article.author }}

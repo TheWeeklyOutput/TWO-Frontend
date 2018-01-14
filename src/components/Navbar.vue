@@ -1,32 +1,39 @@
 <template>
     <div id="navbar" class="component-wrapper">
-    
-        <router-link :to="'/'">
-            <div id="logo">
-                <logo-style1 class="logo-style-1" alt="Weekly Output"></logo-style1>
-            </div>
-        </router-link>
-        <span id="theme-switcher-dropdown">
-                        <select v-model="themeSwitcher.currentStyle">
-                            <option disabled value=""> {{ themeSwitcher.CurrentStlye }}</option>
-                            <option value="1">Business</option>
-                            <option value="2">Pop</option>
-                            <option value="3">Tech</option>
-                        </select>
-                    </span>
-    
-        <hr class="hr-logo">
-    
-    
-        <ul class="nav-categories">
-            <li v-for="category in categories">
-                <router-link :to="{ name: 'category', params: {  category:  category.label}}" :class="'category-link'" v-if="!(category.label === '-')">
-                    {{ category.name }}
+        <div class="mobile-nav-container mobile-only">
+            <div>
+                <router-link :to="'/'">
+                    <div id="logo-mobile">
+                        <logo-style1 class="logo-style-1" alt="Weekly Output"></logo-style1>
+                    </div>
                 </router-link>
-                <span v-else> {{ category.name}} </span>
-            </li>
-        </ul>
-        <hr class="hr-categories">
+            </div>
+        </div>
+        <div class="desktop-nav-container desktop-only">
+            <router-link :to="'/'">
+                <div id="logo">
+                    <logo-style1 class="logo-style-1" alt="Weekly Output"></logo-style1>
+                </div>
+            </router-link>
+            <span id="theme-switcher-dropdown">
+                <select v-model="themeSwitcher.currentStyle">
+                    <option disabled value=""> {{ themeSwitcher.CurrentStlye }}</option>
+                    <option value="1">Business</option>
+                    <option value="2">Pop</option>
+                    <option value="3">Tech</option>
+                </select>
+            </span>
+            <hr class="hr-logo">
+            <ul class="nav-categories">
+                <li v-for="category in categories">
+                    <router-link :to="{ name: 'category', params: {  category:  category.label}}" :class="'category-link'" v-if="!(category.label === '-')">
+                        {{ category.name }}
+                    </router-link>
+                    <span v-else> {{ category.name}} </span>
+                </li>
+            </ul>
+            <hr class="hr-categories">
+        </div>
     
     </div>
 </template>
@@ -73,5 +80,13 @@
         display: block;
         padding: 32px 16px 24px 16px;
         font-size: 3em
+    }
+    
+    #logo-mobile {
+        text-align: center;
+        display: block;
+        padding: 0;
+        font-size: 3em;
+        padding: 1%;
     }
 </style>

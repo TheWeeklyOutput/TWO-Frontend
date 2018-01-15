@@ -1,3 +1,6 @@
+import Home from '../views/Home.vue'
+import DevTools from '../views/DevTools.vue'
+
 export default {
   mode: 'hash',
   routes: [
@@ -5,8 +8,11 @@ export default {
       path: '/',
       name: 'home',
       component: () => import('../views/Home'),
-      meta: {title: 'The Weekly Output | ' + 'Home'}      
-      
+      meta: {title: 'The Weekly Output | ' + 'Home' }
+    }, {
+      path: '/dev',
+      name: 'dev',
+      component: DevTools,
     }, {
       path: '/articles/:category/:id',
       name: 'article',

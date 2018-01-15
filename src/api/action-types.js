@@ -1,2 +1,6 @@
+export const REST_CALL = 'REST_CALL'
+export const SEND_TEXT = 'SEND_TEXT'
+export const GET_TEXT = 'GET_TEXT'
+export const GENERATE_TEXT = 'GENERATE_TEXT'
 export const GET_ARTICLE_BY_ID = 'GET_ARTICLE_BY_ID'
 export const GET_ARTICLES_BY_CATEGORIES = 'GET_ARTICLES_BY_CATEGORIES'

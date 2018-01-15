@@ -21,9 +21,7 @@ export default {
     state: {
       articles: {
         highlights: [],
-        topArticles: [],    
         mostShared: [],
-        mostLiked: [],
         newest: [],
         currentArticle: {}    
       },

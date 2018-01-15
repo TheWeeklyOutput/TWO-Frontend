@@ -9,7 +9,7 @@
                     <component :is="$store.state.TitleList[categoriesToRender[1].name]" class="topper-headline-text"></component>
                     <hr>
                     <div class="list-article-wrapper">
-                        <ListArticles :categoryToRender="categoriesToRender[1].label" :showText="false" :showAuthor="true" :imageStyle="'next-to-article'" :mode="'list-'"></ListArticles>
+                        <ListArticles :categoryToRender="categoriesToRender[1].label" :showText="false" :showAuthor="true" :imageStyle="'next-to-article'" :showShares="true" :mode="'list-'"></ListArticles>
                     </div>
                 </div>
                 <TweetFeed class="twitter-sidebar desktop-only">

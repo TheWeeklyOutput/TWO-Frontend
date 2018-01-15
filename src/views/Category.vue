@@ -4,7 +4,7 @@
         <component :is="$store.state.TitleList[api.categories.find(art => art.label === (category)).name]" class="topper-headline-text"></component>
     
         <hr>
-        <CategoryList class="" :categoryToRender="category" :showText="true" :showAuthor="true" :mode="'list-'" :imageStyle="'next-to-article'">
+        <CategoryList class="" :categoryToRender="category" :showText="true" :showAuthor="true" :mode="'list-'" :showShares="true" :imageStyle="'next-to-article'">
         </CategoryList>
     </div>
 </template>

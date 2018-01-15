@@ -3,6 +3,7 @@ import * as muts from './mutation-types.js'
 import * as acts from './action-types.js'
 import { log } from '../utils.js'
 import testArticles from './articles.js'
+import { TOGGLE_LOADING } from './mutation-types.js';
 
 const apiCallbackFunction = ({ getters, commit }, { success, action, message, next }) => {
   const notificationMutation = success ? mainMuts.UPDATE_MESSAGES : mainMuts.UPDATE_ERRORS
@@ -27,7 +28,8 @@ export default {
         newest: [],
         currentArticle: {}    
       },
-      categories: {}
+      categories: {},
+      isLoading: false
     }
   },
   actions: {
@@ -70,6 +72,7 @@ export default {
       })
     },
     [acts.GET_ARTICLES_BY_CATEGORIES] ({ state, dispatch, commit, getters }, { categories }) {
+      commit(TOGGLE_LOADING)
       state.categories = testArticles.categories
       
       if(categories[0] === 'all') {
@@ -81,11 +84,18 @@ export default {
       categories.forEach (function(category) {
         state.articles[category] = testArticles.articles[category]
       })
+      commit(TOGGLE_LOADING)
+      
     },
     [acts.GET_ARTICLE_BY_ID] ({ state, dispatch, commit, getters }, { category, id }) {
+      commit(TOGGLE_LOADING)
+      
       const article = testArticles.articles[category].find(art => art.id === (id))
-      state.articles.currentArticle = article      
+      state.articles.currentArticle = article   
+      commit(TOGGLE_LOADING)
+      
     }
+
   },
   mutations: {
     [muts.UPDATE_CURRENT_ARTICLE] (state, { article }) {
@@ -96,6 +106,9 @@ export default {
         author: 'No Autor',
         imageURL: 'No Image'
       }
-    }  
+    },
+    [muts.TOGGLE_LOADING] (state){
+      state.isLoading = !state.isLoading
+    }
   }
 }

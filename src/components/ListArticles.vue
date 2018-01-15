@@ -12,7 +12,7 @@
                         <span v-if="showText"><h3 :class="mode + 'description'">{{ article.text.substring(0, 200) }}...</h3></span>
                         <span :class="mode + 'author'" v-if="showAuthor">By <router-link :to="{ name: 'author', params: {  name: article.authorid }}"  transition="fade">{{ article.author }}</router-link></span>
                         <span class="list-timestamp" v-if="showAuthor"> {{ article.timestamp }}</span>
-                        <twitter-shares :shares="Math.ceil(Math.random()*10)"></twitter-shares>
+                        <twitter-shares :shares="Math.ceil(Math.random()*10)" v-if="showShares"></twitter-shares>
     
                         </span>
     
@@ -44,6 +44,7 @@
             imageStyle: String,
             showText: Boolean,
             showAuthor: Boolean,
+            showShares: Boolean,
             mode: String
         },
         data: function() {

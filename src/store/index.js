@@ -2,8 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import * as muts from './mutation-types'
 import * as acts from './action-types'
-import articleHandler from '../api/articlehandler'
-import themeSwitcher from '../api/themeswitcher'
+import api from '../api/'
+import themeSwitcher from '../themeswitcher'
 import { TitleList } from './titlelist'
 
 
@@ -30,7 +30,7 @@ const store = new Vuex.Store({
   mutations,
   actions,
   modules: {
-    articleHandler,
+    api,
     themeSwitcher
   }
 })

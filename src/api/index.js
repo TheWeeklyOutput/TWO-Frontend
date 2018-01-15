@@ -1,6 +1,6 @@
 import * as muts from './mutation-types.js'
 import * as acts from './action-types.js'
-import { log } from '../../utils.js'
+import { log } from '../utils.js'
 import testArticles from './articles.js'
 
 export default {

@@ -26,17 +26,16 @@
 
 <script>
     import Topper from '../components/Topper'
-    import articleHandlerMixin from '../mixins/articlehandler.js'
+    import apiMixin from '../mixins/api.js'
     import ListArticles from '../components/ListArticles'
     import TweetFeed from '../components/TweetFeed'
     
     export default {
-        mixins: [articleHandlerMixin],
+        mixins: [apiMixin],
         components: {
             Topper,
             ListArticles,
             TweetFeed
-    
         },
         props: {},
         data() {

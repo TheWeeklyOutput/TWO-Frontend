@@ -32,12 +32,12 @@
 <script>
     import ListArticles from './ListArticles'
     import TwitterShares from './TwitterShares'
-    import articleHandlerMixin from '../mixins/articlehandler.js'
-    import * as articleHandlerMuts from '../api/articlehandler/mutation-types.js'
-    import * as articleHandlerActs from '../api/articlehandler/action-types.js'
+    import apiMixin from '../mixins/api.js'
+    import * as apiMuts from '../api/mutation-types.js'
+    import * as apiActs from '../api/action-types.js'
     
     export default {
-        mixins: [articleHandlerMixin],
+        mixins: [apiMixin],
     
         components: {
             ListArticles,
@@ -46,7 +46,7 @@
         computed: {
             articles() {
     
-                let articleArray = this.articleHandler.articles[this.categoryToRender.label]
+                let articleArray = this.api.articles[this.categoryToRender.label]
     
                 return {
                     articleArray: articleArray,

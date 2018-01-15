@@ -10,14 +10,14 @@
 </template>
 
 <script>
-    import articleHandlerMixin from '../mixins/articlehandler.js'
+    import apiMixin from '../mixins/api.js'
     import CategoryList from '../components/ListArticles'
     
     export default {
         components: {
             CategoryList
         },
-        mixins: [articleHandlerMixin],
+        mixins: [apiMixin],
     
         props: {
             category: {

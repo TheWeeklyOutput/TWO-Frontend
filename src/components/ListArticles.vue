@@ -24,18 +24,18 @@
 </template>
 
 <script>
-    import articleHandlerMixin from '../mixins/articlehandler.js'
+    import apiMixin from '../mixins/api.js'
     import {
         mapState
     } from 'vuex'
     import * as muts from '../store/mutation-types.js'
-    import * as articleHandlerMuts from '../api/articlehandler/mutation-types.js'
-    import * as articleHandlerActs from '../api/articlehandler/action-types.js'
+    import * as apiMuts from '../api/mutation-types.js'
+    import * as apiActs from '../api/action-types.js'
     import TwitterShares from './TwitterShares'
     
     
     export default {
-        mixins: [articleHandlerMixin],
+        mixins: [apiMixin],
         components: {
             TwitterShares
         },
@@ -52,7 +52,7 @@
         computed: {
             articles() {
                 return {
-                    articleArray: this.articleHandler.articles[this.categoryToRender],
+                    articleArray: this.api.articles[this.categoryToRender],
                     category: this.categoryToRender,
                 }
             }

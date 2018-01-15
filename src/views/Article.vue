@@ -32,10 +32,10 @@
 
 <script>
     import RecentArticles from '../components/ListArticles'
-    import articleHandlerMixin from '../mixins/articlehandler.js'
+    import apiMixin from '../mixins/api.js'
     import TopArticles from '../components/ListArticles'
-    import * as articleHandlerMuts from '../api/articlehandler/mutation-types.js'
-    import * as articleHandlerActs from '../api/articlehandler/action-types.js'
+    import * as apiMuts from '../api/mutation-types.js'
+    import * as apiActs from '../api/action-types.js'
     import TwitterShares from '../components/TwitterShares'
     
     export default {
@@ -44,7 +44,7 @@
             TopArticles,
             TwitterShares
         },
-        mixins: [articleHandlerMixin],
+        mixins: [apiMixin],
     
         props: {
             category: {
@@ -60,11 +60,11 @@
     
         computed: {
             currentArticle() {
-                this.$store.dispatch(articleHandlerActs.GET_ARTICLE_BY_ID, {
+                this.$store.dispatch(apiActs.GET_ARTICLE_BY_ID, {
                     category: this.category,
                     id: this.id
                 })
-                return this.articleHandler.articles.currentArticle
+                return this.api.articles.currentArticle
     
             }
         }

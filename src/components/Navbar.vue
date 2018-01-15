@@ -40,13 +40,13 @@
 
 <script>
     import LogoStyle1 from '../assets/svg/logo_style_1.svg'
-    import articleHandlerMixin from '../mixins/articlehandler.js'
+    import apiMixin from '../mixins/api.js'
     import themeswitcherMixin from '../mixins/themeswitcher.js'
-    import * as articleHandlerMuts from '../api/articlehandler/mutation-types.js'
-    import * as articleHandlerActs from '../api/articlehandler/action-types.js'
+    import * as apiMuts from '../api/mutation-types.js'
+    import * as apiActs from '../api/action-types.js'
     
     export default {
-        mixins: [articleHandlerMixin, themeswitcherMixin],
+        mixins: [apiMixin, themeswitcherMixin],
     
         components: {
             LogoStyle1
@@ -55,12 +55,12 @@
             categories() {
                 let categoriesArray = []
     
-                for (let i = 0; i < this.articleHandler.categories.length; i++) {
+                for (let i = 0; i < this.api.categories.length; i++) {
                     categoriesArray.push({
-                        label: this.articleHandler.categories[i].label,
-                        name: this.articleHandler.categories[i].name
+                        label: this.api.categories[i].label,
+                        name: this.api.categories[i].name
                     })
-                    if (this.articleHandler.categories.length > i + 1) {
+                    if (this.api.categories.length > i + 1) {
                         categoriesArray.push({
                             label: '-',
                             name: ' - '

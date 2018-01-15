@@ -1,7 +1,7 @@
 <template>
     <div class="component-wrapper">
         <!--<h1>{{ articleHandler.categories.find(art => art.label === (category)).name }}</h1>-->
-        <component :is="$store.state.TitleList[articleHandler.categories.find(art => art.label === (category)).name]" class="topper-headline-text"></component>
+        <component :is="$store.state.TitleList[api.categories.find(art => art.label === (category)).name]" class="topper-headline-text"></component>
     
         <hr>
         <CategoryList class="" :categoryToRender="category" :showText="true" :showAuthor="true" :mode="'list-'" :imageStyle="'next-to-article'">

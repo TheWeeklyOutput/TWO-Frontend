@@ -18,24 +18,17 @@ const apiCallbackFunction = ({ getters, commit }, { success, action, message, ne
 
 export default {
   state: {
-    currentArticle: {
-      title: '',
-      text: '',
-      entities: '',
-      author: '',
-      imageURL: ''
-    },
-    topStoriesOfDay: [],
-    newestStories: [],
-    articles: {
-      highlights: [],
-      topArticles: [],    
-      mostShared: [],
-      mostLiked: [],
-      newest: [],
-      currentArticle: {}    
-    },
-    categories: {}
+    state: {
+      articles: {
+        highlights: [],
+        topArticles: [],    
+        mostShared: [],
+        mostLiked: [],
+        newest: [],
+        currentArticle: {}    
+      },
+      categories: {}
+    }
   },
   actions: {
     [acts.REST_CALL] ({ commit, getters }, { promise, action, context, onSuccess, onError }) {
@@ -75,17 +68,6 @@ export default {
           commit(muts.UPDATE_CURRENT_ARTICLE, { article: res.body })
         }, onError (res) {}
       })
-    }
-  },
-  mutations: {
-    [muts.UPDATE_CURRENT_ARTICLE] (state, { article }) {
-      state.currentArticle = {
-        title: article.title,
-        text: article.text,
-        entities: article.entities,
-        author: 'No Autor',
-        imageURL: 'No Image'
-      }
     },
     [acts.GET_ARTICLES_BY_CATEGORIES] ({ state, dispatch, commit, getters }, { categories }) {
       state.categories = testArticles.categories
@@ -103,9 +85,17 @@ export default {
     [acts.GET_ARTICLE_BY_ID] ({ state, dispatch, commit, getters }, { category, id }) {
       const article = testArticles.articles[category].find(art => art.id === (id))
       state.articles.currentArticle = article      
-    },
-    [muts.SET_STYLE] (state, payload) {
-      state.currentStyle = payload.style   
     }
+  },
+  mutations: {
+    [muts.UPDATE_CURRENT_ARTICLE] (state, { article }) {
+      state.currentArticle = {
+        title: article.title,
+        text: article.text,
+        entities: article.entities,
+        author: 'No Autor',
+        imageURL: 'No Image'
+      }
+    }  
   }
 }

@@ -1,16 +1,19 @@
 <template>
     <div>
         <div class="component-wrapper">
-            <Topper class="topper" :categoryToRender="categoriesToRender[0]">
+            <Topper class="topper" :categoryToRender="highlights">
             </Topper>
     
             <div class="home-bottom">
-                <div class="newest-list">
-                    <component :is="$store.state.TitleList[categoriesToRender[1].name]" class="topper-headline-text"></component>
+                <div class="newest-list" v-for="category in categoriesToRender">
+                    <component :is="$store.state.TitleList[category.name]" class="topper-headline-text"></component>
                     <hr>
                     <div class="list-article-wrapper">
-                        <ListArticles :categoryToRender="categoriesToRender[1].label" :showText="false" :showAuthor="true" :imageStyle="'next-to-article'" :showShares="true" :mode="'list-'"></ListArticles>
+                        <ListArticles :categoryToRender="category.slug" :showText="false" :showAuthor="true" :imageStyle="'next-to-article'" :showShares="true" :mode="'list-'"></ListArticles>
                     </div>
+                    <router-link :to="{ name: 'category', params: {  category: category.slug }}" transition="fade">
+                        <button class="show-all-button">Show All</button>
+                    </router-link>
                 </div>
                 <TweetFeed class="twitter-sidebar desktop-only">
                 </TweetFeed>
@@ -40,12 +43,28 @@
         props: {},
         data() {
             return {
-                categoriesToRender: [{
-                    label: 'highlights',
+                highlights: {
+                    slug: 'highlights',
                     name: 'Highlights'
-                }, {
-                    label: 'politics',
+                },
+                categoriesToRender: [{
+                    slug: 'politics',
                     name: 'Politics'
+                }, {
+                    slug: 'health',
+                    name: 'Health'
+                }, {
+                    slug: 'entertainment',
+                    name: 'Entertainment'
+                }, {
+                    slug: 'sports',
+                    name: 'Sports'
+                }, {
+                    slug: 'tech',
+                    name: 'Tech'
+                }, {
+                    slug: 'world',
+                    name: 'World'
                 }]
             }
         }

@@ -78,7 +78,7 @@ export default {
       if(categories[0] === 'all') {
           state.articles = testArticles.articles
           state.categories.forEach (function(category) {
-            state.articles[category.label] = testArticles.articles[category.label]
+            state.articles[category.slug] = testArticles.articles[category.slug]
           })
       }
       categories.forEach (function(category) {
@@ -87,10 +87,10 @@ export default {
       commit(TOGGLE_LOADING)
       
     },
-    [acts.GET_ARTICLE_BY_ID] ({ state, dispatch, commit, getters }, { category, id }) {
+    [acts.GET_ARTICLE_BY_SLUG] ({ state, dispatch, commit, getters }, { category, slug }) {
       commit(TOGGLE_LOADING)
       
-      const article = testArticles.articles[category].find(art => art.id === (id))
+      const article = testArticles.articles[category].find(art => art.slug === (slug))
       state.articles.currentArticle = article   
       commit(TOGGLE_LOADING)
       

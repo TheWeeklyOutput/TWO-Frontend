@@ -9,7 +9,7 @@
     
         <span class="article-headline-info">
                     <p class="article-author">
-                        By {{ currentArticle.author }}
+                        By {{ currentArticle.author.name }}
                     </p>
                 </span>
         <span class="article-image-wrapper">
@@ -49,18 +49,18 @@
                 type: String,
                 default: 'Default Category'
             },
-            id: {
+            slug: {
                 type: String,
-                default: 'Default Id'
+                default: '404'
             }
         },
         mounted() {},
     
         computed: {
             currentArticle() {
-                this.$store.dispatch(apiActs.GET_ARTICLE_BY_ID, {
+                this.$store.dispatch(apiActs.GET_ARTICLE_BY_SLUG, {
                     category: this.category,
-                    id: this.id
+                    slug: this.slug
                 })
                 return this.api.articles.currentArticle
     

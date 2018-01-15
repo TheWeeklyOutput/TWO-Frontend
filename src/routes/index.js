@@ -14,7 +14,7 @@ export default {
       name: 'dev',
       component: DevTools,
     }, {
-      path: '/articles/:category/:id',
+      path: '/articles/:category/:slug',
       name: 'article',
       component: () => import('../views/Article'),
       props: true,

@@ -231,6 +231,11 @@
         text-align: justify
     }
     
+    .style-1 .newest-list {
+        grid-column: 1 / span 3;
+        padding-right: 10px
+    }
+    
     
     /* ARTICLE GRID */
     
@@ -264,6 +269,17 @@
         grid-column: 1;
         grid-row: 2 / auto;
         padding-left: 20px
+    }
+    
+    .style-1 .show-all-button {
+        width: 50%;
+        height: 50px;
+        margin: 30px auto;
+        display: block;
+    }
+    
+    .style-1 .show-all-button {
+        text-decoration: none
     }
     
     .style-1 .article-text {
@@ -355,7 +371,7 @@
     
     @media only screen and (max-width: 880px) {
         .style-1 h1 {
-            font-size: calc(1em * 1.250 * 1.250 * 1.250 * 1.250);
+            font-size: 1.5em
         }
         .style-1 .topper {
             display: grid;
@@ -393,7 +409,6 @@
         .style-1 .list-next-to-article-container {
             display: grid;
             grid-template-columns: repeat(1, 1fr);
-            grid-gap: 1.5rem;
             grid-auto-rows: minmax(125px, auto);
             border-top: 1px solid var(--grey-stuff);
         }
@@ -419,7 +434,6 @@
             padding-bottom: 10px;
             padding-top: 10px;
         }
-
         .style-1 .article-heading-filler {
             grid-column: 1;
             grid-row: 3;
@@ -525,10 +539,10 @@
         }
         .style-1 .twitter-sidebar {
             grid-column: 4 / 5;
+            grid-row: 1 / span 6;
             padding-left: 12px;
             border-left: 1px solid var(--grey-stuff);
             width: 300px;
-            max-height: 500px;
             overflow: auto;
         }
         .style-1 .list-article-list {
@@ -568,12 +582,13 @@
         .style-1 .list-next-to-article-container {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            grid-gap: 1.5rem;
             grid-auto-rows: minmax(125px, auto);
             border-top: 1px solid var(--grey-stuff);
         }
         .style-1 .list-next-to-article-image-wrapper {
             display: inline-block;
+            grid-column: 4;
+            grid-row: 1
         }
         .style-1 .next-to-article-image-wrapper {
             height: auto;
@@ -587,14 +602,14 @@
         }
         .style-1 .list-text {
             display: inline-block;
-            grid-column: 2/ span 3;
+            grid-column: 1/ span 3;
         }
         .style-1 .twitter-icon-container-article {
             justify-content: center;
             height: 100%;
             padding-top: 0;
             margin-top: -10px;
-            white-space:nowrap
+            white-space: nowrap
         }
         .style-1 .twitter-icon-container-article>.twitter-shares {
             width: auto

@@ -26,7 +26,7 @@
             <hr class="hr-logo">
             <ul class="nav-categories">
                 <li v-for="category in categories">
-                    <router-link :to="{ name: 'category', params: {  category:  category.label}}" :class="'category-link'" v-if="!(category.label === '-')">
+                    <router-link :to="{ name: 'category', params: {  category:  category.slug}}" :class="'category-link'" v-if="!(category.slug === '-')">
                         {{ category.name }}
                     </router-link>
                     <span v-else> {{ category.name}} </span>
@@ -57,12 +57,12 @@
     
                 for (let i = 0; i < this.api.categories.length; i++) {
                     categoriesArray.push({
-                        label: this.api.categories[i].label,
+                        slug: this.api.categories[i].slug,
                         name: this.api.categories[i].name
                     })
                     if (this.api.categories.length > i + 1) {
                         categoriesArray.push({
-                            label: '-',
+                            slug: '-',
                             name: ' - '
                         })
                     }

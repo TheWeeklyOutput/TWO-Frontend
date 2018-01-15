@@ -1,4 +1,34 @@
 export default {
+      categories: [{
+        name: 'Highlights',
+        label: 'highlights'
+      },
+      {      
+        name: 'Health',
+        label: 'health'
+      },
+      {      
+        name: 'Entertainment',
+        label: 'entertainment'
+      },
+      {      
+        name: 'Sports',
+        label: 'sports'
+      },
+      {      
+        name: 'Tech',
+        label: 'tech'
+      },
+      {      
+        name: 'World',
+        label: 'world'
+      },
+      {      
+        name: 'Politics',
+        label: 'politics'
+      },
+    ],
+
     articles: {
       highlights: [{
           title: 'The goal of vibrations is to plant the seeds of learning rather than stagnation.',
@@ -28,9 +58,19 @@ export default {
           authorid: 'bingo',
           imageCredit: 'Phil Dingus',      
           image: 'https://cdn.vox-cdn.com/thumbor/VUbxc3ZC-bpBgZjCOJXBE_1lAy8=/0x1:1597x899/560x315/cdn.vox-cdn.com/uploads/chorus_image/image/57996629/PUBG_Camo.0.jpg'  
-        }
+        },
+        {
+          title: 'The goal of vibrations is to plant the seeds of learning rather than stagnation.',
+          text: 'We must learn how to lead life-affirming lives in the face of bondage. The future will be a self-aware unveiling of grace. It is time to take choice to the next level. \n Materialism is born in the gap where rejuvenation has been excluded. You must take a stand against dogma. You may be ruled by greed without realizing it. Do not let it obliterate the growth of your path. \n Imagine a maturing of what could be. We must beckon ourselves and enlighten others. The harmonizing of joy is now happening worldwide.',
+          author: 'Jack Williams',
+          timestamp: '1h ago',
+          id: 'text1',
+          authorid: 'jackwilliams',
+          imageCredit: 'Phil Dingus',     
+          image: 'https://cdn.vox-cdn.com/thumbor/XDlZruypPIhVW6_Zuwy85JjrXFU=/0x1:5472x3079/560x315/cdn.vox-cdn.com/uploads/chorus_image/image/57995497/Aurora_AACUS_Demonstration_Autonomous_Flight.0.jpg'          
+        }, 
     ],
-    trending: [
+    politics: [
       {
         title: 'The goal of vibrations is to plant the seeds of learning rather than stagnation.',
         text: 'We must learn how to lead life-affirming lives in the face of bondage. The future will be a self-aware unveiling of grace. It is time to take choice to the next level. \n Materialism is born in the gap where rejuvenation has been excluded. You must take a stand against dogma. You may be ruled by greed without realizing it. Do not let it obliterate the growth of your path. \n Imagine a maturing of what could be. We must beckon ourselves and enlighten others. The harmonizing of joy is now happening worldwide.',
@@ -72,12 +112,11 @@ export default {
         image: 'https://cdn.vox-cdn.com/thumbor/uOGkrPqDIJDuyvXNDjqjgU1izmE=/0x0:720x405/560x315/cdn.vox-cdn.com/uploads/chorus_image/image/58000241/netflix.0.gif'          
         
     }],    
-    world: [],
-    us: [],
-    politics: [],
-    business: [],
-    recent: [],
-    currentArticle: {
+    health: [],
+    entertainment: [],
+    sports: [],
+    tech: [],
+    world: {
       id: String,
       title: String,
       text: String,

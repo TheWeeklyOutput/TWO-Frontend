@@ -1,7 +1,7 @@
 import * as mainMuts from '../store/mutation-types.js'
 import * as muts from './mutation-types.js'
 import * as acts from './action-types.js'
-import { log } from '../utils.js'
+import { log } from '../../utils.js'
 import testArticles from './articles.js'
 
 const apiCallbackFunction = ({ getters, commit }, { success, action, message, next }) => {
@@ -35,31 +35,7 @@ export default {
       newest: [],
       currentArticle: {}    
     },
-    categories: [{
-      name: 'Highlights',
-      label: 'highlights'
-    },
-    {      
-      name: 'Trending',
-      label: 'trending'
-    },
-    {      
-      name: 'World',
-      label: 'world'
-    },
-    {      
-      name: 'Recent',
-      label: 'recent'
-    },
-    {      
-      name: 'Politics',
-      label: 'politics'
-    },
-    {      
-      name: 'Business',
-      label: 'Business'
-    }],
-    currentStyle: 1
+    categories: {}
   },
   actions: {
     [acts.REST_CALL] ({ commit, getters }, { promise, action, context, onSuccess, onError }) {
@@ -112,6 +88,8 @@ export default {
       }
     },
     [acts.GET_ARTICLES_BY_CATEGORIES] ({ state, dispatch, commit, getters }, { categories }) {
+      state.categories = testArticles.categories
+      
       if(categories[0] === 'all') {
           state.articles = testArticles.articles
           state.categories.forEach (function(category) {

@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :class="'style-' + themeSwitcher.currentStyle">
     <div class="site-wrapper">
       <Navbar v-on:click="test1 = false">
       </Navbar>
@@ -17,9 +17,16 @@
   import FooterBar from './components/Footer'
   import Navbar from './components/Navbar'
   import Style1 from './styles/Style1'
-  import * as apiActs from './api/action-types.js'
-  
+  import articleHandlerMixin from './mixins/articlehandler.js'
+  import * as articleHandlerMuts from './api/articlehandler/mutation-types.js'
+  import * as articleHandlerActs from './api/articlehandler/action-types.js'
+  import themeSwitcherMixin from './mixins/themeswitcher.js'
+
   export default {
+    mixins: [
+      articleHandlerMixin, 
+      themeSwitcherMixin
+    ],
     components: {
       FooterBar,
       Navbar,
@@ -30,7 +37,7 @@
       } 
     },
     created() {
-      this.$store.dispatch(apiActs.GET_ARTICLES_BY_CATEGORIES, {
+      this.$store.dispatch(articleHandlerActs.GET_ARTICLES_BY_CATEGORIES, {
           categories: ['all']
       })
     }

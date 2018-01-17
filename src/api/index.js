@@ -84,7 +84,8 @@ export default {
           log.dir(res)
           commit(muts.UPDATE_ARTICLES, { category, articles: res.body })
         }, onError (res) {}
-    })
+      })
+    },
     [acts.CHANGE_PAGE_TITLE] ({ state, dispatch, commit, getters }, { title }) {
       document.title = title
     }

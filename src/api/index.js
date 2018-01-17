@@ -63,7 +63,8 @@ export default {
           state.categories.forEach((category) => {
             dispatch(acts.GET_CATEGORY_PAGE, { context, category: category.slug, page: 1 }); 
           })
-        state.loaded = true            }, onError (res) {}
+          state.loaded = true            
+      }, onError (res) {}
       })
     },
     [acts.GET_ARTICLE_BY_SLUG] ({ commit, dispatch }, { context, slug }) {
@@ -105,5 +106,6 @@ export default {
         state.articles[category] = []
       }
       state.articles[category] = state.articles[category].concat(articles)
+    }
   }
 }

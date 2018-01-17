@@ -1,10 +1,6 @@
 <template>
-<<<<<<< HEAD
-  <div v-if="loaded" id="app" :class="'style-' + themeSwitcher.currentStyle">
-=======
   <div id="app" :class="'style-' + themeSwitcher.currentStyle + ' ' + 'overflow-' + isOverflowShown">
-    <loading-overlay v-if="api.isLoading" :type="'nonesense'"></loading-overlay>
->>>>>>> 578aefc3f0f69545f85b9ded1e7b75fbccd104a7
+    <loading-overlay v-if="!loaded" :type="'nonesense'"></loading-overlay>
     <div class="site-wrapper">
       <Navbar v-on:click="test1 = false">
       </Navbar>
@@ -45,23 +41,17 @@
         context: this,
       })
     },
-    data() {
-      return {
-      } 
-    },
-    computed: {
-      ...mapState({
-        loaded: state => state.api.loaded
-      })
-    },
     computed: {
       isOverflowShown() {
-        if(this.api.isLoading) {
+        if(!this.loaded) {
           return 'hidden'
         } else {
           return 'shown'
         }
-      }
+      },
+      ...mapState({
+        loaded: state => state.api.loaded
+      })
     }
   }
 </script>

@@ -15,7 +15,7 @@
                         <span class="topper-author-timestap-wrapper desktop-only">
                             <span :class="'topper-author'" >By 
                                 <router-link :to="{ name: 'author', params: {  name: article.author.slug }}" transition="fade">
-                                    {{ article.author }}
+                                    {{ article.author.name }}
                                 </router-link>
                             </span>
                             <span class="list-timestamp"> {{ article.timestamp }}</span>

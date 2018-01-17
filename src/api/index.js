@@ -94,6 +94,10 @@ export default {
       state.articles.currentArticle = article   
       commit(TOGGLE_LOADING)
       
+    },
+
+    [acts.CHANGE_PAGE_TITLE] ({ state, dispatch, commit, getters }, { title }) {
+      document.title = title
     }
 
   },

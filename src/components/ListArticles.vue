@@ -10,7 +10,7 @@
                         <span :class="mode + 'text'">
                         <span><h2 :class="mode + 'title'">{{ article.title }}</h2></span>
                         <span v-if="showText"><h3 :class="mode + 'description'">{{ article.text.substring(0, 200) }}...</h3></span>
-                        <span :class="mode + 'author'" v-if="showAuthor">By <router-link :to="{ name: 'author', params: {  name: article.author.slug }}"  transition="fade">{{ article.author.name }}</router-link></span>
+                        <span :class="mode + 'author'" v-if="showAuthor">By <router-link :to="{ name: 'author', params: {  name: article.author.name }}"  transition="fade">{{ article.author.name }}</router-link></span>
                         <span class="list-timestamp" v-if="showAuthor"> {{ article.timestamp }}</span>
                         <twitter-shares :shares="Math.ceil(Math.random()*10)" v-if="showShares"></twitter-shares>
                         </span>

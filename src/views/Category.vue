@@ -18,7 +18,6 @@
             CategoryList
         },
         mixins: [apiMixin],
-    
         props: {
             category: {
                 type: String,

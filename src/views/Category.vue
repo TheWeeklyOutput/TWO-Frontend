@@ -1,10 +1,10 @@
 <template>
     <div class="component-wrapper">
-        <!--<h1>{{ articleHandler.categories.find(art => art.label === (category)).name }}</h1>-->
-        <component :is="$store.state.TitleList[articleHandler.categories.find(art => art.label === (category)).name]" class="topper-headline-text"></component>
+        <!--<h1>{{ articleHandler.categories.find(art => art.slug === (category)).name }}</h1>-->
+        <component :is="$store.state.TitleList[api.categories.find(art => art.slug === (category)).name]" class="topper-headline-text"></component>
     
         <hr>
-        <CategoryList class="" :categoryToRender="category" :showText="true" :showAuthor="true" :mode="'list-'" :imageStyle="'next-to-article'">
+        <CategoryList class="" :categoryToRender="category" :showText="true" :showAuthor="true" :mode="'list-'" :showShares="true" :imageStyle="'next-to-article'">
         </CategoryList>
     </div>
 </template>
@@ -18,7 +18,6 @@
             CategoryList
         },
         mixins: [apiMixin],
-    
         props: {
             category: {
                 type: String,

@@ -5,7 +5,7 @@
             <hr>
         </div>
         <div v-for="article in articles.articleArray" :class="'topper-article-wrapper'">
-            <router-link :to="{ name: 'article', params: {  category: categoryToRender.label, id: article.id }}" :class="'article-link'" transition="fade">
+            <router-link :to="{ name: 'article', params: {  category: categoryToRender.slug, slug: article.slug }}" :class="'article-link'" transition="fade">
                 <div :class="'topper-single-container'">
                     <span :class="'topper-image-wrapper'">
                         <img :src="article.image" :class="'topper-image'">
@@ -14,8 +14,8 @@
                         <h2 :class="'topper-article-title'">{{ article.title }}</h2>
                         <span class="topper-author-timestap-wrapper desktop-only">
                             <span :class="'topper-author'" >By 
-                                <router-link :to="{ name: 'author', params: {  name: article.authorid }}" transition="fade">
-                                    {{ article.author }}
+                                <router-link :to="{ name: 'author', params: {  name: article.author.slug }}" transition="fade">
+                                    {{ article.author.name }}
                                 </router-link>
                             </span>
                             <span class="list-timestamp"> {{ article.timestamp }}</span>
@@ -46,11 +46,11 @@
         computed: {
             articles() {
     
-                let articleArray = this.api.articles[this.categoryToRender.label]
+                let articleArray = this.api.articles[this.categoryToRender.slug]
     
                 return {
                     articleArray: articleArray,
-                    category: this.categoryToRender.label
+                    category: this.categoryToRender.slug
                 }
             }
         },

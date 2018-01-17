@@ -84,7 +84,9 @@ export default {
           log.dir(res)
           commit(muts.UPDATE_ARTICLES, { category, articles: res.body })
         }, onError (res) {}
-      })
+    })
+    [acts.CHANGE_PAGE_TITLE] ({ state, dispatch, commit, getters }, { title }) {
+      document.title = title
     }
   },
   mutations: {
@@ -102,6 +104,5 @@ export default {
         state.articles[category] = []
       }
       state.articles[category] = state.articles[category].concat(articles)
-    }
   }
 }

@@ -74,7 +74,7 @@
     .style-1 hr {
         background-color: #000;
         height: 1px;
-        margin-bottom: 10px
+        margin-bottom: 18px
     }
     
     .fade-enter-active,

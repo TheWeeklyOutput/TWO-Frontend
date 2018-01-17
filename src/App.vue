@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :class="'style-' + themeSwitcher.currentStyle">
+  <div v-if="loaded" id="app" :class="'style-' + themeSwitcher.currentStyle">
     <div class="site-wrapper">
       <Navbar v-on:click="test1 = false">
       </Navbar>
@@ -21,6 +21,7 @@
   import * as apiMuts from './api/mutation-types.js'
   import * as apiActs from './api/action-types.js'
   import themeSwitcherMixin from './mixins/themeswitcher.js'
+  import { mapState } from 'vuex'
 
   export default {
     mixins: [
@@ -32,13 +33,18 @@
       Navbar,
       Style1
     },
+    created() {
+      this.$store.dispatch(apiActs.SET_UP, {
+        context: this,
+      })
+    },
     data() {
       return {
       } 
     },
-    created() {
-      this.$store.dispatch(apiActs.GET_ARTICLES_BY_CATEGORIES, {
-          categories: ['all']
+    computed: {
+      ...mapState({
+        loaded: state => state.api.loaded
       })
     }
   }

@@ -60,12 +60,11 @@
     
         computed: {
             currentArticle() {
-                this.$store.dispatch(apiActs.GET_ARTICLE_BY_ID, {
+                this.$store.dispatch(apiActs.GET_ARTICLE_BY_SLUG, {
                     category: this.category,
-                    id: this.id
+                    slug: this.slug
                 })
                 return this.api.articles.currentArticle
-    
             }
         }
     

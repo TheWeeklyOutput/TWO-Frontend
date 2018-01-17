@@ -1,6 +1,6 @@
 <template>
   <div id="app" :class="'style-' + themeSwitcher.currentStyle + ' ' + 'overflow-' + isOverflowShown">
-    <loading-overlay v-if="api.isLoading" :type="'nonesense'"></loading-overlay>
+    <loading-overlay v-if="!loaded" :type="'nonesense'"></loading-overlay>
     <div class="site-wrapper">
       <Navbar v-on:click="test1 = false">
       </Navbar>
@@ -23,6 +23,7 @@
   import * as apiMuts from './api/mutation-types.js'
   import * as apiActs from './api/action-types.js'
   import themeSwitcherMixin from './mixins/themeswitcher.js'
+  import { mapState } from 'vuex'
 
   export default {
     mixins: [
@@ -36,18 +37,21 @@
       Style1
     },
     created() {
-      this.$store.dispatch(apiActs.GET_ARTICLES_BY_CATEGORIES, {
-          categories: ['all']
+      this.$store.dispatch(apiActs.SET_UP, {
+        context: this,
       })
     },
     computed: {
       isOverflowShown() {
-        if(this.api.isLoading) {
+        if(!this.loaded) {
           return 'hidden'
         } else {
           return 'shown'
         }
-      }
+      },
+      ...mapState({
+        loaded: state => state.api.loaded
+      })
     }
   }
 </script>

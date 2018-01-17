@@ -74,7 +74,7 @@
     .style-1 hr {
         background-color: #000;
         height: 1px;
-        margin-bottom: 3%;
+        margin-bottom: 10px
     }
     
     .fade-enter-active,
@@ -168,7 +168,7 @@
     
     .style-1 .topper-headline-text {
         width: 100%;
-        height: auto
+        height: auto;
     }
     
     .style-1 .list-timestamp {
@@ -233,7 +233,6 @@
     
     .style-1 .newest-list {
         grid-column: 1 / span 3;
-        padding-right: 10px
     }
     
     .style-1 .horizontal-list-author {
@@ -242,11 +241,6 @@
     
     .style-1 .horizontal-list-description {
         text-align: justify
-    }
-    
-    .style-1 .newest-list {
-        grid-column: 1 / span 3;
-        padding-right: 10px
     }
     
     
@@ -317,8 +311,6 @@
         grid-gap: 1.5rem;
         font-size: 0.789em;
     }
-
-
     
     .style-1 .horizontal-list-no-image-wrapper {
         display: none;
@@ -402,10 +394,14 @@
         .style-1 h1 {
             font-size: 1.5em
         }
+        .style-1 hr {
+            background-color: #000;
+            height: 1px;
+            margin-bottom: 0
+        }
         .style-1 .topper {
             display: grid;
             grid-template-columns: 100%;
-            grid-auto-rows: minmax(125px, auto);
         }
         .style-1 .list-article-list {
             display: grid;
@@ -417,20 +413,28 @@
             padding-bottom: 10px;
             border-bottom: 1px solid var(--grey-stuff);
         }
+        .style-1 .topper> :nth-child(2) {
+            grid-row: 1;
+            padding-bottom: 20px;
+            border-bottom: none
+        }
         .style-1 .topper-text {
-            padding: 18px 18px 0 18px
+            padding: 10px 25px 0 25px;
         }
         .style-1 .topper> :nth-child(2) .topper-article-title {
             font-size: 2em;
         }
         .style-1 .topper> :nth-child(n+3) .topper-image-wrapper {
             display: block;
-            padding: 10px;
+            padding: 20px;
+            padding-bottom: 10px
         }
         .style-1 .topper-headline-text {
             width: auto;
             height: 60px;
-            padding-bottom: 10px
+            padding-bottom: 20px;
+            padding-left: 20px;
+            max-width: 300px
         }
         .style-1 .article-wrapper {
             grid-template-columns: 1fr
@@ -488,9 +492,20 @@
         .style-1 .headline-single-article {
             grid-column: 1 / span 2
         }
+
+        .style-1 .list-article-wrapper {
+            padding-top: 10px
+        }
     }
     
     @media (min-width: 880px) {
+        .style-1 .list-article-wrapper {
+            padding-left: 10px
+        }
+        .list-article {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
         .style-1 .site-wrapper {
             margin: 0 auto;
             max-width: 1600px;
@@ -519,7 +534,7 @@
             padding-left: 12px;
             width: auto;
             height: 60px;
-            padding-bottom: 10px
+            padding-bottom: 10px;
         }
         .style-1 .topper> :nth-child(2) {
             grid-column: 1 / span 4;
@@ -564,7 +579,7 @@
             display: grid
         }
         .style-1 .topper-article-text {
-            padding-top: 20px
+            padding-top: 10px
         }
         .style-1 .home-bottom {
             display: grid;
@@ -580,7 +595,8 @@
         .style-1 .list-article-list {
             display: grid;
             grid-template-columns: repeat(1, 1fr);
-            grid-gap: 1.5rem;
+            padding-left: 12px;
+            padding-right: 12px;
         }
         .style-1 .list-article-text-wrapper {
             padding: 20px;
@@ -594,9 +610,6 @@
         }
         .style-1 .list-timestamp {
             padding-left: 10%
-        }
-        .style-1 .topper-article-title {
-            margin-bottom: .3rem;
         }
         .style-1 .headline-single-article {
             font-style: normal;
@@ -616,6 +629,8 @@
             grid-template-columns: repeat(4, 1fr);
             grid-auto-rows: minmax(125px, auto);
             border-top: 1px solid var(--grey-stuff);
+            padding-bottom: 10px;
+            padding-top: 10px
         }
         .style-1 .list-next-to-article-image-wrapper {
             display: inline-block;
@@ -645,6 +660,15 @@
         }
         .style-1 .twitter-icon-container-article>.twitter-shares {
             width: auto
+        }
+    }
+    
+    @media (max-width: 1300px) and (min-width: 880px) {
+        .style-1 .home {
+            padding: 10px
+        }
+        .style-1 .category {
+            padding: 10px
         }
     }
 </style>

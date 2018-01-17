@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="component-wrapper">
+        <div class="component-wrapper home">
             <Topper class="topper" :categoryToRender="highlights">
             </Topper>
     

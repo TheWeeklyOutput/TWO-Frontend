@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="topper-headline desktop-only">
+        <div class="topper-headline">
             <component :is="$store.state.TitleList[categoryToRender.name]" class="topper-headline-text"></component>
             <hr>
         </div>

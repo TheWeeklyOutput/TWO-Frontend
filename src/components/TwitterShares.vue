@@ -44,7 +44,7 @@
         -webkit-align-items: center;
         display: flex;
         align-items: center;
-        padding-top: 18px;
+        padding-top: 20px;
 
     }
 </style>

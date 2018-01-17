@@ -1,10 +1,9 @@
 <<template>
     <div>
-        <Tweet :id="'865986101437247490'"></Tweet>
-        <Tweet :id="'865986101437247490'"></Tweet>
-        <Tweet :id="'865986101437247490'"></Tweet>
-        <Tweet :id="'865986101437247490'"></Tweet>
-        <Tweet :id="'865986101437247490'"></Tweet>
+        <h1 style="font-size: 20px">Recent tweets</h1>
+        <div v-for="tweet in tweets">
+            <Tweet :id="tweet"></Tweet>
+        </div>
     </div>
 </template>
 
@@ -17,6 +16,19 @@
     export default {
         components: {
             Tweet
+        },
+        data() {
+            return {
+                tweets: [
+                    '865986101437247490',
+                    '865986101437247490',
+                    '865986101437247490',
+                    '865986101437247490',
+                    '865986101437247490',
+                    '865986101437247490',
+                    '865986101437247490',
+                ]
+            }
         }
     }
 </script>

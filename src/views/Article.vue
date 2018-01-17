@@ -25,11 +25,14 @@
             <TopArticles class="sidebar" :categoryToRender="'highlights'" :showText="true" :showAuthor="false" :mode="'list-'" :imageStyle="'no'">
             </TopArticles>
         </div>
+        <div class="article-bottombar-wrapper mobile-only">
+            <TopArticles class="sidebar" :categoryToRender="'highlights'" :showText="true" :showAuthor="false" :mode="'horizontal-list-'" :imageStyle="'no'">
+            </TopArticles>
+        </div>
     </div>
 </template>
 
 <script>
-    import RecentArticles from '../components/ListArticles'
     import apiMixin from '../mixins/api.js'
     import TopArticles from '../components/ListArticles'
     import * as apiMuts from '../api/mutation-types.js'
@@ -38,7 +41,6 @@
     
     export default {
         components: {
-            RecentArticles,
             TopArticles,
             TwitterShares
         },

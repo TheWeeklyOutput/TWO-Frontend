@@ -50,7 +50,6 @@
         },
         computed: {
             articles() {
-                console.log(this.api.articles[this.categoryToRender])
                 return {
                     articleArray: this.api.articles[this.categoryToRender],
                     category: this.categoryToRender,

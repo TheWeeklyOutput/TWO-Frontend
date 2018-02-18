@@ -19,8 +19,6 @@
         <p class="article-text">
             {{ currentArticle.content }}
         </p>
-        <!--</div>
-                                        </div>-->
         <div class="article-sidebar-wrapper desktop-only">
             <TopArticles class="sidebar" :categoryToRender="'highlights'" :showText="true" :showAuthor="false" :mode="'list-'" :imageStyle="'no'">
             </TopArticles>

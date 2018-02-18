@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :class="'style-' + themeSwitcher.currentStyle + ' ' + 'overflow-' + isOverflowShown">
+  <div id="app" :class="'style-' + themeSwitcher.currentStyle + ' ' + 'overflow-' + isOverflowVisible">
     <loading-overlay v-if="!loaded" :type="'nonesense'"></loading-overlay>
     <div class="site-wrapper">
       <Navbar v-on:click="test1 = false">
@@ -42,7 +42,7 @@
       })
     },
     computed: {
-      isOverflowShown() {
+      isOverflowVisible() {
         if(!this.loaded) {
           return 'hidden'
         } else {

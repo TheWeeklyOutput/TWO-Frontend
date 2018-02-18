@@ -18,7 +18,7 @@ const apiCallbackFunction = ({ getters, commit }, { success, action, message, ne
 export default {
   state: {
     articles: {},
-    currentArticle: {}, 
+    currentArticle: null, 
     categories: [],
     loaded: false
   },
@@ -40,7 +40,7 @@ export default {
   },
   actions: {
     [acts.SET_UP] ({ dispatch, state }, { context }) {
-        dispatch(acts.GET_CATEGORIES, { 
+      dispatch(acts.GET_CATEGORIES, { 
           context
       });
     },
@@ -93,13 +93,7 @@ export default {
   },
   mutations: {
     [muts.UPDATE_CURRENT_ARTICLE] (state, { article }) {
-      state.currentArticle = {
-        title: article.title,
-        text: article.text,
-        entities: article.entities,
-        author: 'No Autor',
-        imageURL: 'No Image'
-      }
+      state.currentArticle = article
     },
     [muts.UPDATE_ARTICLES] (state, { category, articles }) {
       if (!(category in articles)) {

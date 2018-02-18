@@ -1,5 +1,5 @@
 <template>
-    <div class="component-wrapper article-wrapper">
+    <div v-if="currentArticle" class="component-wrapper article-wrapper">
         <span class="headline-single-article">
             <h1 class="article-heading">{{ currentArticle.title }}</h1>
         </span>
@@ -31,6 +31,7 @@
 </template>
 
 <script>
+    import { mapState } from 'vuex'
     import apiMixin from '../mixins/api.js'
     import TopArticles from '../components/ListArticles'
     import * as apiMuts from '../api/mutation-types.js'
@@ -54,15 +55,20 @@
                 default: '404'
             }
         },
-    
         computed: {
+            ...mapState({
+                currentArticle: state => state.api.currentArticle,
+            })
+        },
+        mounted() {
+            this.$store.dispatch(apiActs.GET_ARTICLE_BY_SLUG, {
+                context: this,
+                slug: this.slug
+            })
+        },
+        watch: {
             currentArticle() {
-                this.$store.dispatch(apiActs.GET_ARTICLE_BY_SLUG, {
-                    category: this.category,
-                    slug: this.slug
-                })
                 this.$store.dispatch(apiActs.CHANGE_PAGE_TITLE, this.api.articles.currentArticle)
-                return this.api.articles.currentArticle
             }
         }
     }

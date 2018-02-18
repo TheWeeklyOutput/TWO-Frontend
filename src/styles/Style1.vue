@@ -206,8 +206,16 @@
         line-height: 1px;
     }
     
-    .style-1 .topper-image {
+    .style-1 .topper-image-wrapper {
         display: block;
+        /*width: 100%;
+            height: auto;*/
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+    }
+    
+    .style-1 .topper-image {
         width: 100%;
         height: auto;
     }
@@ -492,7 +500,6 @@
         .style-1 .headline-single-article {
             grid-column: 1 / span 2
         }
-
         .style-1 .list-article-wrapper {
             padding-top: 10px
         }

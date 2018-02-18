@@ -20,7 +20,7 @@
                             </span>
                             <span class="list-timestamp"> {{ article.date }}</span>
                         </span>
-                        <h3 :class="'topper-article-text'">{{ article.content.substring(0, 200) }}...</h3>
+                        <h3 :class="'topper-article-text'">{{ article.description.substring(0, 200) }}...</h3>
                         <twitter-shares :shares="Math.ceil(Math.random()*100)"></twitter-shares>
                     </span>
                 </div>

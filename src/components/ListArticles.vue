@@ -2,13 +2,13 @@
     <div :class="mode + 'article-list'">
         <div v-for="article in articles.articleArray" :class="mode + 'article'">
             <div :class="mode + 'article-text'">
-                <router-link :to="{ name: 'article', params: {  category: categoryToRender, slug: article.slug }}" :class="'article-link'" transition="fade">
-                    <div :class="mode + imageStyle + '-container'">
+                <router-link :to="{ name: 'article', params: {  category: categoryToRender, slug: article.slug }}" :class="'article-link'" transition="fade" v-on:click="changeArticle(article.slug)">
+                    <div :class="mode + imageStyle + '-container'" v-on:click="changeArticle(article.slug)">
                         <span :class="mode + imageStyle + '-image-wrapper'">
-                            <img :srcset="article.image_url" :class="imageStyle" v-if="(imageStyle === 'no-image') == false">
-                        </span>
+                                    <img :srcset="article.image_url" :class="imageStyle" v-if="(imageStyle === 'no-image') == false">
+                                </span>
                         <span :class="mode + 'text'">
-                        <span><h2 :class="mode + 'title'">{{ article.title }}</h2></span>
+                                <span><h2 :class="mode + 'title'">{{ article.title }}</h2></span>
                         <span v-if="showText"><h3 :class="mode + 'description'">{{ article.description.substring(0, 200) }}...</h3></span>
                         <span :class="mode + 'author'" v-if="showAuthor">By <router-link :to="{ name: 'author', params: {  name: article.author.name }}"  transition="fade">{{ article.author.name }}</router-link></span>
                         <span class="list-timestamp" v-if="showAuthor"> {{ article.date }}</span>
@@ -48,6 +48,7 @@
         data: function() {
             return {}
         },
+    
         computed: {
             articles() {
                 console.log(this.api.articles[this.categoryToRender])
@@ -58,7 +59,16 @@
             }
     
         },
-        methods: {}
+        methods: {
+            changeArticle(slug) {
+                this.$store.dispatch(apiActs.GET_ARTICLE_BY_SLUG, {
+                    context: this,
+                    slug: slug
+                })
+                console.log('slug')
+            }
+    
+        }
     
     }
 </script>

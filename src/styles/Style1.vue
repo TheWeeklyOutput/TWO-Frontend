@@ -218,6 +218,7 @@
     .style-1 .topper-image {
         width: 100%;
         height: auto;
+        margin: -50% 0
     }
     
     .style-1 .image-above-article {

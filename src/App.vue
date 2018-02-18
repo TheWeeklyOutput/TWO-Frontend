@@ -40,6 +40,7 @@
       this.$store.dispatch(apiActs.SET_UP, {
         context: this,
       })
+      console.log('dispatched')
     },
     computed: {
       isOverflowVisible() {

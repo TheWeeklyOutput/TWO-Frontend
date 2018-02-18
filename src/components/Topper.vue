@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="topper-headline desktop-only">
+        <div class="topper-headline">
             <component :is="title" class="topper-headline-text"></component>
             <hr>
         </div>
@@ -49,7 +49,7 @@
                 let articleArray = this.api.articles[this.categoryToRender.slug]
     
                 return {
-                    articleArray: articleArray,
+                    articleArray: articleArray.slice(0, 4),
                     category: this.categoryToRender.slug
                 }
             },

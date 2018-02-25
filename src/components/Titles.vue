@@ -23,7 +23,6 @@
         },
         methods: {
             title() {
-                console.log(this.$store.state.TitleList[this.category])
                 return this.$store.state.TitleList[this.category] || "No Title"
             }
     

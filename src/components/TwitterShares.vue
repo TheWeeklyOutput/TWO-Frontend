@@ -31,10 +31,18 @@
         height: auto
     }
     
-    .twitter-shares {
+    .style-1 .twitter-shares {
         font-size: 18px;
         font-weight: 600;
         font-family: 'Georgia', serif;
+        padding-left: 1.5%;
+        width: 100%
+    }
+    
+    .style-2 .twitter-shares {
+        font-size: 18px;
+        font-weight: 600;
+        font-family: 'Fira Sans', sans-serif;
         padding-left: 1.5%;
         width: 100%
     }
@@ -45,6 +53,5 @@
         display: flex;
         align-items: center;
         padding-top: 20px;
-
     }
 </style>

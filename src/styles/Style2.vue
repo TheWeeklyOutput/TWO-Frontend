@@ -246,7 +246,7 @@
     
     .style-2 .component-wrapper {
         margin: 0 auto;
-        max-width: 1300px;
+        max-width: 1000px;
     }
     
     .style-2 .hr-logo {
@@ -281,7 +281,7 @@
         font-size: 0.9em;
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-weight: 600;
-        color: var(--second-grey-stuff);
+        color: white;
         font-size: 14px;
     }
     
@@ -305,7 +305,7 @@
         display: inline-block;
         color: white;
     }
-        
+    
     .style-2 .topper-image-wrapper {
         display: block;
         height: 500px;
@@ -339,7 +339,14 @@
     }
     
     .style-2 .list-author {
-        font-size: 0.9em
+        font-size: 0.9em;
+        color: white;
+        text-decoration: none
+    }
+    
+    .style-2 .list-author a {
+        color: white;
+        text-decoration: none
     }
     
     .style-2 .article-link {
@@ -571,9 +578,11 @@
             grid-template-columns: repeat(1, 1fr);
             grid-auto-rows: minmax(125px, auto);
             border-top: 1px solid var(--grey-stuff);
+            overflow: hidden
         }
         .style-2 .list-next-to-article-image-wrapper {
             display: inline-block;
+            overflow: hidden;
         }
         .style-2 .next-to-article-image-wrapper {
             height: auto;
@@ -663,7 +672,7 @@
             height: 60px;
             padding-bottom: 10px;
         }
-        .style-2 .topper .topper-article-wrapper{
+        .style-2 .topper .topper-article-wrapper {
             grid-column: 1 / span 4;
         }
         .style-2 .topper-single-container {
@@ -692,7 +701,7 @@
             position: absolute;
             bottom: 40px;
         }
-        .style-2 .topper> :nth-child(n + 3) .topper-text {
+        .style-2 .topper> :nth-child(n+3) .topper-text {
             grid-column: 1 / span 2;
             grid-row: 1;
             padding-left: 20px;
@@ -763,12 +772,28 @@
             grid-auto-rows: minmax(125px, auto);
             border-top: 1px solid var(--grey-stuff);
             padding-bottom: 10px;
-            padding-top: 10px
+            padding-top: 10px;
+            position: relative;
+            overflow: hidden;
         }
         .style-2 .list-next-to-article-image-wrapper {
             display: inline-block;
-            grid-column: 4;
-            grid-row: 1
+            -ms-grid-column: 4;
+            grid-column: 1 / span 4;
+            -ms-grid-row: 1;
+            grid-row: 1;
+            max-height: 400px;
+            grid-row: 1;
+            /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+60,000000+100&0+60,0.7+100 */
+            background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.7) 100%);
+            /* FF3.6-15 */
+            background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.7) 100%);
+            /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.7) 100%);
+            /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#b3000000', GradientType=0);
+            /* IE6-9 */
+            overflow: hidden;
         }
         .style-2 .next-to-article-image-wrapper {
             height: auto;
@@ -779,13 +804,19 @@
         .style-2 .next-to-article {
             width: 100%;
             object-fit: cover;
+            position: relative;
+            z-index: -1;
         }
         .style-2 .list-text {
             display: inline-block;
             grid-column: 1/ span 3;
         }
         .style-2 .list-next-to-article-container .list-text {
-            padding-right: 20px
+            padding-left: 20px;
+            z-index: 100;
+            color: white;
+            position: absolute;
+            bottom: 20px;
         }
         .style-2 .twitter-icon-container-article {
             justify-content: center;

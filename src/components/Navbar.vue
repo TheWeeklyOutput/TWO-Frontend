@@ -1,51 +1,65 @@
 <template>
     <div id="navbar">
-        <div class="mobile-nav-container mobile-only">
-            <div>
+        <div id="nav-absolute">
+            <div class="mobile-nav-container mobile-only">
+                <div>
+                    <router-link :to="'/'">
+                        <div id="logo-mobile">
+                            <logo-style1 class="logo-style-1" alt="The Weekly Output"></logo-style1>
+                        </div>
+                    </router-link>
+                    <div class="hamburger">
+                        
+                    </div>
+                </div>
+            </div>
+            <div id="desktop-nav-container" class="desktop-nav-container desktop-only">
                 <router-link :to="'/'">
-                    <div id="logo-mobile">
+                    <div id="logo">
                         <logo-style1 class="logo-style-1" alt="The Weekly Output"></logo-style1>
                     </div>
                 </router-link>
+                <affix v-if="api.loaded" relative-element-selector="#router-link" :scroll-affix="false" :offset="{ top: 80, bottom: 200 }" v-on:affixtop="scrollHandler(false)" v-on:affix="scrollHandler(true)" id="desktop-navbar">
+                    <div>
+                        <span id="theme-switcher" v-bind:class="{ active: expandedSwitcher}">
+                            <div id="theme-switcher-wrapper">                
+                                <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
+                                    <logo-style1 class="theme-switcher-logo" alt="The Weekly Output Style 1"></logo-style1>
+                                    <hr>
+                                </span>
+                                <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
+                                    <logo-style1 class="theme-switcher-logo" alt="The Weekly Output Style 2"></logo-style1>
+                                    <hr>
+                                </span>
+                                <span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
+                                    <logo-style1 class="theme-switcher-logo" alt="The Weekly Output 3"></logo-style1>
+                                    <hr>
+
+                                </span>
+                            </div>
+                        </span>
+                        <ul class="nav-categories">
+                             <router-link :to="'/'" id="nav-logo-link">
+                                <li class="theme-switcher-logo-wrapper" v-if="scrolling == true">
+                                    <logo-style1 class="theme-switcher-logo-1" alt="The Weekly Output Style 1"></logo-style1>
+                                </li>
+                             </router-link>
+            
+                            <li @click="toggleActiveExpand()">
+                                <settings-wheel style="height: 20px; cursor: pointer;"></settings-wheel>
+                            </li>
+                            <li v-for="category in categories">
+                                <router-link :to="{ name: 'category', params: {  category:  category.slug}}" :class="'category-link'">
+                                    {{ category.name }}
+                                </router-link>
+                            </li>
+                        </ul>
+                    </div>
+                </affix>
+                <hr class="hr-categories" id="directly-below">
             </div>
         </div>
-        <div id="desktop-nav-container" class="desktop-nav-container desktop-only">
-            <router-link :to="'/'">
-                <div id="logo">
-                    <logo-style1 class="logo-style-1" alt="The Weekly Output"></logo-style1>
-                </div>
-            </router-link>
-            <affix relative-element-selector="#router-link" :scroll-affix="false" :offset="{ top: 75, bottom: 0 }" v-on:affixbottom="scrollSetup()" id="desktop-navbar" v-if="api.loaded">
-                <div>
-                    <span id="theme-switcher" v-bind:class="{ active: expandedSwitcher}">
-            
-                                    <div id="theme-switcher-wrapper">                
-                            <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
-                                            <logo-style1 class="theme-switcher-logo" alt="The Weekly Output Style 2"></logo-style1>
-                                        </span>
-                    <span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
-                                            <logo-style1 class="theme-switcher-logo" alt="The Weekly Output 3"></logo-style1>
-                                        </span>
-                </div>
-                </span>
-                <ul class="nav-categories">
-                    <li class="theme-switcher-logo-wrapper" v-on:click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
-                        <logo-style1 class="theme-switcher-logo-1" alt="The Weekly Output Style 1"></logo-style1>
-                    </li>
-    
-                    <li @click="toggleActiveExpand()">
-                        <settings-wheel style="height: 20px; cursor: pointer;"></settings-wheel>
-                    </li>
-                    <li v-for="category in categories">
-                        <router-link :to="{ name: 'category', params: {  category:  category.slug}}" :class="'category-link'">
-                            {{ category.name }}
-                        </router-link>
-                    </li>
-                </ul>
-        </div>
-        </affix>
-        <hr class="hr-categories" id="directly-below">
-    </div>
+        <div id="nav-spacer"></div>
     </div>
 </template>
 
@@ -75,7 +89,8 @@
                     height: 0,
                     width: 0
                 },
-                loadAffix: false
+                loadAffix: false,
+                scrolling: false
             }
         },
         computed: {
@@ -103,6 +118,9 @@
                 })
     
                 // }
+            },
+            scrollHandler(state) {
+                this.scrolling = state
             }
         }
     }

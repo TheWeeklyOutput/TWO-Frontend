@@ -1,27 +1,27 @@
 <template>
     <div v-if="api.articles && api.loaded">
         <div class="topper-headline">
-            <component :is="title" class="topper-headline-text"></component>
+            <Titles :category="categoryToRender.name"></Titles>
             <hr>
         </div>
         <div v-for="article in articles" :class="'topper-article-wrapper'">
             <router-link :to="{ name: 'article', params: {  category: categoryToRender.slug, slug: article.slug }}" :class="'article-link'" transition="fade">
                 <div :class="'topper-single-container'">
                     <span :class="'topper-image-wrapper'">
-                                                <img :src="article.image_url" :class="'topper-image'">
-                                            </span>
-                    <span :class="'topper-text'">
+                        <progressive-img :src="article.image_url" :class="'topper-image'" />
+                    </span>
+                    <span :class="'topper-text'" >
                             <h2 :class="'topper-article-title'">{{ article.title }}</h2>
-                            <span class="topper-author-timestap-wrapper desktop-only">
+                            <span class="topper-author-timestap-wrapper desktop-only" v-if="themeSwitcher.currentStyle !== 2">
                                 <span :class="'topper-author'" >By 
                                     <router-link :to="{ name: 'author', params: {  name: article.author.slug }}" transition="fade">
                                         {{ article.author.name }}
                                     </router-link>
                                 </span>
-                    <span class="list-timestamp"> {{ article.date }}</span>
+                    <span class="list-timestamp"> <timeago :since="article.date" v-if="themeSwitcher.currentStyle !== 2"></timeago></span>
                     </span>
-                    <h3 :class="'topper-article-text'">{{ article.description.substring(0, 200) }}...</h3>
-                    <twitter-shares :shares="Math.ceil(Math.random()*100)"></twitter-shares>
+                    <h3 :class="'topper-article-text'" v-if="themeSwitcher.currentStyle !== 2">{{ article.description.substring(0, 200) }}...</h3>
+                    <twitter-shares :shares="Math.ceil(Math.random()*100)" v-if="themeSwitcher.currentStyle !== 2"></twitter-shares>
                     </span>
                 </div>
             </router-link>
@@ -36,16 +36,19 @@
     
     import ListArticles from './ListArticles'
     import TwitterShares from './TwitterShares'
+    import Titles from './Titles'
     import apiMixin from '../mixins/api.js'
     import * as apiMuts from '../api/mutation-types.js'
     import * as apiActs from '../api/action-types.js'
+    import themeSwitcherMixin from '../mixins/themeswitcher.js'
     
     export default {
-        mixins: [apiMixin],
+        mixins: [apiMixin, themeSwitcherMixin],
     
         components: {
             ListArticles,
-            TwitterShares
+            TwitterShares,
+            Titles
         },
         computed: {
             articles() {
@@ -59,9 +62,6 @@
                 }
                 let articleArray = this.api.articles[this.categoryToRender.slug]
                 return articleArray.slice(0,4)
-            },
-            title() {
-                return this.$store.state.TitleList[this.categoryToRender.name] || "No Title"
             },
             ...mapState({
                 articlesState: state => state.api.articles

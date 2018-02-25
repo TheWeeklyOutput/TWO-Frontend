@@ -4,11 +4,12 @@ import * as acts from './action-types.js'
 
 export default {
   state: {
-    currentStyle: 1
+    currentStyle: 2
   },
   mutations: {
     [muts.SET_STYLE] (state, payload) {
       console.log(payload)
+      state.currentStyle = payload.payload
     }
   }
 }

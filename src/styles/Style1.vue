@@ -4,6 +4,7 @@
 
 <style>
     @import url('https://fonts.googleapis.com/css?family=Roboto:500');
+
     * {
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-weight: 500;
@@ -24,7 +25,8 @@
     
     body {
         font-size: 1em;
-        background-color: var(--bg-color)
+        background-color: var(--bg-color);
+        min-height: 100%
     }
     
     .overflow-hidden {
@@ -100,9 +102,22 @@
         padding-bottom: 1%;
     }
     
-    .style-1 #navbar {
+    .style-1 #nav-absolute {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
         background-color: white;
     }
+    
+    .style-1 #nav-spacer {
+        width: 100%;
+        height: 200px!important;
+        display: block;
+    }
+    
+    .style-1 #navbar {}
     
     .style-1 .nav-categories li {
         display: inline-block;
@@ -133,7 +148,13 @@
     .style-1 .vue-affix {
         background-color: rgba(255, 255, 255, 1);
         z-index: 1030;
-        width: 100%
+        width: 100%;
+        right: 0;
+        left: 0;
+    }
+    
+    .style-1 #nav-logo-link {
+        border-bottom: 0
     }
     
     .style-1 #settings-arrow {
@@ -155,7 +176,8 @@
         -webkit-transition: all 0.3s ease-out;
         transition: all 0.3s ease-out;
         opacity: 0;
-        padding-top: 1%
+        margin-top: 63px;
+        padding-top: 1%;
     }
     
     .style-1 .active {
@@ -163,7 +185,7 @@
         width: 30% !important;
     }
     
-    .style-1 .theme-switcher-logo-1{
+    .style-1 .theme-switcher-logo-1 {
         height: 30px;
         width: auto;
         position: relative;
@@ -286,16 +308,16 @@
     
     .style-1 .topper-image-wrapper {
         display: block;
-        /*width: 100%;
-                                                                        height: auto;*/
-        height: 300px;
+        height: 500px;
+        width: 100%;
+        max-height: 300px;
         overflow: hidden;
     }
     
     .style-1 .topper-image {
-        width: 100%;
-        height: auto;
-        margin: -50% 0
+        height: 100%;
+        margin: auto;
+        display: block;
     }
     
     .style-1 .image-above-article {
@@ -343,6 +365,7 @@
         display: block;
         width: 100%;
         height: auto;
+        margin: -0 0;
     }
     
     .style-1 .article-sidebar-wrapper {
@@ -356,6 +379,9 @@
         display: inline-block;
         margin-bottom: 32px;
         grid-column: 1 / span 4;
+        display: block;
+        max-height: 1000px;
+        overflow: hidden;
     }
     
     .style-1 .article-headline-info {
@@ -734,6 +760,9 @@
         .style-1 .list-text {
             display: inline-block;
             grid-column: 1/ span 3;
+        }
+        .style-1 .list-next-to-article-container .list-text {
+            padding-right: 20px
         }
         .style-1 .twitter-icon-container-article {
             justify-content: center;

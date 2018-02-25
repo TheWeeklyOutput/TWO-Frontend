@@ -4,8 +4,9 @@
     <div class="site-wrapper">
       <Navbar v-on:click="test1 = false">
       </Navbar>
-
-      <router-view id="router-link"></router-view>
+      <div id="router-link">
+        <router-view></router-view>
+      </div>
     </div>
     <FooterBar></FooterBar>
 
@@ -54,7 +55,7 @@
         }
       },
       ...mapState({
-        loaded: state => state.api.loaded
+        loaded: state => state.api.loaded,
       })
     }
   }

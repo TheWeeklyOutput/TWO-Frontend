@@ -1,7 +1,7 @@
 <template>
     <div class="category component-wrapper">
-        <!--<h1>{{ articleHandler.categories.find(art => art.slug === (category)).name }}</h1>-->
-        <component :is="$store.state.TitleList[api.categories.find(art => art.slug === (category)).name]" class="topper-headline-text"></component>
+        <!--<h1>{{ articleHandler.categories.find(art => art.slug === (category)).name }}</h1>-->    
+        <Titles :category="api.categories.find(art => art.slug === (category)).name" />
     
         <hr>
         <CategoryList class="" :categoryToRender="category" :showText="true" :showAuthor="true" :mode="'list-'" :showShares="true" :imageStyle="'next-to-article'">
@@ -12,10 +12,12 @@
 <script>
     import apiMixin from '../mixins/api.js'
     import CategoryList from '../components/ListArticles'
-    
+    import Titles from '../components/Titles'
+
     export default {
         components: {
-            CategoryList
+            CategoryList,
+            Titles
         },
         mixins: [apiMixin],
         props: {

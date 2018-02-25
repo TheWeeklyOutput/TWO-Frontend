@@ -7,12 +7,27 @@ import App from './App'
 import routes from './routes'
 import store from './store'
 import Affix from 'vue-affix'
+import VueTimeago from 'vue-timeago'
+import VueProgressiveImage from 'vue-progressive-image'
 
+
+Vue.use(VueTimeago, {
+  name: 'timeago', // component name, `timeago` by default
+  locale: 'en-US',
+  locales: {
+    // you will need json-loader in webpack 1
+    'en-US': require('vue-timeago/locales/en-US.json')
+  }
+})
 
 // vue-shortkey
 Vue.use(require('vue-shortkey'))
-Vue.use(require('vue-moment'));
-Vue.use(Affix);
+Vue.use(Affix)
+Vue.use(VueProgressiveImage, {
+  blur: 30
+})
+
+
 
 
 // vue-resource

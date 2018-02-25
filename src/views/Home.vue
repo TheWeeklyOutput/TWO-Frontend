@@ -6,7 +6,7 @@
     
             <div class="home-bottom">
                 <div class="newest-list" v-for="category in categoriesToRender">
-                    <component :is="$store.state.TitleList[category.name]" class="topper-headline-text"></component>
+                    <Titles :category="category.name"></Titles>
                     <hr>
                     <div class="list-article-wrapper">
                         <ListArticles :categoryToRender="category.slug" :showText="false" :showAuthor="true" :imageStyle="'next-to-article'" :showShares="true" :mode="'list-'"></ListArticles>
@@ -32,13 +32,16 @@
     import apiMixin from '../mixins/api.js'
     import ListArticles from '../components/ListArticles'
     import TweetFeed from '../components/TweetFeed'
+    import Titles from '../components/Titles'
+    
     
     export default {
         mixins: [apiMixin],
         components: {
             Topper,
             ListArticles,
-            TweetFeed
+            TweetFeed,
+            Titles
         },
         props: {},
         data() {

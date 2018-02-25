@@ -5,12 +5,10 @@
                 <div>
                     <router-link :to="'/'">
                         <div id="logo-mobile">
-                            <logo-style1 class="logo-style-1" alt="The Weekly Output"></logo-style1>
+                            <logo-style1 class="logo-style-1-mobile" alt="The Weekly Output"></logo-style1>
                         </div>
                     </router-link>
-                    <div class="hamburger">
-                        
-                    </div>
+    
                 </div>
             </div>
             <div id="desktop-nav-container" class="desktop-nav-container desktop-only">
@@ -22,44 +20,43 @@
                 <affix v-if="api.loaded" relative-element-selector="#router-link" :scroll-affix="false" :offset="{ top: 80, bottom: 200 }" v-on:affixtop="scrollHandler(false)" v-on:affix="scrollHandler(true)" id="desktop-navbar">
                     <div>
                         <span id="theme-switcher" v-bind:class="{ active: expandedSwitcher}">
-                            <div id="theme-switcher-wrapper">                
-                                <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
-                                    <logo-style1 class="theme-switcher-logo" alt="The Weekly Output Style 1"></logo-style1>
-                                    <hr>
-                                </span>
-                                <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
-                                    <logo-style1 class="theme-switcher-logo" alt="The Weekly Output Style 2"></logo-style1>
-                                    <hr>
-                                </span>
-                                <span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
-                                    <logo-style1 class="theme-switcher-logo" alt="The Weekly Output 3"></logo-style1>
-                                    <hr>
-
-                                </span>
-                            </div>
-                        </span>
-                        <ul class="nav-categories">
-                             <router-link :to="'/'" id="nav-logo-link">
-                                <li class="theme-switcher-logo-wrapper" v-if="scrolling == true">
-                                    <logo-style1 class="theme-switcher-logo-1" alt="The Weekly Output Style 1"></logo-style1>
-                                </li>
-                             </router-link>
-            
-                            <li @click="toggleActiveExpand()">
-                                <settings-wheel style="height: 20px; cursor: pointer;"></settings-wheel>
-                            </li>
-                            <li v-for="category in categories">
-                                <router-link :to="{ name: 'category', params: {  category:  category.slug}}" :class="'category-link'">
-                                    {{ category.name }}
-                                </router-link>
-                            </li>
-                        </ul>
+                                            <div id="theme-switcher-wrapper">                
+                                                <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
+                                                    <logo-style1 class="theme-switcher-logo" alt="The Weekly Output Style 1"></logo-style1>
+                                                    <hr>
+                                                </span>
+                        <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
+                                                    <logo-style1 class="theme-switcher-logo" alt="The Weekly Output Style 2"></logo-style1>
+                                                    <hr>
+                                                </span>
+                        <!--<span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
+                                                    <logo-style1 class="theme-switcher-logo" alt="The Weekly Output 3"></logo-style1>
+                                                    <hr>
+                                                </span>-->
                     </div>
-                </affix>
-                <hr class="hr-categories" id="directly-below">
+                    </span>
+                    <ul class="nav-categories">
+                        <router-link :to="'/'" id="nav-logo-link">
+                            <li class="theme-switcher-logo-wrapper" v-if="scrolling == true">
+                                <logo-style1 class="theme-switcher-logo-1" alt="The Weekly Output Style 1"></logo-style1>
+                            </li>
+                        </router-link>
+    
+                        <li @click="toggleActiveExpand()">
+                            <settings-wheel style="height: 20px; cursor: pointer;"></settings-wheel>
+                        </li>
+                        <li v-for="category in categories">
+                            <router-link :to="{ name: 'category', params: {  category:  category.slug}}" :class="'category-link'">
+                                {{ category.name }}
+                            </router-link>
+                        </li>
+                    </ul>
             </div>
+            </affix>
+            <hr class="hr-categories" id="directly-below">
         </div>
-        <div id="nav-spacer"></div>
+    </div>
+    <div id="nav-spacer"></div>
     </div>
 </template>
 
@@ -73,6 +70,7 @@
     import * as apiActs from '../api/action-types.js'
     import * as themeMuts from '../themeswitcher/mutation-types.js'
     import VueAffix from 'vue-affix'
+    import Slideout from 'vue-slideout'
     
     export default {
         mixins: [apiMixin, themeswitcherMixin],
@@ -80,7 +78,8 @@
         components: {
             LogoStyle1,
             SettingsWheel,
-            SettingsArrow
+            SettingsArrow,
+            Slideout
         },
         data() {
             return {
@@ -121,6 +120,9 @@
             },
             scrollHandler(state) {
                 this.scrolling = state
+            },
+            open() {
+    
             }
         }
     }
@@ -140,5 +142,44 @@
         padding: 0;
         font-size: 3em;
         padding: 1%;
+    }
+    
+    .slideout-menu {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        width: 256px;
+        height: 100vh;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+        z-index: 0;
+        display: none;
+        background-color: #1D1F20;
+        color: white;
+    }
+    
+    .slideout-menu-left {
+        left: 0;
+    }
+    
+    .slideout-menu-right {
+        right: 0;
+    }
+    
+    .slideout-panel {
+        color: white;
+        position: relative;
+        z-index: 1;
+        will-change: transform;
+    }
+    
+    .slideout-open,
+    .slideout-open body,
+    .slideout-open .slideout-panel {
+        overflow: hidden;
+    }
+    
+    .slideout-open .slideout-menu {
+        display: block;
     }
 </style>

@@ -40,9 +40,6 @@ export default {
   },
   actions: {
     [acts.SET_UP] ({ commit, dispatch, state }, { context }) {
-
-      commit(muts.TOGGLE_LOADING, {status: false})
-
       dispatch(acts.GET_CATEGORIES, { 
           context
       });
@@ -67,7 +64,6 @@ export default {
           state.categories.forEach((category) => {
             dispatch(acts.GET_CATEGORY_PAGE, { context, category: category.slug, page: 1 }); 
           })
-          commit(muts.TOGGLE_LOADING, {status: true})
       }, onError (res) {}
       })
     },
@@ -92,7 +88,6 @@ export default {
         onSuccess (res) {
           log.dir(res)
           commit(muts.UPDATE_ARTICLES, { category, articles: res.body })
-          commit(muts.TOGGLE_LOADING, {status: true})
 
         }, onError (res) {}
       })
@@ -106,7 +101,7 @@ export default {
       state.currentArticle = article
     },
     [muts.UPDATE_ARTICLES] (state, { category, articles }) {
-      if(state.articles == null) {
+      if (state.articles === null) {
         state.articles = []
       }
 
@@ -114,6 +109,8 @@ export default {
         state.articles[category] = []
       }
       state.articles[category] = state.articles[category].concat(articles)
+      state.loaded = true
+      
     },
     [muts.TOGGLE_LOADING] (state, { status }) {
       state.loaded = status

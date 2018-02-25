@@ -21,7 +21,7 @@
         --grey-stuff: #e3e3e3;
         --red: #f11133;
         --second-grey-stuff: #333333;
-        --bg-color: #f8f6f7;
+        --bg-color: #F9F9F9;
     }
     
     body {
@@ -110,12 +110,6 @@
         right: 0;
         width: 100%;
         background-color: white;
-    }
-    
-    .style-2 #nav-spacer {
-        width: 100%;
-        height: 200px!important;
-        display: block;
     }
     
     .style-2 #navbar {}
@@ -213,6 +207,8 @@
         width: 100%;
         background-color: white;
         overflow: hidden;
+        position: fixed;
+        z-index: 9999
     }
     
     .style-2 footer {
@@ -232,6 +228,12 @@
     
     .style-2 .logo-style-1 {
         height: 50px;
+        width: auto;
+        max-width: 100%;
+    }
+    
+    .style-2 .logo-style-1-mobile {
+        height: 30px;
         width: auto;
         max-width: 100%;
     }
@@ -410,13 +412,39 @@
     }
     
     .style-2 .show-all-button {
-        width: 50%;
-        height: 50px;
+        font-family: 'Roboto' !important;
+        width: 130px;
+        height: 30px;
         margin: 30px auto;
         display: block;
+        text-decoration: none
+    }
+    
+    .style-2 .show-all-container {
+        position: relative;
+    }
+    
+    .style-2 .show-all-bottom {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 50%;
+        z-index: -1;
+        border-top: 1px solid var(--grey-stuff);
     }
     
     .style-2 .show-all-button {
+        font-family: 'Roboto' !important;
+        color: #333333;
+        border: 1px solid var(--grey-stuff);
+        text-decoration: none;
+        background-color: #ebebeb;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2x;
+        border-radius: 2px;
+    }
+    
+    .style-2 .newest-list a {
         text-decoration: none
     }
     
@@ -531,6 +559,11 @@
             height: 0;
             margin-bottom: 0
         }
+        .style-2 #nav-spacer {
+            width: 100%;
+            height: 80px!important;
+            display: block;
+        }
         .style-2 .topper {
             display: grid;
             grid-template-columns: 100%;
@@ -543,7 +576,6 @@
         .style-2 .topper-article-wrapper {
             padding-top: 10px;
             padding-bottom: 10px;
-            border-bottom: 1px solid var(--grey-stuff);
         }
         .style-2 .topper {
             grid-row: 1;
@@ -577,7 +609,6 @@
             display: grid;
             grid-template-columns: repeat(1, 1fr);
             grid-auto-rows: minmax(125px, auto);
-            border-top: 1px solid var(--grey-stuff);
             overflow: hidden
         }
         .style-2 .list-next-to-article-image-wrapper {
@@ -633,6 +664,12 @@
         .style-2 .list-article-wrapper {
             padding-top: 10px
         }
+    }
+    
+    #nav-spacer {
+        width: 100%;
+        height: 200px !important;
+        display: block;
     }
     
     @media (min-width: 880px) {
@@ -702,7 +739,7 @@
             bottom: 40px;
         }
         .style-2 .topper> :nth-child(n+3) .topper-text {
-            grid-column: 1 / span 2;
+            grid-column: 1 / span 4;
             grid-row: 1;
             padding-left: 20px;
             position: absolute;
@@ -725,13 +762,12 @@
         }
         .style-2 .home-bottom {
             display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
         }
         .style-2 .twitter-sidebar {
             grid-column: 4 / 5;
-            grid-row: 1 / span 6;
+            grid-row: 1 / span 2;
             padding-left: 12px;
-            border-left: 1px solid var(--grey-stuff);
-            width: 300px;
             overflow: auto;
         }
         .style-2 .list-article-list {
@@ -770,7 +806,6 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             grid-auto-rows: minmax(125px, auto);
-            border-top: 1px solid var(--grey-stuff);
             padding-bottom: 10px;
             padding-top: 10px;
             position: relative;
@@ -784,12 +819,12 @@
             grid-row: 1;
             max-height: 400px;
             grid-row: 1;
-            /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+60,000000+100&0+60,0.7+100 */
-            background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.7) 100%);
+            /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+60,000000+100&0+0,0.7+100 */
+            background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.42) 60%, rgba(0, 0, 0, 0.7) 100%);
             /* FF3.6-15 */
-            background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.7) 100%);
+            background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.42) 60%, rgba(0, 0, 0, 0.7) 100%);
             /* Chrome10-25,Safari5.1-6 */
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.7) 100%);
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.42) 60%, rgba(0, 0, 0, 0.7) 100%);
             /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#b3000000', GradientType=0);
             /* IE6-9 */

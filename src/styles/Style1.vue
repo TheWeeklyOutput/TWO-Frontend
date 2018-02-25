@@ -4,7 +4,6 @@
 
 <style>
     @import url('https://fonts.googleapis.com/css?family=Roboto:500');
-
     * {
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-weight: 500;
@@ -111,12 +110,6 @@
         background-color: white;
     }
     
-    .style-1 #nav-spacer {
-        width: 100%;
-        height: 200px!important;
-        display: block;
-    }
-    
     .style-1 #navbar {}
     
     .style-1 .nav-categories li {
@@ -212,6 +205,8 @@
         width: 100%;
         background-color: white;
         overflow: hidden;
+        position: fixed;
+        z-index: 9999
     }
     
     .style-1 footer {
@@ -229,8 +224,8 @@
         margin-bottom: 32px;
     }
     
-    .style-1 .logo-style-1 {
-        height: 50px;
+    .style-1 .logo-style-1-mobile {
+        height: 30px;
         width: auto;
         max-width: 100%;
     }
@@ -402,7 +397,7 @@
     }
     
     .style-1 .article-text {
-        font-size: 18px;
+        font-size: 14px;
         text-align: justify;
         grid-column: 1 / span 3;
         padding-right: 20px;
@@ -489,6 +484,11 @@
     }
     
     @media (min-width: 880px) {
+        .style-1 #nav-spacer {
+            width: 100%;
+            height: 200px!important;
+            display: block;
+        }
         .style-1 .article-wrapper {
             grid-template-columns: repeat(4, 1fr);
         }
@@ -510,6 +510,11 @@
             background-color: #000;
             height: 1px;
             margin-bottom: 0
+        }
+        .style-1 #nav-spacer {
+            width: 100%;
+            height: 60px!important;
+            display: block;
         }
         .style-1 .topper {
             display: grid;
@@ -693,13 +698,13 @@
         }
         .style-1 .home-bottom {
             display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
         }
         .style-1 .twitter-sidebar {
             grid-column: 4 / 5;
             grid-row: 1 / span 6;
             padding-left: 12px;
             border-left: 1px solid var(--grey-stuff);
-            width: 300px;
             overflow: auto;
         }
         .style-1 .list-article-list {

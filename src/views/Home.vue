@@ -11,9 +11,13 @@
                     <div class="list-article-wrapper">
                         <ListArticles :categoryToRender="category.slug" :showText="false" :showAuthor="true" :imageStyle="'next-to-article'" :showShares="true" :mode="'list-'"></ListArticles>
                     </div>
-                    <router-link :to="{ name: 'category', params: {  category: category.slug }}" transition="fade">
-                        <button class="show-all-button">Show All</button>
-                    </router-link>
+                    <div class="show-all-container">
+                        <div class="show-all-bottom"></div>
+                        <router-link :to="{ name: 'category', params: {  category: category.slug }}" transition="fade">
+                            <button class="show-all-button">SHOW MORE</button>
+                        </router-link>
+    
+                    </div>
                 </div>
                 <TweetFeed class="twitter-sidebar desktop-only">
                 </TweetFeed>

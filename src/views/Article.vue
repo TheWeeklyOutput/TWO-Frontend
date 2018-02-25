@@ -80,8 +80,6 @@
                     slug: this.slug
                 })
             }
-    
-    
         }
     }
 </script>

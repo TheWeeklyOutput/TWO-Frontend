@@ -6,14 +6,14 @@ import { sync } from 'vuex-router-sync'
 import App from './App'
 import routes from './routes'
 import store from './store'
-import Vuetify from 'vuetify'
+import Affix from 'vue-affix'
 
-
-// vuetify
-Vue.use(Vuetify)
 
 // vue-shortkey
 Vue.use(require('vue-shortkey'))
+Vue.use(require('vue-moment'));
+Vue.use(Affix);
+
 
 // vue-resource
 Vue.use(VueResource)

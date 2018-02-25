@@ -3,6 +3,7 @@
 </template>
 
 <style>
+    @import url('https://fonts.googleapis.com/css?family=Roboto:500');
     * {
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-weight: 500;
@@ -17,7 +18,7 @@
      :root {
         --main-text-color: black;
         --grey-stuff: #e3e3e3;
-        --second-grey-stuff: grey;
+        --second-grey-stuff: #333333;
         --bg-color: #f8f6f7;
     }
     
@@ -32,7 +33,7 @@
     }
     
     .style-1 .loading-overlay {
-        background-color: grey;
+        background-color: white;
         display: table;
         position: fixed;
         top: 0;
@@ -47,7 +48,7 @@
         display: table-cell;
         width: 100%;
         height: 100%;
-        background: #ccc;
+        background: white;
         text-align: center;
         vertical-align: middle;
     }
@@ -95,18 +96,94 @@
     .style-1 .nav-categories {
         text-align: center;
         width: 100%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+    }
+    
+    .style-1 #navbar {
+        background-color: white;
     }
     
     .style-1 .nav-categories li {
         display: inline-block;
         vertical-align: top;
-        padding: 1%;
+        padding: 0.1% 1% 0.1% 1%;
+    }
+    
+    .style-1 .nav-categories li:nth-child(n+2) {
+        border-left: 2px solid var(--grey-stuff);
+    }
+    
+    .style-1 .router-link-active {
+        border-bottom: 2px solid var(--second-grey-stuff);
+    }
+    
+    .style-1 #router-link {
+        padding-top: 2%
     }
     
     .style-1 .nav-categories li a {
-        font-family: 'Georgia', serif !important;
+        font-family: 'Roboto' !important;
         text-decoration: none;
-        font-weight: 500
+        font-weight: 500;
+        letter-spacing: -0.2px;
+        color: #333333
+    }
+    
+    .style-1 .vue-affix {
+        background-color: rgba(255, 255, 255, 1);
+        z-index: 1030;
+        width: 100%
+    }
+    
+    .style-1 #settings-arrow {
+        position: absolute;
+        right: 0
+    }
+    
+    .style-1 .theme-switcher-logo-wrapper {}
+    
+    .style-1 #theme-switcher {
+        position: absolute;
+        background-color: rgba(255, 255, 255, 1);
+        width: 0;
+        height: 100vh;
+        overflow-y: visible;
+        border-right: 1px solid var(--grey-stuff);
+        -moz-transition: all 0.3s ease-out;
+        -o-transition: all 0.3s ease-out;
+        -webkit-transition: all 0.3s ease-out;
+        transition: all 0.3s ease-out;
+        opacity: 0;
+        padding-top: 1%
+    }
+    
+    .style-1 .active {
+        opacity: 1 !important;
+        width: 30% !important;
+    }
+    
+    .style-1 .theme-switcher-logo-1{
+        height: 30px;
+        width: auto;
+        position: relative;
+    }
+    
+    .style-1 .theme-switcher-logo-wrapper active {
+        background-color: black
+    }
+    
+    .style-1 .theme-switcher-logo {
+        width: 65%;
+        display: block;
+        position: relative;
+        height: auto;
+        padding-bottom: 50px;
+        padding-left: 10%;
+    }
+    
+    .style-1 #theme-switcher-wrapper {
+        width: 100%
     }
     
     .style-1 .mobile-nav-container {
@@ -131,7 +208,7 @@
     }
     
     .style-1 .logo-style-1 {
-        height: 60px;
+        height: 50px;
         width: auto;
         max-width: 100%;
     }
@@ -150,13 +227,14 @@
     }
     
     .style-1 .hr-logo {
-        background-color: #bdc3c7;
+        background-color: var(--grey-stuff);
         margin-bottom: 0.5%;
     }
     
     .style-1 .hr-categories {
-        margin-bottom: 3%;
+        margin-bottom: 0;
         margin-top: 0.5%;
+        background-color: var(--grey-stuff);
     }
     
     
@@ -209,8 +287,7 @@
     .style-1 .topper-image-wrapper {
         display: block;
         /*width: 100%;
-            height: auto;*/
-        width: 100%;
+                                                                        height: auto;*/
         height: 300px;
         overflow: hidden;
     }
@@ -516,7 +593,6 @@
         }
         .style-1 .site-wrapper {
             margin: 0 auto;
-            max-width: 1600px;
             border-top: 0px solid var(--grey-stuff);
             border-right: 2px solid var(--grey-stuff);
             border-bottom: 0px solid var(--grey-stuff);

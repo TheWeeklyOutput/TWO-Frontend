@@ -1,5 +1,5 @@
 <template>
-    <div class="component-wrapper category">
+    <div class="category component-wrapper">
         <!--<h1>{{ articleHandler.categories.find(art => art.slug === (category)).name }}</h1>-->
         <component :is="$store.state.TitleList[api.categories.find(art => art.slug === (category)).name]" class="topper-headline-text"></component>
     

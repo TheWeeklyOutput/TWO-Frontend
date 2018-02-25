@@ -5,11 +5,12 @@
       <Navbar v-on:click="test1 = false">
       </Navbar>
 
-      <router-view></router-view>
+      <router-view id="router-link"></router-view>
     </div>
     <FooterBar></FooterBar>
 
     <style1></style1>
+    <style2></style2>
   
   </div>
 </template>
@@ -19,6 +20,7 @@
   import FooterBar from './components/Footer'
   import Navbar from './components/Navbar'
   import Style1 from './styles/Style1'
+  import Style2 from './styles/Style2'
   import apiMixin from './mixins/api.js'
   import * as apiMuts from './api/mutation-types.js'
   import * as apiActs from './api/action-types.js'
@@ -34,7 +36,8 @@
       LoadingOverlay,
       Navbar,
       FooterBar,
-      Style1
+      Style1,
+      Style2
     },
     created() {
       this.$store.dispatch(apiActs.SET_UP, {

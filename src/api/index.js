@@ -17,7 +17,7 @@ const apiCallbackFunction = ({ getters, commit }, { success, action, message, ne
 
 export default {
   state: {
-    articles: {},
+    articles: null,
     currentArticle: null, 
     categories: [],
     loaded: false
@@ -39,7 +39,10 @@ export default {
     }
   },
   actions: {
-    [acts.SET_UP] ({ dispatch, state }, { context }) {
+    [acts.SET_UP] ({ commit, dispatch, state }, { context }) {
+
+      commit(muts.TOGGLE_LOADING, {status: false})
+
       dispatch(acts.GET_CATEGORIES, { 
           context
       });
@@ -53,7 +56,8 @@ export default {
           })
         )
     },
-    [acts.GET_CATEGORIES] ({ state, dispatch }, { context }) {
+    [acts.GET_CATEGORIES] ({ state, dispatch, commit }, { context }) {
+      commit(muts.TOGGLE_LOADING, {status: false})
       dispatch(acts.REST_CALL, {
         promise: context.$http.get('corpora/categories/'),
         action: acts.GET_CATEGORIES, context,
@@ -63,27 +67,33 @@ export default {
           state.categories.forEach((category) => {
             dispatch(acts.GET_CATEGORY_PAGE, { context, category: category.slug, page: 1 }); 
           })
-          state.loaded = true            
+          commit(muts.TOGGLE_LOADING, {status: true})
       }, onError (res) {}
       })
     },
-    [acts.GET_ARTICLE_BY_SLUG] ({ commit, dispatch }, { context, slug }) {
+    [acts.GET_ARTICLE_BY_SLUG] ({ commit, dispatch, state }, { context, slug }) {
+      commit(muts.TOGGLE_LOADING, {status: false})
       dispatch(acts.REST_CALL, {
         promise: context.$http.get('corpora/slug/' + slug + '/'),
         action: acts.GET_ARTICLE_BY_SLUG, context,
         onSuccess (res) {
           log.dir(res)
           commit(muts.UPDATE_CURRENT_ARTICLE, { article: res.body })
+        
+          commit(muts.TOGGLE_LOADING, {status: true})
+
         }, onError (res) {}
       })
     },
-    [acts.GET_CATEGORY_PAGE] ({ commit, dispatch }, { context, category, page }) {
+    [acts.GET_CATEGORY_PAGE] ({ commit, dispatch, state }, { context, category, page }) {
       dispatch(acts.REST_CALL, {
         promise: context.$http.get('corpora/' + category + '/' + page + '/'),
         action: acts.GET_CATEGORY_PAGE, context,
         onSuccess (res) {
           log.dir(res)
           commit(muts.UPDATE_ARTICLES, { category, articles: res.body })
+          commit(muts.TOGGLE_LOADING, {status: true})
+
         }, onError (res) {}
       })
     },
@@ -96,10 +106,17 @@ export default {
       state.currentArticle = article
     },
     [muts.UPDATE_ARTICLES] (state, { category, articles }) {
+      if(state.articles == null) {
+        state.articles = []
+      }
+
       if (!(category in articles)) {
         state.articles[category] = []
       }
       state.articles[category] = state.articles[category].concat(articles)
+    },
+    [muts.TOGGLE_LOADING] (state, { status }) {
+      state.loaded = status
     }
   }
 }

@@ -1,55 +1,82 @@
 <template>
-    <div id="navbar" class="component-wrapper">
+    <div id="navbar">
         <div class="mobile-nav-container mobile-only">
             <div>
                 <router-link :to="'/'">
                     <div id="logo-mobile">
-                        <logo-style1 class="logo-style-1" alt="Weekly Output"></logo-style1>
+                        <logo-style1 class="logo-style-1" alt="The Weekly Output"></logo-style1>
                     </div>
                 </router-link>
             </div>
         </div>
-        <div class="desktop-nav-container desktop-only">
+        <div id="desktop-nav-container" class="desktop-nav-container desktop-only">
             <router-link :to="'/'">
                 <div id="logo">
-                    <logo-style1 class="logo-style-1" alt="Weekly Output"></logo-style1>
+                    <logo-style1 class="logo-style-1" alt="The Weekly Output"></logo-style1>
                 </div>
             </router-link>
-            <span id="theme-switcher-dropdown">
-                <select v-model="themeSwitcher.currentStyle">
-                    <option disabled value=""> {{ themeSwitcher.CurrentStlye }}</option>
-                    <option value="1">Business</option>
-                    <option value="2">Pop</option>
-                    <option value="3">Tech</option>
-                </select>
-            </span>
-            <hr class="hr-logo">
-            <ul class="nav-categories">
-                <li v-for="category in categories">
-                    <router-link :to="{ name: 'category', params: {  category:  category.slug}}" :class="'category-link'" v-if="!(category.slug === '-')">
-                        {{ category.name }}
-                    </router-link>
-                    <span v-else> {{ category.name}} </span>
-                </li>
-            </ul>
-            <hr class="hr-categories">
-        </div>
+            <affix relative-element-selector="#router-link" :scroll-affix="false" :offset="{ top: 75, bottom: 0 }" v-on:affixbottom="scrollSetup()" id="desktop-navbar" v-if="api.loaded">
+                <div>
+                    <span id="theme-switcher" v-bind:class="{ active: expandedSwitcher}">
+            
+                                    <div id="theme-switcher-wrapper">                
+                            <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
+                                            <logo-style1 class="theme-switcher-logo" alt="The Weekly Output Style 2"></logo-style1>
+                                        </span>
+                    <span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
+                                            <logo-style1 class="theme-switcher-logo" alt="The Weekly Output 3"></logo-style1>
+                                        </span>
+                </div>
+                </span>
+                <ul class="nav-categories">
+                    <li class="theme-switcher-logo-wrapper" v-on:click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
+                        <logo-style1 class="theme-switcher-logo-1" alt="The Weekly Output Style 1"></logo-style1>
+                    </li>
     
+                    <li @click="toggleActiveExpand()">
+                        <settings-wheel style="height: 20px; cursor: pointer;"></settings-wheel>
+                    </li>
+                    <li v-for="category in categories">
+                        <router-link :to="{ name: 'category', params: {  category:  category.slug}}" :class="'category-link'">
+                            {{ category.name }}
+                        </router-link>
+                    </li>
+                </ul>
+        </div>
+        </affix>
+        <hr class="hr-categories" id="directly-below">
+    </div>
     </div>
 </template>
 
 <script>
     import LogoStyle1 from '../assets/svg/logo_style_1.svg'
+    import SettingsWheel from '../assets/svg/settings_wheel.svg'
+    import SettingsArrow from '../assets/svg/arrow.svg'
     import apiMixin from '../mixins/api.js'
     import themeswitcherMixin from '../mixins/themeswitcher.js'
     import * as apiMuts from '../api/mutation-types.js'
     import * as apiActs from '../api/action-types.js'
+    import * as themeMuts from '../themeswitcher/mutation-types.js'
+    import VueAffix from 'vue-affix'
     
     export default {
         mixins: [apiMixin, themeswitcherMixin],
     
         components: {
-            LogoStyle1
+            LogoStyle1,
+            SettingsWheel,
+            SettingsArrow
+        },
+        data() {
+            return {
+                expandedSwitcher: false,
+                navDimensions: {
+                    height: 0,
+                    width: 0
+                },
+                loadAffix: false
+            }
         },
         computed: {
             categories() {
@@ -58,19 +85,26 @@
                 for (let i = 0; i < this.api.categories.length; i++) {
                     categoriesArray.push({
                         slug: this.api.categories[i].slug,
-                        name: this.api.categories[i].name
+                        name: this.api.categories[i].name.toUpperCase()
                     })
-                    if (this.api.categories.length > i + 1) {
-                        categoriesArray.push({
-                            slug: '-',
-                            name: ' - '
-                        })
-                    }
                 }
     
                 return categoriesArray
             }
         },
+        methods: {
+            toggleActiveExpand() {
+                this.expandedSwitcher = !this.expandedSwitcher
+            },
+            selectTheme(themeNumber) {
+                //if (this.expandedSwitcher) {
+                this.$store.commit(themeMuts.SET_STYLE, {
+                    payload: themeNumber
+                })
+    
+                // }
+            }
+        }
     }
 </script>
 

@@ -17,20 +17,17 @@ export default {
       path: '/articles/:category/:slug',
       name: 'article',
       component: () => import('../views/Article'),
-      props: true,
-      meta: {title: 'Article'}            
+      props: true
     }, {
       path: '/author/:name',
       name: 'author',
       component: () => import('../views/Author'),
-      props: true,
-      meta: {title: 'Author'}      
+      props: true
     }, {
       path: '/articles/:category',
       name: 'category',
       component: () => import('../views/Category'),
-      props: true,
-      meta: {title: 'Category'}      
+      props: true
     }
   ]
 }

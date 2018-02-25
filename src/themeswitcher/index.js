@@ -8,7 +8,7 @@ export default {
   },
   mutations: {
     [muts.SET_STYLE] (state, payload) {
-      state.currentStyle = payload.style   
+      console.log(payload)
     }
   }
 }

@@ -577,6 +577,25 @@
             padding-top: 10px;
             padding-bottom: 10px;
         }
+        .style-2 .topper-single-container {
+            display: grid;
+            position: relative;
+        }
+
+
+        .style-2 .topper-article-title {
+            position: absolute;
+            bottom: 20px
+        }
+
+        .style-2 .topper-image-wrapper {
+            grid-column: 1;
+            grid-row: 1;
+        }
+        .style-2 .topper-text {
+            grid-column: 1;
+            grid-row: 1;
+        }
         .style-2 .topper {
             grid-row: 1;
             padding-bottom: 20px;
@@ -584,6 +603,7 @@
         }
         .style-2 .topper-text {
             padding: 10px 25px 0 25px;
+            position: relative;
         }
         .style-2 .topper .topper-article-title {
             font-size: 2em;

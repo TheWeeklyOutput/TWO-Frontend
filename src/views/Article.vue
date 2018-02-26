@@ -71,7 +71,7 @@
         watch: {
             currentArticle() {
                 this.$store.dispatch(apiActs.CHANGE_PAGE_TITLE, {
-                    title: this.currentArticle.title + ' | The Weekly Output'
+                    title: this.currentArticle.title.substring(0, 30) + '... | The Weekly Output'
                 })
             },
             slug() {

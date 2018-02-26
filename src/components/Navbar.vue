@@ -20,17 +20,17 @@
                 <affix v-if="api.loaded" relative-element-selector="#router-link" :scroll-affix="false" :offset="{ top: 80, bottom: 200 }" v-on:affixtop="scrollHandler(false)" v-on:affix="scrollHandler(true)" id="desktop-navbar">
                     <div>
                         <span id="theme-switcher" v-bind:class="{ active: expandedSwitcher}">
-                                            <div id="theme-switcher-wrapper">                
-                                                <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
-                                                    <logo-style1 class="theme-switcher-logo" alt="The Weekly Output Style 1"></logo-style1>
-                                                </span>
-                        <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
-                                                    <logo-style1 class="theme-switcher-logo" alt="The Weekly Output Style 2"></logo-style1>
-                                                </span>
-                        <!--<span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
-                                                    <logo-style1 class="theme-switcher-logo" alt="The Weekly Output 3"></logo-style1>
-                                                </span>-->
-                    </div>
+                        <div id="theme-switcher-wrapper">                
+                            <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
+                                <logo-style1 class="theme-switcher-logo" alt="The Weekly Output Style 1"></logo-style1>
+                            </span>
+                            <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
+                                <logo-style1 class="theme-switcher-logo" alt="The Weekly Output Style 2"></logo-style1>
+                            </span>
+                            <!--<span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
+                                <logo-style1 class="theme-switcher-logo" alt="The Weekly Output 3"></logo-style1>
+                            </span>-->
+                        </div>
                     </span>
                     <ul class="nav-categories">
                         <router-link :to="'/'" id="nav-logo-link">

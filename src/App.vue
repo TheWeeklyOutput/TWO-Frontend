@@ -33,6 +33,16 @@
       apiMixin, 
       themeSwitcherMixin
     ],
+    matomo (from, to, store) {
+        console.log(store)
+        console.log(from)
+        console.log(to)
+
+      return {
+        someVar: ['setCustomVariable', 1, 'VisitorType', 'Special Member']
+      }
+    },
+
     components: {
       LoadingOverlay,
       Navbar,

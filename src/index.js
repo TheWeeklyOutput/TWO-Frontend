@@ -19,8 +19,6 @@ Vue.use(VueTimeago, {
   }
 })
 
-Vue.use(require('vue-social-sharing'));
-
 // vue-shortkey
 Vue.use(require('vue-shortkey'))
 Vue.use(Affix)

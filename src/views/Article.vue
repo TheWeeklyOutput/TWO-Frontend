@@ -15,8 +15,9 @@
             <progressive-img :src="currentArticle.image_url" class="article-image-full" />
             <h3 class="image-credit">photo by {{ currentArticle.image_credit }}</h3>
         </span>
-        <p class="article-text" v-html="currentArticle.content">
-        </p>
+        <div class="article-text" v-for="content in currentArticle.content">
+            <p> {{ content }} </p>
+        </div>
         <div class="article-sidebar-wrapper desktop-only">
             <TopArticles class="sidebar" :categoryToRender="'highlights'" :showText="true" :showAuthor="false" :mode="'list-'" :imageStyle="'no'">
             </TopArticles>
@@ -70,7 +71,7 @@
         watch: {
             currentArticle() {
                 this.$store.dispatch(apiActs.CHANGE_PAGE_TITLE, {
-                    title: this.currentArticle.title
+                    title: this.currentArticle.title + ' | The Weekly Output'
                 })
             },
             slug() {

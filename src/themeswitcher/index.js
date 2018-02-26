@@ -4,11 +4,10 @@ import * as acts from './action-types.js'
 
 export default {
   state: {
-    currentStyle: 2
+    currentStyle: Math.round(Math.random()) + 1
   },
   mutations: {
     [muts.SET_STYLE] (state, payload) {
-      console.log(payload)
       state.currentStyle = payload.payload
     }
   }

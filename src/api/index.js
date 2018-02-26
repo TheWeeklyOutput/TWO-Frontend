@@ -40,9 +40,12 @@ export default {
   },
   actions: {
     [acts.SET_UP] ({ commit, dispatch, state }, { context }) {
-      dispatch(acts.GET_CATEGORIES, { 
-          context
+      dispatch(acts.GET_SHARED_COUNT, { 
+        context
       });
+      dispatch(acts.GET_CATEGORIES, { 
+            context
+        });
     },
     [acts.REST_CALL] ({ commit, getters }, { promise, action, context, onSuccess, onError }) {
         promise.then(
@@ -94,6 +97,32 @@ export default {
     },
     [acts.CHANGE_PAGE_TITLE] ({ state, dispatch, commit, getters }, { title }) {
       document.title = title
+    },
+    [acts.GET_SHARED_COUNT] ( {state, dispatch, commit, getters}, {context} ) {
+        /*url = encodeURIComponent(url || location.href);
+        const domain = "//sample.sharedcount.com"
+        const apikey = "fe80911d9bb8239e44296167ac0cbba5920144af"
+        const arg = {
+          data: {
+            url : url,
+            apikey : apikey
+          },
+            url: domain,
+            cache: true,
+            dataType: "json"
+        };
+        if ('withCredentials' in new XMLHttpRequest) {
+            arg.success = fn
+        }
+        else {
+            let cb = "sc_" + url.replace(/\W/g, '')
+            window[cb] = fn
+            arg.jsonpCallback = cb
+            arg.dataType += "p"
+        }*/
+        /*let response = context.$http.get('//api.sharedcount.com/?apikey=fe80911d9bb8239e44296167ac0cbba5920144af&url=https://www.keybase.io')
+        console.log(response)
+        return response*/
     }
   },
   mutations: {

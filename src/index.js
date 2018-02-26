@@ -10,7 +10,6 @@ import Affix from 'vue-affix'
 import VueTimeago from 'vue-timeago'
 import VueProgressiveImage from 'vue-progressive-image'
 
-
 Vue.use(VueTimeago, {
   name: 'timeago', // component name, `timeago` by default
   locale: 'en-US',
@@ -20,15 +19,14 @@ Vue.use(VueTimeago, {
   }
 })
 
+Vue.use(require('vue-social-sharing'));
+
 // vue-shortkey
 Vue.use(require('vue-shortkey'))
 Vue.use(Affix)
 Vue.use(VueProgressiveImage, {
   blur: 30
 })
-
-
-
 
 // vue-resource
 Vue.use(VueResource)
@@ -51,7 +49,6 @@ const router = new Router(routes)
 Vue.router = router
 
 Vue.router.beforeEach(function (to, from, next) {
-  document.title = to.meta.title
   window.scrollTo(0, 0);
   next();
 });

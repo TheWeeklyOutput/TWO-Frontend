@@ -230,6 +230,13 @@
         max-width: 100%;
     }
     
+    .style-1 .logo-style-1 {
+        height: 50px;
+        width: auto;
+        max-width: 100%;
+    }
+
+
     .style-1 .desktop-only {
         display: none
     }

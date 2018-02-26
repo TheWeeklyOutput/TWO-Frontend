@@ -23,15 +23,12 @@
                                             <div id="theme-switcher-wrapper">                
                                                 <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
                                                     <logo-style1 class="theme-switcher-logo" alt="The Weekly Output Style 1"></logo-style1>
-                                                    <hr>
                                                 </span>
                         <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
                                                     <logo-style1 class="theme-switcher-logo" alt="The Weekly Output Style 2"></logo-style1>
-                                                    <hr>
                                                 </span>
                         <!--<span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
                                                     <logo-style1 class="theme-switcher-logo" alt="The Weekly Output 3"></logo-style1>
-                                                    <hr>
                                                 </span>-->
                     </div>
                     </span>

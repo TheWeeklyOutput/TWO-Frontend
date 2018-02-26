@@ -3,6 +3,7 @@
         <twitter-icon class="twitter-icon"></twitter-icon>
         <span class="twitter-shares">{{ shares }} Shares</span>
     </div>
+
 </template>
 
 <script>

@@ -5,10 +5,10 @@
                 <router-link :to="{ name: 'article', params: {  category: categoryToRender, slug: article.slug }}" :class="'article-link'" transition="fade" v-on:click="changeArticle(article.slug)">
                     <div :class="mode + imageStyle + '-container'" v-on:click="changeArticle(article.slug)">
                         <span :class="mode + imageStyle + '-image-wrapper'">
-                                    <progressive-img :src="article.image_url" :class="imageStyle" v-if="(imageStyle === 'no-image') == false" />
-                                </span>
+                            <progressive-img :src="article.image_url" :class="imageStyle + ' ' + getOrientation(article.image_url)" v-if="(imageStyle === 'no-image') == false" />
+                        </span>
                         <span :class="mode + 'text'">
-                                    <span> <h2 :class="mode + 'title'">{{ article.title }}</h2> </span>
+                        <span> <h2 :class="mode + 'title'">{{ article.title }}</h2> </span>
                         <span v-if="showText"><h3 :class="mode + 'description'">{{ article.description.substring(0, 200) }}...</h3></span>
                         <span :class="mode + 'author'" v-if="showAuthor">By <router-link :to="{ name: 'author', params: {  name: article.author.name }}"  transition="fade">{{ article.author.name }}</router-link></span>
                         <span class="list-timestamp" v-if="showAuthor && api.loaded"> <timeago :since="article.date"></timeago> </span>
@@ -83,9 +83,27 @@
                     context: this,
                     slug: slug
                 })
-            }
+            },
+            getOrientation(image) {
+                let orientation
+                let img = new Image()
+                img.onload = function() {
+                    if (img.naturalWidth > img.naturalHeight) {
+                        orientation = 'landscape'
+                    } else if (img.naturalWidth < img.naturalHeight) {
+                        orientation = 'portrait'
+                    } else {
+                        orientation = 'even'
+                    }
+                    console.log(orientation)
+                    return orientation
+                }
+                img.src = image
+                
+                
+    }
     
-        }
+    }
     
     }
 </script>

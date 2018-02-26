@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="topper-headline">
+        <div class="topper-headline desktop-only">
             <component :is="title" class="topper-headline-text"></component>
             <hr>
         </div>
@@ -20,7 +20,7 @@
                             </span>
                             <span class="list-timestamp"> {{ article.date }}</span>
                         </span>
-                        <h3 :class="'topper-article-text'">{{ article.description.substring(0, 200) }}...</h3>
+                        <h3 :class="'topper-article-text'">{{ article.content.substring(0, 200) }}...</h3>
                         <twitter-shares :shares="Math.ceil(Math.random()*100)"></twitter-shares>
                     </span>
                 </div>
@@ -45,11 +45,10 @@
         },
         computed: {
             articles() {
-    
                 let articleArray = this.api.articles[this.categoryToRender.slug]
     
                 return {
-                    articleArray: articleArray.slice(0, 4),
+                    articleArray: articleArray,
                     category: this.categoryToRender.slug
                 }
             },

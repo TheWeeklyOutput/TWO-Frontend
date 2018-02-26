@@ -16,9 +16,7 @@
                 <img :srcset="currentArticle.image_url" class="article-image-full">
                 <h3 class="image-credit">photo by {{ currentArticle.image_credit }}</h3>
             </span>
-        <p class="article-text">
-            {{ currentArticle.content }}
-        </p>
+        <div v-html="currentArticle.content"></div>
         <div class="article-sidebar-wrapper desktop-only">
             <TopArticles class="sidebar" :categoryToRender="'highlights'" :showText="true" :showAuthor="false" :mode="'list-'" :imageStyle="'no'">
             </TopArticles>

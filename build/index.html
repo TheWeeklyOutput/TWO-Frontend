@@ -9,25 +9,58 @@
     <meta name="theme-color" content="#ffffff">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/> <!--320-->
-    <script type="text/javascript" src="https://static1.twitcount.com/js/button.js"></script>    
     <link rel="apple-touch-icon" sizes="57x57" href="png/apple-icon-57x57.png" />
-    <link rel="apple-touch-icon" sizes="60x60" href="png//apple-icon-60x60.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="png//apple-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="76x76" href="png//apple-icon-76x76.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="png//apple-icon-114x114.png" />
-    <link rel="apple-touch-icon" sizes="120x120" href="png//apple-icon-120x120.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="png//apple-icon-144x144.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="png//apple-icon-152x152.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="png//apple-icon-180x180.png" />
-    <link rel="icon" type="image/png" sizes="192x192"  href="png//android-icon-192x192.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="png//pngicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="96x96" href="png//pngicon-96x96.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="png//pngicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="png/apple-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="png/apple-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="png/apple-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="png/apple-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="png/apple-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="png/apple-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="png/apple-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="png/apple-icon-180x180.png" />
+    <link rel="icon" type="image/png" sizes="192x192"  href="png/android-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="png/pngicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="png/pngicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="png/pngicon-16x16.png" />
     <link rel="manifest" href="png//manifest.json" />
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="msapplication-TileImage" content="png//ms-icon-144x144.png" />
     <meta name="theme-color" content="#ffffff" />
+    <script type="text/javascript">
+      var _paq = _paq || [];
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+      _paq.push(["setCookieDomain", "*.weekly-output.com"]);
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="//analytics.weekly-output.com/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', '1']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+      })();
 
+      var currentUrl = location.href;
+      window.addEventListener('hashchange', function() {
+          _paq.push(['setReferrerUrl', currentUrl]);
+          currentUrl = '' + window.location.hash.substr(1);
+          _paq.push(['setCustomUrl', currentUrl]);
+          _paq.push(['setDocumentTitle', 'My New Title']);
+
+          // remove all promo aware of newly added content
+          var content = document.getElementById('content');
+          _paq.push(['MediaAnalytics::scanForMedia', content]);
+          _paq.push(['deleteCustomVariables', 'page']); 
+          _paq.push(['setGenerationTimeMs', 0]);
+          _paq.push(['trackPageView']);
+          
+          // make Mat'FormAnalytics::scanForForms', content]);
+          _paq.push(['trackContentImpressionsWithinNode', content]);
+          _paq.push(['enableLinkTracking']);
+      });
+
+    </script>
   </head>
   <body>
     <div id="app"></div>

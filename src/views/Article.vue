@@ -12,19 +12,12 @@
             </p>
         </span>
         <span class="article-image-wrapper">
-<<<<<<< HEAD
             <progressive-img :src="currentArticle.image_url" class="article-image-full" />
             <h3 class="image-credit">photo by {{ currentArticle.image_credit }}</h3>
         </span>
         <div class="article-text" v-for="content in currentArticle.content">
             <p> {{ content }} </p>
         </div>
-=======
-                <img :srcset="currentArticle.image_url" class="article-image-full">
-                <h3 class="image-credit">photo by {{ currentArticle.image_credit }}</h3>
-            </span>
-        <div v-html="currentArticle.content"></div>
->>>>>>> fe229f2ebf25dee4a18fd6a3ddd2a47f15f126fd
         <div class="article-sidebar-wrapper desktop-only">
             <TopArticles class="sidebar" :categoryToRender="'highlights'" :showText="true" :showAuthor="false" :mode="'list-'" :imageStyle="'no'">
             </TopArticles>

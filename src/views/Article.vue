@@ -15,8 +15,8 @@
             <progressive-img :src="currentArticle.image_url" class="article-image-full" />
             <h3 class="image-credit">photo by {{ currentArticle.image_credit }}</h3>
         </span>
-        <div class="article-text" v-for="content in currentArticle.content">
-            <p> {{ content }} </p>
+        <div class="article-text" >
+            <p v-for="paragraph in currentArticle.paragraphs"> {{ paragraph.content }} </p>
         </div>
         <div class="article-sidebar-wrapper desktop-only">
             <TopArticles class="sidebar" :categoryToRender="'highlights'" :showText="true" :showAuthor="false" :mode="'list-'" :imageStyle="'no'">

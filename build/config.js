@@ -8,5 +8,5 @@ module.exports = {
   port: 4000,
   title: 'The Weekly Output',
 
-  publicPath: process.env.NODE_ENV === 'production' ? '/static' : ''
+  publicPath: process.env.NODE_ENV === 'production' ? '/static/' : ''
 }

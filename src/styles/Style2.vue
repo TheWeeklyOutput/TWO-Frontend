@@ -222,8 +222,9 @@
     }
     
     .style-2 p {
-        font-size: 1.2em;
-        margin-bottom: 32px;
+        font-size: 1em;
+        margin-bottom: 1rem;
+        font-weight: 400;
     }
     
     .style-2 .logo-style-1 {

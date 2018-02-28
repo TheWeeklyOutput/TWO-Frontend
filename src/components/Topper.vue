@@ -12,16 +12,16 @@
                     </span>
                     <span :class="'topper-text'" >
                             <h2 :class="'topper-article-title'">{{ article.title }}</h2>
-                            <span class="topper-author-timestap-wrapper desktop-only" v-if="themeSwitcher.currentStyle !== 2">
+                            <span class="topper-author-timestap-wrapper desktop-only" v-if="themeSwitcher.currentStyle != 2">
                                 <span :class="'topper-author'" >By 
                                     <router-link :to="{ name: 'author', params: {  name: article.author.slug }}" transition="fade">
                                         {{ article.author.name }}
                                     </router-link>
                                 </span>
-                    <span class="list-timestamp"> <timeago :since="article.date" v-if="themeSwitcher.currentStyle !== 2"></timeago></span>
+                    <span class="list-timestamp"> <timeago :since="article.date" v-if="themeSwitcher.currentStyle != 2"></timeago></span>
                     </span>
-                    <h3 :class="'topper-article-text'" v-if="themeSwitcher.currentStyle !== 2">{{ article.description.substring(0, 200) }}...</h3>
-                    <twitter-shares :shares="Math.ceil(Math.random()*100)" v-if="themeSwitcher.currentStyle !== 2"></twitter-shares>
+                    <h3 :class="'topper-article-text'" v-if="themeSwitcher.currentStyle != 2">{{ article.description.substring(0, 200) }}...</h3>
+                    <twitter-shares :shares="Math.ceil(Math.random()*100)" v-if="themeSwitcher.currentStyle != 2"></twitter-shares>
                     </span>
                 </div>
             </router-link>

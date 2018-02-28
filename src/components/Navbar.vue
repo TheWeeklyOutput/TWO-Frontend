@@ -20,17 +20,17 @@
                 <affix v-if="api.loaded" relative-element-selector="#router-link" :scroll-affix="false" :offset="{ top: 80, bottom: 200 }" v-on:affixtop="scrollHandler(false)" v-on:affix="scrollHandler(true)" id="desktop-navbar">
                     <div>
                         <span id="theme-switcher" v-bind:class="{ active: expandedSwitcher}">
-                        <div id="theme-switcher-wrapper">                
-                            <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
-                                <logo-style1 class="theme-switcher-logo" alt="The Weekly Output Style 1"></logo-style1>
-                            </span>
-                            <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
-                                <logo-style1 class="theme-switcher-logo" alt="The Weekly Output Style 2"></logo-style1>
-                            </span>
-                            <!--<span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
-                                <logo-style1 class="theme-switcher-logo" alt="The Weekly Output 3"></logo-style1>
-                            </span>-->
-                        </div>
+                            <div id="theme-switcher-wrapper">                
+                                <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
+                                    <logo-style1 class="theme-switcher-logo" alt="The Weekly Output Style 1"></logo-style1>
+                                </span>
+                        <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
+                                    <logo-style1 class="theme-switcher-logo" alt="The Weekly Output Style 2"></logo-style1>
+                                </span>
+                        <!--<span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
+                                    <logo-style1 class="theme-switcher-logo" alt="The Weekly Output 3"></logo-style1>
+                                </span>-->
+                    </div>
                     </span>
                     <ul class="nav-categories">
                         <router-link :to="'/'" id="nav-logo-link">
@@ -68,6 +68,7 @@
     import * as themeMuts from '../themeswitcher/mutation-types.js'
     import VueAffix from 'vue-affix'
     import Slideout from 'vue-slideout'
+    import { mapState } from 'vuex';
     
     export default {
         mixins: [apiMixin, themeswitcherMixin],
@@ -101,7 +102,10 @@
                 }
     
                 return categoriesArray
-            }
+            },
+            ...mapState({
+                currentStyle: state => state.themeSwitcher.currentStyle,
+            })
         },
         methods: {
             toggleActiveExpand() {
@@ -118,9 +122,29 @@
             scrollHandler(state) {
                 this.scrolling = state
             },
-            open() {
+            pushDesignMatomo() {
+                _paq.push(['setCustomVariable',
+                    // Index, the number from 1 to 5 where this custom variable name is stored
+                    1,
+                    // Name, the name of the variable, for example: Gender, VisitorType
+                    "Design",
+                    // Value, for example: "Male", "Female" or "new", "engaged", "customer"
+                    this.currentStyle,
+                    // Scope of the custom variable, "visit" means the custom variable applies to the current visit
+                    "page"
+                ])
+                _paq.push(['trackPageView'])
     
+
             }
+        },
+        watch: {
+            currentStyle() {
+                this.pushDesignMatomo()
+            }
+        },
+        mounted() {
+            this.pushDesignMatomo()
         }
     }
 </script>

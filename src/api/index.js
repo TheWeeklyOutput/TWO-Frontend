@@ -42,15 +42,10 @@ export default {
     [acts.SET_UP] ({ commit, dispatch, state }, { context }) {
       dispatch(acts.GET_SHARED_COUNT, { 
         context
-      });
-      dispatch(acts.SET_UP_MATOMO, { 
-        options: {
-          matomoUrl: '//analytics.weekly-output.com/', siteId: 1, head: {}
-        }
       })
       dispatch(acts.GET_CATEGORIES, { 
             context
-        });
+        })
     },
     [acts.REST_CALL]({ commit, getters }, { promise, action, context, onSuccess, onError }) {
       promise.then(
@@ -101,13 +96,6 @@ export default {
     },
     [acts.CHANGE_PAGE_TITLE]({ state, dispatch, commit, getters }, { title }) {
       document.title = title
-    },
-    [acts.SET_UP_MATOMO]({ state }, { options }) {    
-
-
-
-      
-
     },
     [acts.GET_SHARED_COUNT] ( {state, dispatch, commit, getters}, {context} ) {
         /*url = encodeURIComponent(url || location.href);

@@ -1,0 +1,1 @@
+export const SET_DESIGN_MATOMO = 'SET_DESIGN_MATOMO'

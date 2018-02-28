@@ -63,10 +63,10 @@
                     slug: 'entertainment',
                     name: 'Entertainment'
                 }, {
-                    slug: 'sports',
+                    slug: 'sport',
                     name: 'Sports'
                 }, {
-                    slug: 'tech',
+                    slug: 'technology',
                     name: 'Tech'
                 }, {
                     slug: 'world',

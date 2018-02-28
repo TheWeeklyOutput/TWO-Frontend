@@ -66,7 +66,6 @@ Vue.router.afterEach((to, from) => {
     to.meta && to.meta.matomo,
     to.meta && to.meta.piwik
   )
-  console.log('switch')
   Object.keys(settings).forEach(key => {
     window['_paq'].push(settings[key])
   })

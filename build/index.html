@@ -26,10 +26,10 @@
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="msapplication-TileImage" content="png//ms-icon-144x144.png" />
     <meta name="theme-color" content="#ffffff" />
+    <!-- Matomo -->
     <script type="text/javascript">
       var _paq = _paq || [];
       /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-      _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
       _paq.push(["setCookieDomain", "*.weekly-output.com"]);
       _paq.push(['trackPageView']);
       _paq.push(['enableLinkTracking']);
@@ -40,27 +40,8 @@
         var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
         g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
       })();
-
-      var currentUrl = location.href;
-      window.addEventListener('hashchange', function() {
-          _paq.push(['setReferrerUrl', currentUrl]);
-          currentUrl = '' + window.location.hash.substr(1);
-          _paq.push(['setCustomUrl', currentUrl]);
-          _paq.push(['setDocumentTitle', 'My New Title']);
-
-          // remove all promo aware of newly added content
-          var content = document.getElementById('content');
-          _paq.push(['MediaAnalytics::scanForMedia', content]);
-          _paq.push(['deleteCustomVariables', 'page']); 
-          _paq.push(['setGenerationTimeMs', 0]);
-          _paq.push(['trackPageView']);
-          
-          // make Mat'FormAnalytics::scanForForms', content]);
-          _paq.push(['trackContentImpressionsWithinNode', content]);
-          _paq.push(['enableLinkTracking']);
-      });
-
     </script>
+    <!-- End Matomo Code --> 
   </head>
   <body>
     <div id="app"></div>

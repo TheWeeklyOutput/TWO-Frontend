@@ -17,10 +17,11 @@ const apiCallbackFunction = ({ getters, commit }, { success, action, message, ne
 
 export default {
   state: {
-    articles: null,
+    articles: [],
     currentArticle: null, 
     categories: [],
-    loaded: false
+    loaded: false,
+    categoryCount: 0
   },
   getters: {
     getMessagesFromRes: () => (res) => {
@@ -129,16 +130,14 @@ export default {
       state.currentArticle = article
     },
     [muts.UPDATE_ARTICLES] (state, { category, articles }) {
-      if (state.articles === null) {
-        state.articles = []
-      }
-
       if (!(category in articles)) {
         state.articles[category] = []
+        state.categoryCount ++
+
       }
       state.articles[category] = state.articles[category].concat(articles)
+      console.log(state.articles[category])
       state.loaded = true
-      
     },
     [muts.TOGGLE_LOADING] (state, { status }) {
       state.loaded = status

@@ -311,8 +311,6 @@
     
     .style-2 .topper-image-wrapper {
         display: block;
-        height: 500px;
-        width: 100%;
         overflow: hidden;
         display: inline-block;
         /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+60,000000+100&0+60,0.7+100 */
@@ -483,7 +481,7 @@
     
     .style-2 .footer-logo {
         float: left;
-        width: 300px
+        width: 100%
     }
     
     .style-2 .footer-logo path {
@@ -582,13 +580,10 @@
             display: grid;
             position: relative;
         }
-
-
         .style-2 .topper-article-title {
             position: absolute;
             bottom: 20px
         }
-
         .style-2 .topper-image-wrapper {
             grid-column: 1;
             grid-row: 1;
@@ -611,7 +606,7 @@
         }
         .style-2 .topper> :nth-child(n+3) .topper-image-wrapper {
             display: block;
-            padding: 20px;
+            margin: 20px;
             padding-bottom: 10px;
             grid-row: 1;
             grid-column: 1
@@ -730,6 +725,10 @@
             height: 60px;
             padding-bottom: 10px;
         }
+        .style-2 .topper-image-wrapper {
+            max-height: 500px;
+            width: 100%;
+        }
         .style-2 .topper .topper-article-wrapper {
             grid-column: 1 / span 4;
         }
@@ -753,7 +752,7 @@
             padding-top: 20px
         }
         .style-2 .topper .topper-text {
-            grid-column: 1 / span 2;
+            grid-column: 1 / span 3;
             grid-row: 1;
             padding-left: 20px;
             position: absolute;

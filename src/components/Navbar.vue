@@ -157,7 +157,6 @@
                 const IS_VALID = to.query.design == 1 || to.query.design == 2
                 if (to.query.design !== this.currentStyle && to.query.design !== undefined && IS_VALID) { // to prevent an infinite loop
                     this.selectTheme(to.query.design)
-                    console.log(to)
                     if (to.path != from.path) { // to prevent an infinite loop
                         this.$router.replace({
                             query: from.query

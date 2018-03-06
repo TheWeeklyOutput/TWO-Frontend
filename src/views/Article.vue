@@ -4,7 +4,7 @@
             <h1 class="article-heading">{{ currentArticle.title }}</h1>
         </span>
         <span class="article-heading-filler">
-            <twitter-shares :shares="Math.ceil(Math.random()*100)" :showShares="false" class="twitter-icon-container-article"></twitter-shares>
+            <page-views :views="currentArticle.views" :showShares="false" class="twitter-icon-container-article"></page-views>
         </span>
         <span class="article-headline-info">
             <p class="article-author">
@@ -38,12 +38,12 @@
     import TopArticles from '../components/ListArticles'
     import * as apiMuts from '../api/mutation-types.js'
     import * as apiActs from '../api/action-types.js'
-    import TwitterShares from '../components/TwitterShares'
+    import PageViews from '../components/PageViews'
     
     export default {
         components: {
             TopArticles,
-            TwitterShares
+            PageViews
         },
         mixins: [apiMixin],
     

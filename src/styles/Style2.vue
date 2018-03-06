@@ -44,6 +44,7 @@
         width: 100%;
         height: 100%;
         z-index: 9999;
+        -webkit-transition: all ease 2.5s;
         transition: all ease 2.5s;
     }
     
@@ -59,6 +60,8 @@
     .style-2 h1 {
         font-size: calc(1em * 1.250 * 1.250 * 1.250);
         font-weight: 600;
+        margin-bottom: 9.6px;
+        margin-bottom: 9.6px;
         margin-bottom: .6rem;
         padding-left: 12px;
     }
@@ -83,17 +86,20 @@
     
     .fade-enter-active,
     .fade-leave-active {
+        -webkit-transition-property: opacity;
         transition-property: opacity;
+        -webkit-transition-duration: .25s;
         transition-duration: .25s;
     }
     
     .fade-enter-active {
+        -webkit-transition-delay: .25s;
         transition-delay: .25s;
     }
     
     .fade-enter,
     .fade-leave-active {
-        opacity: 0
+        opacity: 0;
     }
     
     .style-2 .nav-categories {
@@ -166,8 +172,6 @@
         height: 100vh;
         overflow-y: visible;
         border-right: 1px solid var(--grey-stuff);
-        -moz-transition: all 0.3s ease-out;
-        -o-transition: all 0.3s ease-out;
         -webkit-transition: all 0.3s ease-out;
         transition: all 0.3s ease-out;
         opacity: 0;
@@ -223,6 +227,8 @@
     
     .style-2 p {
         font-size: 1em;
+        margin-bottom: 16px;
+        margin-bottom: 16px;
         margin-bottom: 1rem;
         font-weight: 400;
     }
@@ -313,8 +319,6 @@
         display: block;
         overflow: hidden;
         display: inline-block;
-        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+60,000000+100&0+60,0.7+100 */
-        background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.7) 100%);
         /* FF3.6-15 */
         background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.7) 100%);
         /* Chrome10-25,Safari5.1-6 */
@@ -378,7 +382,6 @@
         display: grid;
         margin: 16px 0 0;
         padding: 16px 16px 0;
-        border-left: 2px solid var(--grey-stuff)
     }
     
     .style-2 .article-image-full {
@@ -389,10 +392,19 @@
     }
     
     .style-2 .article-sidebar-wrapper {
-        grid-column: 4 / 5;
-        grid-row: 4;
+        grid-column: 3;
+        grid-row: 1;
         padding-left: 20px;
-        border-left: 1px solid var(--grey-stuff);
+    }
+    
+    .style-2 .image-credit {
+        padding-top: 10px;
+    }
+    
+    .style-2 .article-three-columns {
+        grid-column: 1 / span 4;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr)
     }
     
     .style-2 .article-image-wrapper {
@@ -402,12 +414,13 @@
         display: block;
         max-height: 1000px;
         overflow: hidden;
+        padding-top: 60px;
     }
     
     .style-2 .article-headline-info {
-        grid-column: 1;
+        grid-column: 2;
         grid-row: 2 / auto;
-        padding-left: 20px
+        color: red
     }
     
     .style-2 .show-all-button {
@@ -438,8 +451,6 @@
         border: 1px solid var(--grey-stuff);
         text-decoration: none;
         background-color: #ebebeb;
-        -webkit-border-radius: 2px;
-        -moz-border-radius: 2x;
         border-radius: 2px;
     }
     
@@ -448,11 +459,10 @@
     }
     
     .style-2 .article-text {
-        font-size: 18px;
+        font-size: 22px;
         text-align: justify;
-        grid-column: 1 / span 3;
+        grid-column: 1 / span 2;
         padding-right: 20px;
-        padding-left: 20px;
         font-weight: 400;
     }
     
@@ -526,12 +536,18 @@
         display: inline-block;
     }
     
+    #nav-spacer {
+        width: 100%;
+        height: 200px !important;
+        display: block;
+    }
+    
     @media (min-width: 600px) {
         .style-2 .article-wrapper {
             grid-template-columns: repeat(1, 1fr);
             margin: 16px auto 0;
             padding: 16px 16px 0;
-            grid-row: 3
+            grid-row: 3;
         }
     }
     
@@ -540,157 +556,15 @@
             grid-template-columns: repeat(4, 1fr);
         }
         .style-2 .article-body {
-            -ms-grid-column: 1;
             grid-column: 1/ span 3;
-            -ms-grid-row-span: 3;
-            -ms-grid-row: 3;
             grid-row: 3;
             padding-right: 20px;
         }
-    }
-    
-    @media only screen and (max-width: 880px) {
-        .style-2 h1 {
-            font-size: 1.5em
-        }
-        .style-2 hr {
-            background-color: #000;
-            height: 0;
-            margin-bottom: 0
-        }
-        .style-2 #nav-spacer {
-            width: 100%;
-            height: 80px!important;
-            display: block;
-        }
-        .style-2 .topper {
-            display: grid;
-            grid-template-columns: 100%;
-        }
-        .style-2 .list-article-list {
-            display: grid;
-            grid-template-columns: 100%;
-            grid-auto-rows: minmax(125px, auto);
-        }
-        .style-2 .topper-article-wrapper {
-            padding-top: 10px;
-            padding-bottom: 10px;
-        }
-        .style-2 .topper-single-container {
-            display: grid;
-            position: relative;
-        }
-        .style-2 .topper-article-title {
-            position: absolute;
-            bottom: 20px
-        }
-        .style-2 .topper-image-wrapper {
-            grid-column: 1;
-            grid-row: 1;
-        }
-        .style-2 .topper-text {
-            grid-column: 1;
-            grid-row: 1;
-        }
-        .style-2 .topper {
-            grid-row: 1;
-            padding-bottom: 20px;
-            border-bottom: none
-        }
-        .style-2 .topper-text {
-            padding: 10px 25px 0 25px;
-            position: relative;
-        }
-        .style-2 .topper .topper-article-title {
-            font-size: 2em;
-        }
-        .style-2 .topper> :nth-child(n+3) .topper-image-wrapper {
-            display: block;
-            margin: 20px;
-            padding-bottom: 10px;
-            grid-row: 1;
-            grid-column: 1
-        }
-        .style-2 .topper-headline-text {
-            width: auto;
-            height: 60px;
-            padding-bottom: 20px;
-            padding-left: 20px;
-            max-width: 300px
-        }
-        .style-2 .article-wrapper {
-            grid-template-columns: 1fr
-        }
-        .style-2 .list-next-to-article-container {
-            display: grid;
-            grid-template-columns: repeat(1, 1fr);
-            grid-auto-rows: minmax(125px, auto);
-            overflow: hidden
-        }
-        .style-2 .list-next-to-article-image-wrapper {
-            display: inline-block;
-            overflow: hidden;
-        }
-        .style-2 .next-to-article-image-wrapper {
-            height: auto;
-            width: 25%;
-            margin: 0;
-            margin-right: 10px
-        }
-        .style-2 .next-to-article {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
-        .style-2 .list-text {
-            grid-column: auto;
-            padding: 18px 18px 0 18px;
-        }
-        .list-article-text {
-            padding-bottom: 10px;
-            padding-top: 10px;
-        }
-        .style-2 .article-heading-filler {
-            grid-column: 2;
-            grid-row: 2;
-            border-bottom: 2px solid var(--grey-stuff);
-            margin-bottom: 0.6rem;
-        }
-        .style-2 .article-author {
-            margin-bottom: 10px;
-            font-weight: 400
-        }
-        .style-2 .article-headline-info {
-            padding-left: 0
-        }
-        .style-2 .twitter-icon-container-article {
-            padding-top: 0;
-            padding-bottom: 10px;
-        }
-        .style-2 h1 {
-            padding-left: 0
-        }
-        .style-2 .article-text {
-            padding-left: 0;
-            font-weight: 400
-        }
-        .style-2 .headline-single-article {
-            grid-column: 1 / span 2
+        .style-2 .article-heading {
+            padding: 0
         }
         .style-2 .list-article-wrapper {
-            padding-top: 10px
-        }
-    }
-    
-    #nav-spacer {
-        width: 100%;
-        height: 200px !important;
-        display: block;
-    }
-    
-    @media (min-width: 880px) {
-        .style-2 .list-article-wrapper {
-            padding-left: 10px
+            padding-left: 10px;
         }
         .list-article {
             padding-top: 10px;
@@ -698,10 +572,6 @@
         }
         .style-2 .site-wrapper {
             margin: 0 auto;
-            border-top: 0px solid var(--grey-stuff);
-            border-right: 2px solid var(--grey-stuff);
-            border-bottom: 0px solid var(--grey-stuff);
-            border-left: 2px solid var(--grey-stuff);
         }
         .style-2 .desktop-only {
             display: block;
@@ -749,7 +619,7 @@
             padding-top: 20px;
         }
         .style-2 .topper> :nth-child(n+3) .topper-article-title {
-            padding-top: 20px
+            padding-top: 20px;
         }
         .style-2 .topper .topper-text {
             grid-column: 1 / span 3;
@@ -766,19 +636,16 @@
             bottom: 40px;
         }
         .style-2 .topper> :nth-child(3) {
-            -ms-grid-column: 3;
             grid-column: 1 / span 3;
-            -ms-grid-row-span: 2;
-            -ms-grid-row: 2;
         }
         .style-2 .topper-article-wrapper {
             padding: 0 12px;
         }
         .style-2 .topper-single-container {
-            display: grid
+            display: grid;
         }
         .style-2 .topper-article-text {
-            padding-top: 10px
+            padding-top: 10px;
         }
         .style-2 .home-bottom {
             display: grid;
@@ -793,34 +660,34 @@
         .style-2 .list-article-list {
             display: grid;
             grid-template-columns: repeat(1, 1fr);
-            padding-left: 12px;
-            padding-right: 12px;
         }
         .style-2 .list-article-text-wrapper {
             padding: 20px;
             font-size: 150%;
         }
+        .style-2 .sidebar .list-article-text {
+            background-color: white;
+            box-shadow: 0px 0px 8px -4px rgba(0, 0, 0, 0.75);
+        }
         .style-2 .list-article-wrapper {
             grid-column: 1 / span 4;
         }
         .style-2 .topper-author-timestap-wrapper {
-            padding-bottom: 10px
+            padding-bottom: 10px;
         }
         .style-2 .list-timestamp {
-            padding-left: 10%
+            padding-left: 10%;
         }
         .style-2 .headline-single-article {
             font-style: normal;
+            font-size: 1.8em;
             font-weight: 600;
             letter-spacing: normal;
             line-height: 1.2;
             text-transform: none;
             margin-bottom: .6rem;
             grid-row: 1;
-            grid-column: 1 / 4;
-            padding-left: 20px;
-            border-right: 2px solid var(--grey-stuff);
-            border-bottom: 2px solid var(--grey-stuff)
+            grid-column: 1 / span 4;
         }
         .style-2 .list-next-to-article-container {
             display: grid;
@@ -833,14 +700,10 @@
         }
         .style-2 .list-next-to-article-image-wrapper {
             display: inline-block;
-            -ms-grid-column: 4;
             grid-column: 1 / span 4;
-            -ms-grid-row: 1;
             grid-row: 1;
             max-height: 400px;
             grid-row: 1;
-            /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+60,000000+100&0+0,0.7+100 */
-            background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.42) 60%, rgba(0, 0, 0, 0.7) 100%);
             /* FF3.6-15 */
             background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.42) 60%, rgba(0, 0, 0, 0.7) 100%);
             /* Chrome10-25,Safari5.1-6 */
@@ -854,10 +717,11 @@
             height: auto;
             width: 25%;
             margin: 0;
-            margin-right: 10px
+            margin-right: 10px;
         }
         .style-2 .next-to-article {
             width: 100%;
+            -o-object-fit: cover;
             object-fit: cover;
             position: relative;
             z-index: -1;
@@ -865,6 +729,7 @@
         .style-2 .list-text {
             display: inline-block;
             grid-column: 1/ span 3;
+            padding: 20px;
         }
         .style-2 .list-next-to-article-container .list-text {
             padding-left: 20px;
@@ -873,24 +738,164 @@
             position: absolute;
             bottom: 20px;
         }
-        .style-2 .twitter-icon-container-article {
-            justify-content: center;
-            height: 100%;
-            padding-top: 0;
-            margin-top: -10px;
-            white-space: nowrap
+        .style-2 .twitter-icon-container-article>.page-views {}
+    }
+    
+    @media only screen and (max-width: 880px) {
+        .style-2 h1 {
+            font-size: 1.5em;
         }
-        .style-2 .twitter-icon-container-article>.twitter-shares {
-            width: auto
+        .style-2 hr {
+            background-color: #000;
+            height: 0;
+            margin-bottom: 0;
+        }
+        .style-2 #nav-spacer {
+            width: 100%;
+            height: 80px!important;
+            display: block;
+        }
+        .style-2 .topper {
+            display: grid;
+            grid-template-columns: 100%;
+        }
+        .style-2 .list-article-list {
+            display: grid;
+            grid-template-columns: 100%;
+            grid-auto-rows: minmax(125px, auto);
+        }
+        .style-2 .topper-article-wrapper {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        .style-2 .topper-single-container {
+            display: grid;
+            position: relative;
+        }
+        .style-2 .topper-article-title {
+            position: absolute;
+            bottom: 20px;
+        }
+        .style-2 .topper-image-wrapper {
+            grid-column: 1;
+            grid-row: 1;
+        }
+        .style-2 .topper-text {
+            grid-column: 1;
+            grid-row: 1;
+        }
+        .style-2 .topper {
+            grid-row: 1;
+            padding-bottom: 20px;
+            border-bottom: none;
+        }
+        .style-2 .topper-text {
+            padding: 10px 25px 0 25px;
+            position: relative;
+        }
+        .style-2 .topper .topper-article-title {
+            padding-right: 10px;
+        }
+        .style-2 .topper> :nth-child(n+3) .topper-image-wrapper {
+            display: block;
+            margin: 20px;
+            padding-bottom: 10px;
+            grid-row: 1;
+            grid-column: 1;
+        }
+        .style-2 .topper-headline-text {
+            width: auto;
+            height: 60px;
+            padding-bottom: 20px;
+            padding-left: 20px;
+            max-width: 300px;
+        }
+        .style-2 .article-wrapper {
+            grid-template-columns: 1fr;
+        }
+        .style-2 .headline-single-article {
+            padding-bottom: 20px;
+        }
+        .style-2 .article-heading-filler {
+            grid-column: auto !important
+        }
+        .style-2 .article-three-columns {
+            grid-template-columns: repeat(1, 1fr)
+        }
+        .style-2 .article-image-wrapper {
+            padding-top: 20px;
+        }
+        .style-2 .list-next-to-article-container {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            grid-auto-rows: minmax(125px, auto);
+            overflow: hidden;
+        }
+        .style-2 .list-next-to-article-image-wrapper {
+            display: inline-block;
+            overflow: hidden;
+        }
+        .style-2 .next-to-article-image-wrapper {
+            height: auto;
+            width: 25%;
+            margin: 0;
+            margin-right: 10px;
+        }
+        .style-2 .next-to-article {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        .style-2 .list-text {
+            grid-column: auto;
+            padding: 18px 18px 0 18px;
+        }
+        .list-article-text {
+            padding-bottom: 10px;
+            padding-top: 10px;
+        }
+        .style-2 .article-heading-filler {
+            grid-column: 2;
+            grid-row: 2;
+            margin-bottom: 0.6rem;
+        }
+        .style-2 .article-author {
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+        .style-2 .article-headline-info {
+            padding-left: 0;
+        }
+        .style-2 .twitter-icon-container-article {
+            padding-top: 0;
+            padding-bottom: 10px;
+        }
+        .style-2 h1 {
+            padding-left: 0;
+        }
+        .style-2 .article-text {
+            padding-left: 0;
+            font-weight: 400;
+        }
+        .style-2 .headline-single-article {
+            grid-column: 1 / span 2;
+        }
+        .style-2 .list-article-wrapper {
+            padding-top: 10px;
+        }
+        .style-2 .article-headline-info {
+            grid-column: 1;
+            grid-row: 3 / auto;
+            color: red;
         }
     }
     
     @media (max-width: 1300px) and (min-width: 880px) {
         .style-2 .home {
-            padding: 10px
+            padding: 10px;
         }
         .style-2 .category {
-            padding: 10px
+            padding: 10px;
         }
     }
 </style>

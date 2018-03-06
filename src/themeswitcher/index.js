@@ -4,7 +4,21 @@ import * as acts from './action-types.js'
 
 export default {
   state: {
-    currentStyle: Math.round(Math.random()) + 1
+    currentStyle: Math.round(Math.random()) + 1,
+    styleSettings: {
+      1: {        
+        article: {
+          sidebarDescriptionShown: true,
+          sidebarImageStyle: 'no'
+        }
+      },
+      2: {        
+        article: {
+          sidebarDescriptionShown: false,
+          sidebarImageStyle: 'image-above'
+        }
+      }
+    }
   },
   actions: {
     [acts.SET_DESIGN_MATOMO] ({ state }, { design }) {    

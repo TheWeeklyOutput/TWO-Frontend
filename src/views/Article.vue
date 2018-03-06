@@ -1,32 +1,37 @@
 <template>
     <div v-if="currentArticle" class="component-wrapper article-wrapper">
         <span class="headline-single-article">
-            <h1 class="article-heading">{{ currentArticle.title }}</h1>
-        </span>
+                <h1 class="article-heading">{{ currentArticle.title }}</h1>
+            </span>
         <span class="article-heading-filler">
-            <page-views :views="currentArticle.views" :showShares="false" class="twitter-icon-container-article"></page-views>
-        </span>
+                <page-views :views="currentArticle.views" :showShares="false" class="twitter-icon-container-article"></page-views>
+            </span>
         <span class="article-headline-info">
-            <p class="article-author">
-                By {{ currentArticle.author.name }}
-            </p>
+                <p class="article-author">
+                    By {{ currentArticle.author.name.toUpperCase() }} | <span class="article-timestamp"> <timeago :since="currentArticle.date"></timeago> </span>
+    
+        </p>
         </span>
         <span class="article-image-wrapper">
-            <progressive-img :src="currentArticle.image_url" class="article-image-full" />
-            <h3 class="image-credit">photo by {{ currentArticle.image_credit }}</h3>
-        </span>
-        <div class="article-text" >
-            <p v-for="paragraph in currentArticle.paragraphs"> {{ paragraph.content }} </p>
+                <progressive-img :src="currentArticle.image_url" class="article-image-full" />
+                <h3 class="image-credit">photo by {{ currentArticle.image_credit }}</h3>
+            </span>
+        <div class="article-three-columns">
+            <div class="article-text">
+                <p v-for="paragraph in currentArticle.paragraphs"> {{ paragraph.content }} </p>
+            </div>
+            <div class="article-sidebar-wrapper desktop-only">
+                <TopArticles class="sidebar" :categoryToRender="'highlights'" :showText="themeSwitcher.styleSettings[themeSwitcher.currentStyle].article.sidebarDescriptionShown" :showAuthor="false" :mode="'list-'" :imageStyle="themeSwitcher.styleSettings[themeSwitcher.currentStyle].article.sidebarImageStyle">
+                </TopArticles>
+            </div>
+            <div class="article-bottombar-wrapper mobile-only">
+                <p>You might also enjoy:</p>
+                <TopArticles class="sidebar" :categoryToRender="'highlights'" :showText="true" :showAuthor="false" :mode="'horizontal-list-'" :imageStyle="'no'">
+                </TopArticles>
+            </div>
+    
         </div>
-        <div class="article-sidebar-wrapper desktop-only">
-            <TopArticles class="sidebar" :categoryToRender="'highlights'" :showText="true" :showAuthor="false" :mode="'list-'" :imageStyle="'no'">
-            </TopArticles>
-        </div>
-        <div class="article-bottombar-wrapper mobile-only">
-            <p>You might also enjoy:</p>
-            <TopArticles class="sidebar" :categoryToRender="'highlights'" :showText="true" :showAuthor="false" :mode="'horizontal-list-'" :imageStyle="'no'">
-            </TopArticles>
-        </div>
+    
     </div>
 </template>
 
@@ -35,6 +40,7 @@
         mapState
     } from 'vuex'
     import apiMixin from '../mixins/api.js'
+    import themeSwitcherMixin from '../mixins/themeswitcher.js'
     import TopArticles from '../components/ListArticles'
     import * as apiMuts from '../api/mutation-types.js'
     import * as apiActs from '../api/action-types.js'
@@ -45,7 +51,7 @@
             TopArticles,
             PageViews
         },
-        mixins: [apiMixin],
+        mixins: [apiMixin, themeSwitcherMixin],
     
         props: {
             category: {

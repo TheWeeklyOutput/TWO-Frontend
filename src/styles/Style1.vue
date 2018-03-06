@@ -235,8 +235,7 @@
         width: auto;
         max-width: 100%;
     }
-
-
+    
     .style-1 .desktop-only {
         display: none
     }
@@ -371,8 +370,6 @@
     }
     
     .style-1 .article-sidebar-wrapper {
-        grid-column: 4 / 5;
-        grid-row: 4;
         padding-left: 20px;
         border-left: 1px solid var(--grey-stuff);
     }
@@ -387,7 +384,7 @@
     }
     
     .style-1 .article-headline-info {
-        grid-column: 1;
+        grid-column: 1 / span 2;
         grid-row: 2 / auto;
         padding-left: 20px
     }
@@ -406,9 +403,15 @@
     .style-1 .article-text {
         font-size: 14px;
         text-align: justify;
-        grid-column: 1 / span 3;
+        grid-column: 1 / span 2;
         padding-right: 20px;
         padding-left: 20px
+    }
+    
+    .style-1 .article-three-columns {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column: 1 / span 4;
     }
     
     .style-1 .article-heading {
@@ -500,10 +503,7 @@
             grid-template-columns: repeat(4, 1fr);
         }
         .style-1 .article-body {
-            -ms-grid-column: 1;
             grid-column: 1/ span 3;
-            -ms-grid-row-span: 3;
-            -ms-grid-row: 3;
             grid-row: 3;
             padding-right: 20px;
         }
@@ -550,7 +550,6 @@
         }
         .style-1 .topper> :nth-child(n+3) .topper-image-wrapper {
             display: block;
-            padding: 20px;
             padding-bottom: 10px
         }
         .style-1 .topper-headline-text {
@@ -601,14 +600,16 @@
             margin-bottom: 10px;
         }
         .style-1 .article-headline-info {
-            padding-left: 0
+            padding-left: 0;
+            grid-column: auto
         }
         .style-1 .twitter-icon-container-article {
             padding-top: 0;
             padding-bottom: 10px;
         }
         .style-1 h1 {
-            padding-left: 0
+            padding-left: 0;
+            margin-bottom: 30px;
         }
         .style-1 .article-text {
             padding-left: 0
@@ -677,6 +678,9 @@
         .style-1 .topper> :nth-child(n+3) {
             padding-top: 20px;
         }
+        .style-1 .topper> :nth-child(6) {
+            grid-column: 1 / span 4
+        }
         .style-1 .topper> :nth-child(n+3) .topper-article-title {
             font-size: 1em;
             padding-top: 20px
@@ -688,10 +692,7 @@
             padding-right: 12px;
         }
         .style-1 .topper> :nth-child(3) {
-            -ms-grid-column: 3;
             grid-column: 1 / span 2;
-            -ms-grid-row-span: 2;
-            -ms-grid-row: 2;
         }
         .style-1 .topper-article-wrapper {
             padding: 0 12px;

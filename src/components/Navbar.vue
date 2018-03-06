@@ -20,16 +20,16 @@
                 <affix v-if="api.loaded" relative-element-selector="#router-link" :scroll-affix="false" :offset="{ top: 80, bottom: 200 }" v-on:affixtop="scrollHandler(false)" v-on:affix="scrollHandler(true)" id="desktop-navbar">
                     <div>
                         <span id="theme-switcher" v-bind:class="{ active: expandedSwitcher}">
-                                            <div id="theme-switcher-wrapper">                
-                                                <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
-                                                    <logo-style1 class="theme-switcher-logo" alt="The Weekly Output Style 1"></logo-style1>
-                                                </span>
+                                <div id="theme-switcher-wrapper">                
+                                    <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
+                                        <logo-style1 class="theme-switcher-logo" alt="The Weekly Output Style 1"></logo-style1>
+                                    </span>
                         <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
-                                                    <logo-style1 class="theme-switcher-logo" alt="The Weekly Output Style 2"></logo-style1>
-                                                </span>
+                                        <logo-style1 class="theme-switcher-logo" alt="The Weekly Output Style 2"></logo-style1>
+                                    </span>
                         <!--<span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
-                                                    <logo-style1 class="theme-switcher-logo" alt="The Weekly Output 3"></logo-style1>
-                                                </span>-->
+                                        <logo-style1 class="theme-switcher-logo" alt="The Weekly Output 3"></logo-style1>
+                                    </span>-->
                     </div>
                     </span>
                     <ul class="nav-categories">
@@ -137,33 +137,36 @@
         },
         watch: {
             currentStyle() {
-                this.$router.replace({
-                    query: {
-                        design: this.currentStyle
-                    }
-                })
+                if (this.$route.query.design !== this.currentStyle && this.$route.query.design !== undefined) {
+                    this.$router.replace({
+                        query: {
+                            design: this.currentStyle
+                        }
+                    })
+                }
                 this.pushDesignMatomo()
             },
             $route(to, from) {
-                if(to.query.design === undefined || to.query.design !== 1 || to.query.design !== 2) {
+                if (from.query.design === undefined || (to.query.design != 1 || to.query.design != 2)) {
                     this.$router.push({
                         query: {
                             design: this.currentStyle
                         }
- 
+    
                     })
+                    return
                 }
-
+    
                 const IS_VALID = to.query.design == 1 || to.query.design == 2
-                if (to.query.design !== this.currentStyle && to.query.design !== undefined && IS_VALID) { // to prevent an infinite loop
+                if (to.query.design !== this.currentStyle && to.query.design !== undefined && IS_VALID) {
                     this.selectTheme(to.query.design)
-                    if (to.path != from.path) { // to prevent an infinite loop
+                    if (to.path != from.path) {
                         this.$router.replace({
                             query: from.query
                         })
                     }
-    
                 }
+    
             }
         },
         mounted() {

@@ -462,7 +462,7 @@
         font-size: 22px;
         text-align: justify;
         grid-column: 1 / span 2;
-        padding-right: 20px;
+        padding-right: 30px;
         font-weight: 400;
     }
     

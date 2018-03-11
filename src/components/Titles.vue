@@ -5,7 +5,7 @@
         </div>
     
         <div v-if="themeSwitcher.currentStyle == 2" class="topper-headline-text">
-            {{ category.toUpperCase() }}
+            <span class="category-header">{{ category.toUpperCase() }}</span>
             <hr class="topper-headline-underline">
         </div>
     

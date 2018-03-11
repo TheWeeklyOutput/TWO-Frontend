@@ -1,6 +1,8 @@
 <template>
   <div id="app" :class="'style-' + themeSwitcher.currentStyle + ' ' + 'overflow-' + isOverflowVisible">
-    <loading-overlay v-if="!loaded" :type="'nonesense'"></loading-overlay>
+    <transition name="fade">
+      <loading-overlay v-if="!loaded" :type="'nonesense'"></loading-overlay>
+    </transition>
     <div class="site-wrapper">
       <Navbar v-on:click="test1 = false">
       </Navbar>
@@ -71,7 +73,21 @@
 </script>
 
 <style>
-  
+  .fade-enter-active {
+    transition: all .3s ease;
+  }
+  .fade-leave-active {
+    transition: all .2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  }
+  .fade-enter, .slide-fade-leave-to {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+
+  .fade-enter, .fade-leave-to {
+      opacity: 0;
+  }
+
 </style>
 
 <style>

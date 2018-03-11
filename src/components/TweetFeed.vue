@@ -1,35 +1,27 @@
 <<template>
     <div>
         <h1 style="font-size: 20px">Recent tweets</h1>
-        <div v-for="tweet in tweets">
-            <Tweet :id="tweet"></Tweet>
+        <div>
+            <a class="twitter-timeline" href="https://twitter.com/hashtag/TrumpRussia" data-widget-id="971351194944851969" data-chrome="nofooter noborders transparent" data-width="auto" data-height="4000"></a>
+    
+    
         </div>
     </div>
 </template>
 
 <script>
-    import {
-        Tweet,
-        Moment
-    } from 'vue-tweet-embed'
+    ! function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+            p = /^http:/.test(d.location) ? 'http' : 'https';
+        if (!d.getElementById(id)) {
+            js = d.createElement(s);
+            js.id = id;
+            js.src = p + "://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }
+    }(document, "script", "twitter-wjs");
     
     export default {
-        components: {
-            Tweet
-        },
-        data() {
-            return {
-                tweets: [
-                    '865986101437247490',
-                    '865986101437247490',
-                    '865986101437247490',
-                    '865986101437247490',
-                    '865986101437247490',
-                    '865986101437247490',
-                    '865986101437247490',
-                ]
-            }
-        }
     }
 </script>
 

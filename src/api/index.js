@@ -21,7 +21,7 @@ export default {
     currentArticle: null, 
     categories: [],
     loaded: false,
-    categoryCount: 0
+    categoryCount: 0,
   },
   getters: {
     getMessagesFromRes: () => (res) => {
@@ -41,9 +41,6 @@ export default {
   },
   actions: {
     [acts.SET_UP] ({ commit, dispatch, state }, { context }) {
-      dispatch(acts.GET_SHARED_COUNT, { 
-        context
-      })
       dispatch(acts.GET_CATEGORIES, { 
             context
         })
@@ -58,7 +55,6 @@ export default {
       )
     },
     [acts.GET_CATEGORIES] ({ state, dispatch, commit }, { context }) {
-      commit(muts.TOGGLE_LOADING, {status: false})
       dispatch(acts.REST_CALL, {
         promise: context.$http.get('corpora/categories/'),
         action: acts.GET_CATEGORIES, context,
@@ -68,7 +64,10 @@ export default {
           state.categories.forEach((category) => {
             dispatch(acts.GET_CATEGORY_PAGE, { context, category: category.slug, page: 1 });
           })
-          state.loaded = true
+          commit(muts.SET_LOADED, {
+            status: false
+          })
+
         }, onError(res) { }
       })
     },
@@ -79,8 +78,9 @@ export default {
         onSuccess(res) {
           log.dir(res)
           commit(muts.UPDATE_CURRENT_ARTICLE, { article: res.body })
-        
-          commit(muts.TOGGLE_LOADING, {status: true})
+          commit(muts.SET_LOADED, {
+            status: true
+          })
 
         }, onError (res) {}
       })
@@ -97,32 +97,6 @@ export default {
     },
     [acts.CHANGE_PAGE_TITLE]({ state, dispatch, commit, getters }, { title }) {
       document.title = title
-    },
-    [acts.GET_SHARED_COUNT] ( {state, dispatch, commit, getters}, {context} ) {
-        /*url = encodeURIComponent(url || location.href);
-        const domain = "//sample.sharedcount.com"
-        const apikey = "fe80911d9bb8239e44296167ac0cbba5920144af"
-        const arg = {
-          data: {
-            url : url,
-            apikey : apikey
-          },
-            url: domain,
-            cache: true,
-            dataType: "json"
-        };
-        if ('withCredentials' in new XMLHttpRequest) {
-            arg.success = fn
-        }
-        else {
-            let cb = "sc_" + url.replace(/\W/g, '')
-            window[cb] = fn
-            arg.jsonpCallback = cb
-            arg.dataType += "p"
-        }*/
-        /*let response = context.$http.get('//api.sharedcount.com/?apikey=fe80911d9bb8239e44296167ac0cbba5920144af&url=https://www.keybase.io')
-        console.log(response)
-        return response*/
     }
   },
   mutations: {
@@ -130,16 +104,13 @@ export default {
       state.currentArticle = article
     },
     [muts.UPDATE_ARTICLES] (state, { category, articles }) {
-      if (!(category in articles)) {
+      if (!(articles.hasOwnProperty(category))) {
         state.articles[category] = []
         state.categoryCount ++
-
       }
       state.articles[category] = state.articles[category].concat(articles)
-      console.log(state.articles[category])
-      state.loaded = true
     },
-    [muts.TOGGLE_LOADING] (state, { status }) {
+    [muts.SET_LOADED] (state, { status }) {
       state.loaded = status
     }
   }

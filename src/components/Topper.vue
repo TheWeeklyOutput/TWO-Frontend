@@ -8,20 +8,20 @@
             <router-link :to="{ name: 'article', params: {  category: categoryToRender.slug, slug: article.slug }}" :class="'article-link'" transition="fade">
                 <div :class="'topper-single-container'">
                     <span :class="'topper-image-wrapper'">
-                            <progressive-img :src="article.image_url" :class="'topper-image'" />
-                        </span>
+                                <progressive-img :src="article.image_url" :class="'topper-image'" />
+                            </span>
                     <span :class="'topper-text'">
-                                        <h2 :class="'topper-article-title'">{{ article.title }}</h2>
-                                        <span class="topper-author-timestap-wrapper desktop-only" v-if="themeSwitcher.currentStyle != 2">
-                                            <span :class="'topper-author'" >By 
-                                                <router-link :to="{ name: 'author', params: {  name: article.author.slug }}" transition="fade">
-                                                    {{ article.author.name }}
-                                                </router-link>
-                                            </span>
-                    <span class="list-timestamp"> <timeago :since="article.date" v-if="themeSwitcher.currentStyle != 2"></timeago></span>
+                        <h2 :class="'topper-article-title'">{{ article.title }}</h2>
+                        <span class="topper-author-timestap-wrapper desktop-only" v-if="themeSwitcher.currentStyle != 2">
+                            <span :class="'topper-author'" >By 
+                                <router-link :to="{ name: 'author', params: {  name: article.author.slug }}" transition="fade">
+                                    {{ article.author.name }}
+                                </router-link>
+                            </span>
+                        <span class="list-timestamp"> <timeago :since="article.date" v-if="themeSwitcher.currentStyle != 2"></timeago></span>
                     </span>
                     <h3 :class="'topper-article-text'" v-if="themeSwitcher.currentStyle != 2">{{ article.description.substring(0, 200) }}...</h3>
-                    <page-views :views="Math.ceil(Math.random()*100)" v-if="themeSwitcher.currentStyle != 2"></page-views>
+                    <page-views :views="article.views"></page-views>
                     </span>
                 </div>
             </router-link>

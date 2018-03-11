@@ -1,21 +1,21 @@
 <template>
     <div v-if="currentArticle" class="component-wrapper article-wrapper">
         <span class="headline-single-article">
-                <h1 class="article-heading">{{ currentArticle.title }}</h1>
-            </span>
+                        <h1 class="article-heading">{{ currentArticle.title }}</h1>
+                    </span>
         <span class="article-heading-filler">
-                <page-views :views="currentArticle.views" :showShares="false" class="twitter-icon-container-article"></page-views>
-            </span>
+                        <page-views :views="currentArticle.views" :showShares="false" class="twitter-icon-container-article"></page-views>
+                    </span>
         <span class="article-headline-info">
-                <p class="article-author">
-                    By {{ currentArticle.author.name.toUpperCase() }} | <span class="article-timestamp"> <timeago :since="currentArticle.date"></timeago> </span>
+                        <p class="article-author">
+                            By {{ currentArticle.author.name.toUpperCase() }} | <span class="article-timestamp"> <timeago :since="currentArticle.date"></timeago> </span>
     
         </p>
         </span>
         <span class="article-image-wrapper">
-                <progressive-img :src="currentArticle.image_url" class="article-image-full" />
-                <h3 class="image-credit">photo by {{ currentArticle.image_credit }}</h3>
-            </span>
+                        <progressive-img :src="currentArticle.image_url" class="article-image-full" />
+                        <h3 class="image-credit">photo by {{ currentArticle.image_credit }}</h3>
+                    </span>
         <div class="article-three-columns">
             <div class="article-text">
                 <p v-for="paragraph in currentArticle.paragraphs"> {{ paragraph.content }} </p>
@@ -86,6 +86,10 @@
                     context: this,
                     slug: this.slug
                 })
+                this.$store.commit(apiMuts.SET_LOADED, {
+                    status: false
+                })
+    
             }
         }
     }

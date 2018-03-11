@@ -22,15 +22,29 @@
         fill: #00ACED
     }
     
+    
     .style-1 .page-views {
-        font-size: 18px;
+        font-size: 0.7em;
         font-weight: 600;
-        font-family: 'Georgia', serif;
-        padding-left: 1.5%;
-        width: 100%;
-        text-align: center
+        font-family: 'Helvetica', sans-serif;
+        text-align: center;
+        color: white;
+        background: black;
+        padding: 8px 5px;
     }
     
+    .style-1 .article-heading-filler .page-views {
+        font-size: 18px;
+        font-weight: 600;
+        font-family: 'Helvetica', sans-serif;
+        padding-left: 1.5%;
+        width: 100%;
+        color: black;
+        text-align: center;
+        background: none
+    }
+
+
     .style-2 .page-views {
         font-size: 18px;
         font-weight: 600;
@@ -39,6 +53,7 @@
         width: auto;
         background-color: red;
         padding: 5px 8px;
+        color: white;
     }
     
     .style-2 .twitter-icon-container-article {
@@ -46,7 +61,6 @@
         padding-top: 0;
         margin-top: -10px;
         white-space: nowrap;
-        color: white;
     }
     
     .page-views-container {

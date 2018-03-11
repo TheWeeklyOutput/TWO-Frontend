@@ -44,8 +44,6 @@
         width: 100%;
         height: 100%;
         z-index: 9999;
-        -webkit-transition: all ease 2.5s;
-        transition: all ease 2.5s;
     }
     
     .loading-overlay>div {
@@ -165,6 +163,7 @@
         -moz-border-radius: 5px;
         border-radius: 5px;
         box-shadow: 0px 0px 8px -4px rgba(0, 0, 0, 0.75);
+        display: none
     }
     
     .style-2 #theme-switcher::after {
@@ -206,6 +205,7 @@
     .style-2 .active {
         opacity: 1 !important;
         height: auto !important;
+        display: block !important
     }
     
     .style-2 .mobile-nav-container {

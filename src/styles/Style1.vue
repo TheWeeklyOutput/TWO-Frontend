@@ -42,7 +42,6 @@
         width: 100%;
         height: 100%;
         z-index: 9999;
-        transition: all ease 2.5s;
     }
     
     .loading-overlay>div {

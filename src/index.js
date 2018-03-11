@@ -9,6 +9,9 @@ import store from './store'
 import Affix from 'vue-affix'
 import VueTimeago from 'vue-timeago'
 import VueProgressiveImage from 'vue-progressive-image'
+import infiniteScroll from 'vue-infinite-scroll'
+Vue.use(infiniteScroll)
+Vue.directive({infiniteScroll})
 
 Vue.use(VueTimeago, {
   name: 'timeago', // component name, `timeago` by default

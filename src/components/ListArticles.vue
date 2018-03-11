@@ -5,10 +5,10 @@
                 <router-link :to="{ name: 'article', params: {  category: categoryToRender, slug: article.slug }}" :class="'article-link'" transition="fade" v-on:click="changeArticle(article.slug)">
                     <div :class="mode + imageStyle + '-container'" v-on:click="changeArticle(article.slug)">
                         <span :class="mode + imageStyle + '-image-wrapper'">
-                                    <progressive-img :src="article.image_url" :class="imageStyle + ' ' + getOrientation(article.image_url)" v-if="(imageStyle === 'no-image') == false" />
-                                </span>
+                            <progressive-img :src="article.image_url" :class="imageStyle + ' ' + getOrientation(article.image_url)" v-if="(imageStyle === 'no-image') == false" />
+                        </span>
                         <span :class="mode + 'text'">
-                                <span> <h2 :class="mode + 'title'">{{ article.title }}</h2> </span>
+                        <span> <h2 :class="mode + 'title'">{{ article.title }}</h2> </span>
                         <span v-if="showText"><h3 :class="mode + 'description'">{{ article.description.substring(0, 200) }}...</h3></span>
                         <span :class="mode + 'author'" v-if="showAuthor">By <router-link :to="{ name: 'author', params: {  name: article.author.name }}"  transition="fade">{{ article.author.name }}</router-link></span>
                         <span class="list-timestamp" v-if="showAuthor && api.loaded"> <timeago :since="article.date"></timeago> </span>
@@ -18,7 +18,7 @@
                 </router-link>
             </div>
         </div>
-        <infinite-loading v-if="$route.path.indexOf('/articles/' + categoryToRender)">= 0" @infinite="changePage($event, 2)"></infinite-loading>
+        <infinite-loading v-if="$route.path.indexOf('/articles/' + categoryToRender) >= 0" @infinite="changePage($event, 2)"></infinite-loading>
     
     </div>
 </template>
@@ -32,7 +32,9 @@
     import * as apiMuts from '../api/mutation-types.js'
     import * as apiActs from '../api/action-types.js'
     import PageViews from './PageViews'
-    import InfiniteLoading from 'vue-infinite-loading';
+    import InfiniteLoading from 'vue-infinite-loading'
+    import infiniteScroll from 'vue-infinite-scroll'
+    
     
     import {
         SET_UP
@@ -40,6 +42,7 @@
     
     
     export default {
+    
         mixins: [apiMixin],
         components: {
             PageViews,
@@ -127,13 +130,8 @@
                     page: this.articlePage
                 })
                 const ctx = this
-                setTimeout(function() {
-                    ctx.articleList = ctx.articleList.concat(ctx.api.articles[ctx.categoryToRender])
-                    console.log(ctx.articleList)
-                    ctx.articlePage++
-                        $state.loaded()
-                }, 2000)
-    
+                ctx.articleList = ctx.articleList.concat(ctx.api.articles[ctx.categoryToRender])
+                console.log(ctx.articleList)
             }
         }
     

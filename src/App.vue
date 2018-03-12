@@ -1,13 +1,17 @@
 <template>
   <div id="app" :class="'style-' + themeSwitcher.currentStyle + ' ' + 'overflow-' + isOverflowVisible">
     <transition name="fade">
-      <loading-overlay v-if="!loaded" :type="'nonesense'"></loading-overlay>
+      <loading-overlay v-if="!loaded" :type="'quality output'"></loading-overlay>
     </transition>
     <div class="site-wrapper">
       <Navbar v-on:click="test1 = false">
       </Navbar>
+      
       <div id="router-link">
-        <router-view></router-view>
+        <transition name="fade">
+          <router-view></router-view>
+        </transition>
+
       </div>
     </div>
     <FooterBar></FooterBar>
@@ -35,16 +39,6 @@
       apiMixin, 
       themeSwitcherMixin
     ],
-    matomo (from, to, store) {
-        console.log(store)
-        console.log(from)
-        console.log(to)
-
-      return {
-        someVar: ['setCustomVariable', 1, 'VisitorType', 'Special Member']
-      }
-    },
-
     components: {
       LoadingOverlay,
       Navbar,

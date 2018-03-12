@@ -10,7 +10,7 @@
                         <span :class="mode + 'text'">
                         <span> <h2 :class="mode + 'title'">{{ article.title }}</h2> </span>
                         <span v-if="showText"><h3 :class="mode + 'description'">{{ article.description.substring(0, 200) }}...</h3></span>
-                        <span :class="mode + 'author'" v-if="showAuthor">By <router-link :to="{ name: 'author', params: {  name: article.author.name }}"  transition="fade">{{ article.author.name }}</router-link></span>
+                        <span :class="mode + 'author'" v-if="showAuthor">By {{ article.author.name }}</span>
                         <span class="list-timestamp" v-if="showAuthor && api.loaded"> <timeago :since="article.date"></timeago> </span>
                         <page-views :views="article.views" v-if="isInfinite"></page-views>
                         </span>
@@ -18,7 +18,7 @@
                 </router-link>
             </div>
         </div>
-        <infinite-loading v-if="$route.path.indexOf('/articles/' + categoryToRender) >= 0" @infinite="changePage($event, 2)"></infinite-loading>
+        <infinite-loading v-if="$route.path.endsWith('/articles/' + categoryToRender + '/')" @infinite="changePage($event, 2)"></infinite-loading>
     
     </div>
 </template>
@@ -103,6 +103,7 @@
         },
         methods: {
             changeArticle(slug) {
+                this.api.currentArticle = null
                 this.$store.dispatch(apiActs.GET_ARTICLE_BY_SLUG, {
                     context: this,
                     slug: slug

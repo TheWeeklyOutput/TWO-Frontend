@@ -152,10 +152,10 @@
         background-color: #FCFCFC;
         width: 500%;
         overflow-y: visible;
-        border-right: 1px solid var(--grey-stuff);
         -webkit-transition: all 0.3s ease-out;
         transition: all 0.3s ease-out;
         opacity: 0;
+        display: none;
         padding: 50% 0%;
         left: 0;
         height: 0;
@@ -204,8 +204,8 @@
     
     .style-2 .active {
         opacity: 1 !important;
+        display: block !important;
         height: auto !important;
-        display: block !important
     }
     
     .style-2 .mobile-nav-container {
@@ -244,7 +244,7 @@
         font-weight: 800
     }
     
-    .style-2 .logo.style-2-mobile {
+    .style-2 .logo-style-1-mobile {
         height: 30px;
         width: auto;
         max-width: 100%;
@@ -427,7 +427,7 @@
     }
     
     .style-2 .article-headline-info {
-        grid-column: 2;
+        grid-column: 2 / span 3;
         grid-row: 2 / auto;
         color: red
     }
@@ -699,7 +699,7 @@
         }
         .style-2 .headline-single-article {
             font-style: normal;
-            font-size: 1.8em;
+            font-size: 1.6em;
             font-weight: 600;
             letter-spacing: normal;
             line-height: 1.2;

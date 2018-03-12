@@ -27,6 +27,14 @@
         background-color: var(--bg-color);
         min-height: 100%
     }
+
+    a {
+        color: black
+    }
+
+    .placeholder {
+        width: 100%;
+    }
     
     .overflow-hidden {
         overflow: hidden;
@@ -154,10 +162,10 @@
         background-color: #FCFCFC;
         width: 500%;
         overflow-y: visible;
-        border-right: 1px solid var(--grey-stuff);
         -webkit-transition: all 0.3s ease-out;
         transition: all 0.3s ease-out;
         opacity: 0;
+        display: none;
         padding: 50% 0%;
         left: 0;
         height: 0;
@@ -206,6 +214,7 @@
     
     .style-1 .active {
         opacity: 1 !important;
+        display: block !important;
         height: auto !important;
     }
     
@@ -765,7 +774,7 @@
             padding-bottom: 10px
         }
         .style-1 .list-timestamp {
-            padding-left: 10%
+            padding-left: 2%
         }
         .style-1 .headline-single-article {
             font-style: normal;
@@ -791,7 +800,9 @@
         .style-1 .list-next-to-article-image-wrapper {
             display: inline-block;
             grid-column: 4;
-            grid-row: 1
+            grid-row: 1;
+            max-height: 150px;
+            overflow: hidden;
         }
         .style-1 .next-to-article-image-wrapper {
             height: auto;

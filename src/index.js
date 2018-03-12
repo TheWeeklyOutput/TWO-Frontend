@@ -25,9 +25,7 @@ Vue.use(VueTimeago, {
 // vue-shortkey
 Vue.use(require('vue-shortkey'))
 Vue.use(Affix)
-Vue.use(VueProgressiveImage, {
-  blur: 30
-})
+Vue.use(VueProgressiveImage)
 
 // vue-resource
 Vue.use(VueResource)
@@ -50,7 +48,7 @@ const router = new Router(routes)
 Vue.router = router
 
 Vue.router.beforeEach(function (to, from, next) {
-  window.scrollTo(0, 0);
+  // window.scrollTo(0, 0);
   next();
 });
 

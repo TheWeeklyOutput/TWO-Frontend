@@ -27,9 +27,7 @@
                 <div v-else class="image-credit placeholder"></div>
             </span>
             <div class="article-three-columns">
-                <div class="article-text" v-if="currentArticle">
-
-                    <p v-for="paragraph in currentArticle.paragraphs" > {{ paragraph.content }} </p>
+                <div class="article-text" v-if="currentArticle" v-html="currentArticle.html_content">
                 </div>
                 <div v-else class="article-text placeholder"></div>
 

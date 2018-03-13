@@ -227,7 +227,7 @@
     }
     
     .style-2 p {
-        font-size: 1em;
+        font-size: .9em;
         margin-bottom: 16px;
         margin-bottom: 16px;
         margin-bottom: 1rem;
@@ -397,6 +397,7 @@
         display: block;
         width: 100%;
         height: auto;
+        min-height: 500px;
         margin: -0 0;
     }
     
@@ -423,7 +424,7 @@
         display: block;
         max-height: 1000px;
         overflow: hidden;
-        padding-top: 60px;
+        padding-top: 40px;
     }
     
     .style-2 .article-headline-info {

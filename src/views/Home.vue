@@ -53,8 +53,8 @@
         data() {
             return {
                 highlights: {
-                    slug: 'politics',
-                    name: 'Politics'
+                    slug: 'highlights',
+                    name: 'Highlights'
                 },
                 categoriesToRender: [{
                     slug: 'politics',

@@ -8,7 +8,7 @@
             <router-link :to="{ name: 'article', params: {  category: categoryToRender.slug, slug: article.slug }}" :class="'article-link'" transition="fade">
                 <div :class="'topper-single-container'">
                     <span :class="'topper-image-wrapper'">
-                                <progressive-img :src="article.image_url" :class="'topper-image'" />
+                                <progressive-img :src="article.image_url" :class="'topper-image ' + getOrientation(article.image_url)" />
                             </span>
                     <span :class="'topper-text'">
                         <h2 :class="'topper-article-title'">{{ article.title }}</h2>
@@ -105,9 +105,12 @@
                     } else {
                         orientation = 'even'
                     }
+                    console.log(orientation)
                     return orientation
                 }
+                console.log(orientation)
                 img.src = image
+                
             },
             changeArticle(slug) {
                 this.$store.dispatch(apiActs.GET_ARTICLE_BY_SLUG, {

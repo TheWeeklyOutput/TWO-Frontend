@@ -22,7 +22,6 @@
         fill: #00ACED
     }
     
-    
     .style-1 .page-views {
         font-size: 0.7em;
         font-weight: 600;
@@ -43,8 +42,7 @@
         text-align: center;
         background: none
     }
-
-
+    
     .style-2 .page-views {
         font-size: 18px;
         font-weight: 600;
@@ -54,6 +52,15 @@
         background-color: red;
         padding: 5px 8px;
         color: white;
+    }
+    
+    .style-3 .page-views {
+        font-size: 12px;
+        font-weight: 600;
+        font-family: 'Fira Sans', sans-serif;
+        width: auto;
+        background-color: none;
+        color: var(--green);
     }
     
     .style-2 .twitter-icon-container-article {
@@ -69,5 +76,10 @@
         display: flex;
         align-items: center;
         padding-top: 20px;
+        grid-row: 1;
+    }
+    
+    .style-3 .page-views-container {
+        padding: 25px 0
     }
 </style>

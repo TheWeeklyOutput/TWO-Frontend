@@ -14,7 +14,7 @@
 
       </div>
     </div>
-    <FooterBar></FooterBar>
+    <!--<FooterBar></FooterBar>-->
 
     <style1></style1>
     <style2></style2>
@@ -28,6 +28,7 @@
   import Navbar from './components/Navbar'
   import Style1 from './styles/Style1'
   import Style2 from './styles/Style2'
+  import Style3 from './styles/Style3'
   import apiMixin from './mixins/api.js'
   import * as apiMuts from './api/mutation-types.js'
   import * as apiActs from './api/action-types.js'

@@ -62,13 +62,17 @@ export default {
           log.dir(res)
           state.categories = res.body
           state.categories.forEach((category) => {
+
             dispatch(acts.GET_CATEGORY_PAGE, { context, category: category.slug, page: 1 });
           })
+
           commit(muts.SET_LOADED, {
             status: false
           })
 
-        }, onError(res) { }
+        }, onError(res) { 
+
+        }
       })
     },
     [acts.GET_ARTICLE_BY_SLUG]({ commit, dispatch }, { context, slug }) {
@@ -92,7 +96,10 @@ export default {
         onSuccess(res) {
           log.dir(res)
           commit(muts.UPDATE_ARTICLES, { category, articles: res.body })
-        }, onError(res) { }
+
+        }, onError(res) {
+
+         }
       })
     },
     [acts.CHANGE_PAGE_TITLE]({ state, dispatch, commit, getters }, { title }) {

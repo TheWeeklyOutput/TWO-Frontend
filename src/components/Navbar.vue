@@ -5,7 +5,7 @@
                 <div>
                     <router-link :to="'/'">
                         <div id="logo-mobile">
-                            <logo-style1 class="logo-style-1-mobile" alt="The Weekly Output"></logo-style1>
+                            <Logo :logoStyle="Number(themeSwitcher.currentStyle)" class="logo-style-1-mobile" alt="The Weekly Output"></Logo>
                         </div>
                     </router-link>
     
@@ -14,14 +14,14 @@
             <div id="desktop-nav-container" class="desktop-nav-container desktop-only">
                 <router-link :to="'/'">
                     <div id="logo">
-                        <logo-style1 class="logo-style-1" alt="The Weekly Output"></logo-style1>
+                        <Logo :logoStyle="Number(themeSwitcher.currentStyle)" class="logo-style-1" alt="The Weekly Output"></Logo>
                     </div>
                 </router-link>
                 <affix v-if="api.loaded" relative-element-selector="#router-link" :scroll-affix="false" :offset="{ top: 80, bottom: 200 }" v-on:affixtop="scrollHandler(false)" v-on:affix="scrollHandler(true)" id="desktop-navbar">
                         <ul class="nav-categories">
                             <router-link :to="'/'" id="nav-logo-link">
                                 <li class="theme-switcher-logo-wrapper" v-if="scrolling == true">
-                                    <logo-style1 class="theme-switcher-logo-1" alt="The Weekly Output Style 1"></logo-style1>
+                                    <Logo :logoStyle="Number(themeSwitcher.currentStyle)" class="theme-switcher-logo-1" alt="The Weekly Output Style 1"></Logo>
                                 </li>
                             </router-link>
 
@@ -30,14 +30,14 @@
                                 <span id="theme-switcher" v-bind:class="{ active: expandedSwitcher}">
                                     <div id="theme-switcher-wrapper">                
                                         <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
-                                            <logo-style1 class="theme-switcher-logo" alt="The Weekly Output Style 1"></logo-style1>
+                                            <Logo :logoStyle="1" class="theme-switcher-logo" alt="The Weekly Output Style 1"></Logo>
                                         </span>
                                         <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
-                                            <logo-style1 class="theme-switcher-logo" alt="The Weekly Output Style 2"></logo-style1>
+                                            <Logo :logoStyle="2" class="theme-switcher-logo" alt="The Weekly Output Style 2"></Logo>
                                         </span>
-                                        <!--<span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
-                                            <logo-style1 class="theme-switcher-logo" alt="The Weekly Output 3"></logo-style1>
-                                        </span>-->
+                                        <span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
+                                            <Logo :logoStyle="3" class="theme-switcher-logo" alt="The Weekly Output 3"></Logo>
+                                        </span>
                                     </div>
                                 </span>
                             </li>
@@ -56,7 +56,6 @@
 </template>
 
 <script>
-    import LogoStyle1 from '../assets/svg/logo_style_1.svg'
     import SettingsWheel from '../assets/svg/settings_wheel.svg'
     import SettingsArrow from '../assets/svg/arrow.svg'
     import apiMixin from '../mixins/api.js'
@@ -69,15 +68,16 @@
     import {
         mapState
     } from 'vuex';
+    import Logo from './Logo'
     
     export default {
         mixins: [apiMixin, themeswitcherMixin],
     
         components: {
-            LogoStyle1,
             SettingsWheel,
             SettingsArrow,
-            Slideout
+            Slideout,
+            Logo
         },
         data() {
             return {
@@ -143,7 +143,7 @@
                 this.pushDesignMatomo()
             },
             $route(to, from) {
-                if (from.query.design === undefined || (from.query.design != 1 || from.query.design != 2)) {
+                if (from.query.design === undefined || (from.query.design != 1 || from.query.design != 2 || from.query.design != 3)) {
                     this.$router.push({
                         query: {
                             design: this.currentStyle
@@ -152,7 +152,7 @@
                     })
                 }
     
-                const IS_VALID = to.query.design == 1 || to.query.design == 2
+                const IS_VALID = to.query.design == 1 || to.query.design == 2 || to.query.design == 3
                 if (to.query.design !== this.currentStyle && to.query.design !== undefined && IS_VALID) {
                     this.selectTheme(to.query.design)
                     if (to.path != from.path) {

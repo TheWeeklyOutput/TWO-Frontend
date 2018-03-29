@@ -8,6 +8,9 @@
             <span class="category-header">{{ category.toUpperCase() }}</span>
             <hr class="topper-headline-underline">
         </div>
+        <div v-if="themeSwitcher.currentStyle == 3" class="topper-headline-text">
+            <span class="category-header">{{ category.toUpperCase() }}</span>
+        </div>
     
     </div>
 </template>

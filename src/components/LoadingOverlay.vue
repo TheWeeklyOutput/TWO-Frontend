@@ -2,7 +2,7 @@
     <div class="loading-overlay">
         <transition appear name="fade">
             <div class="loading-text">
-                <LogoStyle1 class="loading-logo"></LogoStyle1>
+                <Logo :logoStyle="Number(themeSwitcher.currentStyle)" class="loading-logo"></Logo>
                 Loading your {{ type }}
             </div>
         </transition>
@@ -10,11 +10,15 @@
 </template>
 
 <script>
-    import LogoStyle1 from '../assets/svg/logo_style_1.svg'
+    import Logo from './Logo'
+    import themeSwitcherMixin from '../mixins/themeswitcher.js'
+    
     export default {
         components: {
-            LogoStyle1
+            Logo
         },
+        mixins: [themeSwitcherMixin],
+    
         props: {
             type: String
         }

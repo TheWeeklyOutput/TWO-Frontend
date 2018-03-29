@@ -4,7 +4,7 @@
 
 <style>
     @import url('https://fonts.googleapis.com/css?family=Roboto:500');
-    * {
+    .style-1 *  {
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         margin: 0;
         padding: 0;
@@ -27,11 +27,11 @@
         background-color: var(--bg-color);
         min-height: 100%
     }
-
+    
     a {
         color: black
     }
-
+    
     .placeholder {
         width: 100%;
     }
@@ -85,7 +85,6 @@
         height: 1px;
         margin-bottom: 18px
     }
-    
     
     .style-1 .nav-categories {
         text-align: center;
@@ -152,7 +151,6 @@
         display: block
     }
     
-    
     .style-1 .theme-switcher-logo-wrapper {
         display: block
     }
@@ -162,18 +160,14 @@
         background-color: #FCFCFC;
         width: 500%;
         overflow-y: visible;
-        -webkit-transition: all 0.3s ease-out;
         transition: all 0.3s ease-out;
         opacity: 0;
         display: none;
         padding: 50% 0%;
         left: 0;
         height: 0;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        border-radius: 5px;        
+        border-radius: 5px;
         box-shadow: 0px 0px 8px -4px rgba(0, 0, 0, 0.75);
-
     }
     
     .style-1 #theme-switcher::after {
@@ -208,7 +202,7 @@
         width: 100%
     }
     
-    .style-1 #theme-switcher-wrapper > :first-child {
+    .style-1 #theme-switcher-wrapper> :not(:last-child) {
         padding-bottom: 10%;
     }
     
@@ -217,7 +211,6 @@
         display: block !important;
         height: auto !important;
     }
-    
     
     .style-1 .mobile-nav-container {
         width: 100%;
@@ -266,6 +259,10 @@
     
     .style-1 .component-wrapper {
         margin: 0 auto;
+        max-width: 1000px;
+    }
+    
+    .style-1 #home>.affix {
         max-width: 1000px;
     }
     
@@ -530,6 +527,15 @@
         }
     }
     
+    @media (min-width: 1300px) {
+        .style-1 .component-wrapper {
+            max-width: 1200px;
+        }
+        .style-1 #home>.affix {
+            max-width: 1200px;
+        }
+    }
+    
     @media (min-width: 880px) {
         .style-1 .article-three-columns {
             display: grid;
@@ -751,11 +757,7 @@
             grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
         }
         .style-1 .twitter-sidebar {
-            grid-column: 4 / 5;
-            grid-row: 1 / span 6;
-            padding-left: 12px;
             border-left: 1px solid var(--grey-stuff);
-            overflow: auto;
         }
         .style-1 .list-article-list {
             display: grid;
@@ -817,6 +819,9 @@
         .style-1 .list-text {
             display: inline-block;
             grid-column: 1/ span 3;
+        }
+        .style-1 .list-description {
+            padding-bottom: 10px;
         }
         .style-1 .list-next-to-article-container .list-text {
             padding-right: 20px

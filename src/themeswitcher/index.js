@@ -10,13 +10,30 @@ export default {
         article: {
           sidebarDescriptionShown: true,
           sidebarImageStyle: 'no'
+        },
+        home: {
+          descriptionShown: false
         }
       },
       2: {        
         article: {
           sidebarDescriptionShown: false,
           sidebarImageStyle: 'image-above'
+        },
+        home: {
+          descriptionShown: false
         }
+
+      },
+      3: {        
+        article: {
+          sidebarDescriptionShown: false,
+          sidebarImageStyle: 'image-above'
+        },
+        home: {
+          descriptionShown: true
+        }
+
       }
     }
   },

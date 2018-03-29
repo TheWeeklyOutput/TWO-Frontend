@@ -12,7 +12,7 @@
                         <span v-if="showText"><h3 :class="mode + 'description'">{{ article.description.substring(0, 200) }}...</h3></span>
                         <span :class="mode + 'author'" v-if="showAuthor">By {{ article.author.name }}</span>
                         <span class="list-timestamp" v-if="showAuthor && api.loaded"> <timeago :since="article.date"></timeago> </span>
-                        <page-views :views="article.views" v-if="isInfinite"></page-views>
+                        <page-views :views="article.views" v-if="showShares"></page-views>
                         </span>
                     </div>
                 </router-link>

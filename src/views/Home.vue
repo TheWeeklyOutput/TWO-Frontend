@@ -4,12 +4,12 @@
             <Topper class="topper" :categoryToRender="highlights">
             </Topper>
     
-            <div class="home-bottom">
+            <div class="home-bottom" id="home-bottom">
                 <div class="newest-list" v-for="category in categoriesToRender">
                     <Titles :category="category.name"></Titles>
                     <hr>
                     <div class="list-article-wrapper">
-                        <ListArticles :categoryToRender="category.slug" :showText="false" :showAuthor="true" :imageStyle="'next-to-article'" :showShares="true" :mode="'list-'"></ListArticles>
+                        <ListArticles :categoryToRender="category.slug" :showText="themeSwitcher.styleSettings[themeSwitcher.currentStyle].home.descriptionShown" :showAuthor="true" :imageStyle="'next-to-article'" :showShares="true" :mode="'list-'"></ListArticles>
                     </div>
                     <div class="show-all-container">
                         <div class="show-all-bottom"></div>
@@ -18,9 +18,11 @@
                         </router-link>
                     </div>
                 </div>
-                <TweetFeed class="twitter-sidebar desktop-only">
-                </TweetFeed>
             </div>
+            <affix v-if="api.articles && api.loaded" relative-element-selector="#home-bottom" id="twitter-affix" :scroll-affix="true" class="desktop-only">
+                <TweetFeed class="twitter-sidebar " />
+            </affix>
+    
         </div>
     </div>
 </template>
@@ -36,6 +38,7 @@
     import Titles from '../components/Titles'
     import * as apiMuts from '../api/mutation-types.js'
     import * as apiActs from '../api/action-types.js'
+    import VueAffix from 'vue-affix'
     
     
     export default {
@@ -50,8 +53,8 @@
         data() {
             return {
                 highlights: {
-                    slug: 'highlights',
-                    name: 'Highlights'
+                    slug: 'politics',
+                    name: 'Politics'
                 },
                 categoriesToRender: [{
                     slug: 'politics',
@@ -84,5 +87,27 @@
 </script>
 
 <style>
+    #home-bottom {
+        width: 75%;
+        float: left;
+    }
     
+    #home>.affix {
+        width: 100% !important;
+        margin: auto;
+        background-color: transparent;
+    }
+    
+    #twitter-affix {
+        width: fit-content !important;
+        float: right;
+    }
+    
+    .twitter-sidebar {
+        float: right
+    }
+    
+    .twitter-sidebar h1 {
+        padding-left: 0
+    }
 </style>

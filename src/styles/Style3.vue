@@ -116,9 +116,6 @@
         border-bottom: 2px solid var(--second-grey-stuff);
     }
     
-    .style-3 #router-link {
-        padding-top: 2%
-    }
     
     .style-3 .nav-categories li a {
         font-family: 'Roboto' !important;

@@ -795,14 +795,9 @@
             position: relative;
         }
         .style-2 .topper-article-title {
-            position: absolute;
-            bottom: 20px;
+            line-height: 1.4
         }
         .style-2 .topper-image-wrapper {
-            grid-column: 1;
-            grid-row: 1;
-        }
-        .style-2 .topper-text {
             grid-column: 1;
             grid-row: 1;
         }
@@ -814,16 +809,23 @@
         .style-2 .topper-text {
             padding: 10px 25px 0 25px;
             position: relative;
+            grid-column: 1;
+            grid-row: 1;
+            position: absolute;
+            bottom: 10%
+
+
         }
         .style-2 .topper .topper-article-title {
             padding-right: 10px;
         }
         .style-2 .topper> :nth-child(n+3) .topper-image-wrapper {
             display: block;
-            margin: 20px;
+            margin: 10px;
             padding-bottom: 10px;
             grid-row: 1;
             grid-column: 1;
+            max-height: 400px;
         }
         .style-2 .topper-headline-text {
             width: auto;
@@ -871,7 +873,17 @@
         .style-2 .list-text {
             grid-column: auto;
             padding: 18px 18px 0 18px;
+            
         }
+
+        .style-2 .list-author {
+            display: none;
+        }
+
+        .style-2 .list-timestamp {
+            color: black
+        }
+
         .list-article-text {
             padding-bottom: 10px;
             padding-top: 10px;

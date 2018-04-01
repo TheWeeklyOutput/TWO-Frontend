@@ -53,8 +53,8 @@
         data() {
             return {
                 highlights: {
-                    slug: 'politics',
-                    name: 'Politics'
+                    slug: 'highlights',
+                    name: 'Highlights'
                 },
                 categoriesToRender: [{
                     slug: 'politics',
@@ -87,27 +87,25 @@
 </script>
 
 <style>
-    #home-bottom {
-        width: 75%;
-        float: left;
-    }
-    
-    #home>.affix {
-        width: 100% !important;
-        margin: auto;
-        background-color: transparent;
-    }
-    
-    #twitter-affix {
-        width: fit-content !important;
-        float: right;
-    }
-    
-    .twitter-sidebar {
-        float: right
-    }
-    
-    .twitter-sidebar h1 {
-        padding-left: 0
+    @media (min-width: 880px) {
+        #home-bottom {
+            width: 75%;
+            float: left;
+        }
+        #home>.affix {
+            width: 100% !important;
+            margin: auto;
+            background-color: transparent;
+        }
+        #twitter-affix {
+            width: fit-content !important;
+            float: right;
+        }
+        .twitter-sidebar {
+            float: right
+        }
+        .twitter-sidebar h1 {
+            padding-left: 0
+        }
     }
 </style>

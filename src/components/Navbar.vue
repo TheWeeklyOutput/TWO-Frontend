@@ -34,14 +34,14 @@
                 <nav class="themeswitcher-mobile">
                     <div class="themeswitcher-mobile-wrapper">
                         <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
-                                                            <Logo :logoStyle="1" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output Style 1"></Logo>
-                                                        </span>
+                            <Logo :logoStyle="1" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output Style 1"></Logo>
+                        </span>
                         <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
-                                                            <Logo :logoStyle="2" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output Style 2"></Logo>
-                                                        </span>
+                            <Logo :logoStyle="2" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output Style 2"></Logo>
+                        </span>
                         <span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
-                                                            <Logo :logoStyle="3" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output 3"></Logo>
-                                                        </span>
+                            <Logo :logoStyle="3" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output 3"></Logo>
+                        </span>
                     </div>
                 </nav>
     
@@ -63,30 +63,32 @@
     
                         <li class="position-relative" @click="toggleActiveExpand()">
                             <settings-wheel style="height: 20px; cursor: pointer;"></settings-wheel>
-                            <span id="theme-switcher" v-bind:class="{ active: expandedSwitcher}">
-                                                                        <div id="theme-switcher-wrapper">                
-                                                                            <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
-                                                                                <Logo :logoStyle="1" class="theme-switcher-logo" alt="The Weekly Output Style 1"></Logo>
-                                                                            </span>
-                            <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
-                                                                                <Logo :logoStyle="2" class="theme-switcher-logo" alt="The Weekly Output Style 2"></Logo>
-                                                                            </span>
-                            <span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
-                                                                                <Logo :logoStyle="3" class="theme-switcher-logo" alt="The Weekly Output 3"></Logo>
-                                                                            </span>
+                            <transition name="themeswitcher-transition">
+                                <span id="theme-switcher" v-if="expandedSwitcher">
+                                    <div id="theme-switcher-wrapper">                
+                                        <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
+                                            <Logo :logoStyle="1" class="theme-switcher-logo" alt="The Weekly Output Style 1"></Logo>
+                                        </span>
+                                        <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
+                                            <Logo :logoStyle="2" class="theme-switcher-logo" alt="The Weekly Output Style 2"></Logo>
+                                        </span>
+                                        <span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
+                                            <Logo :logoStyle="3" class="theme-switcher-logo" alt="The Weekly Output 3"></Logo>
+                                        </span>
+                                    </div>
+                                </span>
+                            </transition>
+                        </li>
+                        <li v-for="category in categories">
+                            <router-link :to="{ name: 'category', params: {  category:  category.slug}}" :class="'category-link'">
+                                {{ category.name }}
+                            </router-link>
+                        </li>
+                    </ul>
+                </affix>
+                <hr class="hr-categories" id="directly-below">
             </div>
-            </span>
-            </li>
-            <li v-for="category in categories">
-                <router-link :to="{ name: 'category', params: {  category:  category.slug}}" :class="'category-link'">
-                    {{ category.name }}
-                </router-link>
-            </li>
-            </ul>
-            </affix>
-            <hr class="hr-categories" id="directly-below">
         </div>
-    </div>
     <div id="nav-spacer"></div>
     </div>
 </template>
@@ -179,7 +181,7 @@
                     console.log('didn\'t change a thing')
                     return
                 }
-
+    
                 // with valid design number
     
                 if (Object.keys(to.query) == '1' || Object.keys(to.query) == '2' || Object.keys(to.query) == '3') {
@@ -193,7 +195,7 @@
                         }
                     })
                 }
-
+    
     
             }
         },
@@ -441,5 +443,20 @@
     
     .position-relative {
         position: relative;
+    }
+    
+    .themeswitcher-transition-enter-active,
+    .themeswitcher-transition-leave-active {
+        transition-property: opacity;
+        transition-duration: .10s;
+    }
+    
+    .themeswitcher-transition-enter-active {
+        transition-delay: .10s;
+    }
+    
+    .themeswitcher-transition-enter,
+    .themeswitcher-transition-leave-active {
+        opacity: 0;
     }
 </style>

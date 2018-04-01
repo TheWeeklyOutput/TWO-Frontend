@@ -5,7 +5,7 @@
 <style>
     @import url('https://fonts.googleapis.com/css?family=Roboto:500');
     @import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,800');
-    .style-2 *  {
+    .style-2 * {
         font-family: "Fira Sans", sans-serif;
         font-weight: 800;
         margin: 0;
@@ -14,6 +14,16 @@
         line-height: 1.2;
         letter-spacing: normal;
         word-wrap: break-word;
+    }
+    
+    .style-2 * ::selection {
+        background: var(--red);
+        color: white
+    }
+    
+    .style-3 * ::-moz-selection {
+        background: var(--red);
+        color: white
     }
     
      :root {
@@ -153,14 +163,10 @@
         width: 500%;
         overflow-y: visible;
         transition: all 0.3s ease-out;
-        opacity: 0;
-        display: none;
         padding: 50% 0%;
         left: 0;
-        height: 0;
         border-radius: 5px;
         box-shadow: 0px 0px 8px -4px rgba(0, 0, 0, 0.75);
-        display: none
     }
     
     .style-2 #theme-switcher::after {
@@ -813,8 +819,6 @@
             grid-row: 1;
             position: absolute;
             bottom: 10%
-
-
         }
         .style-2 .topper .topper-article-title {
             padding-right: 10px;
@@ -873,17 +877,13 @@
         .style-2 .list-text {
             grid-column: auto;
             padding: 18px 18px 0 18px;
-            
         }
-
         .style-2 .list-author {
             display: none;
         }
-
         .style-2 .list-timestamp {
             color: black
         }
-
         .list-article-text {
             padding-bottom: 10px;
             padding-top: 10px;

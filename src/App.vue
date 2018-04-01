@@ -68,14 +68,12 @@
 </script>
 
 <style>
-  .fade-enter-active {
-    transition: all 0.2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-  }
-  .fade-leave-active {
-    transition: all 0.4s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  .fade-enter-active, .fade-leave-active{
+    transition: all 0.3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    opacity: 0;
   }
 
-  .fade-enter, .slide-fade-leave-to {
+  .fade-enter, .fade-leave-to {
     transform: translateX(10px);
     opacity: 0;
   }
@@ -83,6 +81,8 @@
   .fade-enter, .fade-leave-to {
       opacity: 0;
   }
+
+  
 
   body {
     margin: 0

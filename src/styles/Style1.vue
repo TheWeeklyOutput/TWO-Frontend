@@ -162,11 +162,8 @@
         width: 500%;
         overflow-y: visible;
         transition: all 0.3s ease-out;
-        opacity: 0;
-        display: none;
         padding: 50% 0%;
         left: 0;
-        height: 0;
         border-radius: 5px;
         box-shadow: 0px 0px 8px -4px rgba(0, 0, 0, 0.75);
     }

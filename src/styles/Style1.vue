@@ -78,6 +78,7 @@
     .style-1 h3 {
         font-size: .8125em;
         font-family: 'Georgia', serif;
+        font-weight: 400
     }
     
     .style-1 hr {

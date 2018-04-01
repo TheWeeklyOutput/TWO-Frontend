@@ -1,7 +1,7 @@
 <template>
     <div class="page-views-container">
         <!--<twitter-icon class="twitter-icon"></twitter-icon>-->
-        <span class="page-views">{{ views }} PAGE VIEWS</span>
+        <span class="page-views"><span class="page-views-number">{{ views }}</span><span class="page-views-text"> PAGE VIEWS</span></span>
     </div>
 </template>
 

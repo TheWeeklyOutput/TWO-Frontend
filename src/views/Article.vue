@@ -1,5 +1,5 @@
 <template>
-    <div class="component-wrapper">
+    <div class="component-wrapper article-component">
         <Ticker v-if="currentArticle && themeSwitcher.currentStyle == 2"></Ticker>
 
         <div class="article-wrapper">

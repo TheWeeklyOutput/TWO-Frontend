@@ -429,6 +429,7 @@
         grid-row: 1 / span 7;
         padding: 50px;
         padding-bottom: 0;
+        
         background-color: white
     }
     
@@ -952,30 +953,169 @@
             grid-row: 1;
         }
         .style-3 .topper {
-            grid-row: 1;
-            padding-bottom: 20px;
-            border-bottom: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
         }
-        .style-3 .topper-text {
-            padding: 10px 25px 0 25px;
-            position: relative;
+        .style-3 .topper-article-wrapper {
+            font-size: 150%;
         }
-        .style-3 .topper .topper-article-title {
-            padding-right: 10px;
+        .ad-container {
+            background-color: red;
+            width: 100%;
+            height: 100%
         }
-        .style-3 .topper> :nth-child(n+3) .topper-image-wrapper {
-            display: block;
-            margin: 20px;
-            padding-bottom: 10px;
-            grid-row: 1;
-            grid-column: 1;
+        .style-3 .topper-ad-wrapper {
+            padding: 20px 12px;
+            padding-top: 0
+        }
+        .style-3 .topper-headline {
+            display: none
         }
         .style-3 .topper-headline-text {
+            padding-left: 12px;
             width: auto;
             height: 60px;
+            padding-bottom: 10px;
+        }
+        .style-3 .topper-image-wrapper {
+            max-height: 250px;
+            width: 100%;
+        }
+        .style-3 .topper .topper-article-wrapper {}
+        .style-3 .topper-single-container {
+            display: grid;
+        }
+        .style-3 .topper .topper-single-container {
             padding-bottom: 20px;
-            padding-left: 20px;
-            max-width: 300px;
+            position: relative;
+        }
+        .style-3 .topper .topper-image-wrapper {}
+        .style-3 .topper> :nth-child(2) {
+            .topper-image-wrapper {
+                max-height: 400px;
+            }
+        }
+        .style-3 .topper> :nth-child(n+3) .topper-article-title {}
+        .style-3 .topper .topper-text {
+            display: grid;
+            bottom: 40px;
+        }
+        .style-3 .topper> :nth-child(n+3) .topper-text {}
+        .style-3 .topper> :nth-child(-n+3) {
+            grid-row: span 2
+        }
+        .style-3 .topper> :nth-child(n+4):nth-child(-n+5) {
+            .topper-author-timestap-wrapper {
+                display: none
+            }
+            .topper-article-text {
+                display: none
+            }
+            .topper-image-wrapper {
+                height: 200px;
+            }
+            h2 {
+                padding-top: 0
+            }
+            .topper-single-container {
+                padding-bottom: 10px
+            }
+            .page-views-container {
+                padding: 10px 0
+            }
+        }
+        .style-3 .topper> :nth-child(3) {
+            .topper-text {
+                position: absolute;
+                color: white !important;
+                top: 0;
+                padding: 30px
+            }
+            h2 {
+                color: white;
+                grid-row: 1 / 2;
+                font-size: 1.3em;
+                position: relative;
+                z-index: 4;
+                /*height: fit-content;*/
+            }
+            .topper-author-timestap-wrapper {
+                display: none
+            }
+            .topper-article-text {
+                display: none;
+            }
+            .topper-article-title:before {
+                content: "";
+                display: inline-block;
+                position: absolute;
+                width: 40px;
+                height: 33px;
+                left: -15px;
+                right: -15px;
+                top: -5px;
+                bottom: -5px;
+                margin-right: 5px;
+                background-color: var(--green);
+                z-index: -1;
+                transition: all 0.2s ease-in-out;
+                padding: 4px;
+            }
+            .topper-article-title:hover:before {
+                width: 100%;
+                height: 100%;
+                top: -10px;
+                left: -10px;
+                bottom: 0;
+                padding: 10px;
+            }
+            .topper-image-wrapper {
+                max-height: none;
+                /* FF3.6-15 */
+                background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.42) 60%, rgba(0, 0, 0, 0.7) 100%);
+                /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.42) 60%, rgba(0, 0, 0, 0.7) 100%);
+                /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#b3000000', GradientType=0);
+                /* IE6-9 */
+            }
+            .topper-image {
+                height: 600px;
+                max-height: none
+            }
+            .page-views {
+                display: none
+            }
+        }
+        .style-3 .topper> :nth-child(6) {
+            grid-column: 4;
+            grid-row: 3 / span 2;
+            .topper-image-wrapper {
+                max-height: 600px;
+            }
+            .topper-author-timestap-wrapper {
+                display: none
+            }
+            .topper-article-text {
+                display: none
+            }
+            .topper-image {
+                height: 500px;
+                max-height: none
+            }
+        }
+        .style-3 .topper-article-wrapper {
+            padding: 0 12px;
+        }
+        .style-3 .topper-single-container {
+            display: grid;
+        }
+        .style-3 .topper-article-text {
+            padding-top: 15px;
+            grid-row: 3;
+            color: var(--grey-text);
+            font-weight: 400;
+            font-size: 0.6em;
         }
         .style-3 .article-wrapper {
             grid-template-columns: 1fr;

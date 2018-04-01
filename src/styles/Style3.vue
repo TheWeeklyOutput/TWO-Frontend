@@ -116,7 +116,6 @@
         border-bottom: 2px solid var(--second-grey-stuff);
     }
     
-    
     .style-3 .nav-categories li a {
         font-family: 'Roboto' !important;
         text-decoration: none;
@@ -438,7 +437,6 @@
     .style-3 .article-headline-info {
         color: var(--grey-text) !important;
         grid-column: 2;
-        
     }
     
     .style-3 .show-all-button {
@@ -481,6 +479,12 @@
         text-align: justify;
         padding-right: 30px;
         font-weight: 400;
+        top: 50%;
+        transform: translateY(-50%);
+        position: relative;
+    }
+    
+    .style-3 .article-text> article {
     }
     
     .style-3 .article-heading {

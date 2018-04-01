@@ -34,14 +34,14 @@
                 <nav class="themeswitcher-mobile">
                     <div class="themeswitcher-mobile-wrapper">
                         <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
-                                                    <Logo :logoStyle="1" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output Style 1"></Logo>
-                                                </span>
+                                                            <Logo :logoStyle="1" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output Style 1"></Logo>
+                                                        </span>
                         <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
-                                                    <Logo :logoStyle="2" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output Style 2"></Logo>
-                                                </span>
+                                                            <Logo :logoStyle="2" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output Style 2"></Logo>
+                                                        </span>
                         <span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
-                                                    <Logo :logoStyle="3" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output 3"></Logo>
-                                                </span>
+                                                            <Logo :logoStyle="3" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output 3"></Logo>
+                                                        </span>
                     </div>
                 </nav>
     
@@ -64,16 +64,16 @@
                         <li class="position-relative" @click="toggleActiveExpand()">
                             <settings-wheel style="height: 20px; cursor: pointer;"></settings-wheel>
                             <span id="theme-switcher" v-bind:class="{ active: expandedSwitcher}">
-                                                                <div id="theme-switcher-wrapper">                
-                                                                    <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
-                                                                        <Logo :logoStyle="1" class="theme-switcher-logo" alt="The Weekly Output Style 1"></Logo>
-                                                                    </span>
+                                                                        <div id="theme-switcher-wrapper">                
+                                                                            <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
+                                                                                <Logo :logoStyle="1" class="theme-switcher-logo" alt="The Weekly Output Style 1"></Logo>
+                                                                            </span>
                             <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
-                                                                        <Logo :logoStyle="2" class="theme-switcher-logo" alt="The Weekly Output Style 2"></Logo>
-                                                                    </span>
+                                                                                <Logo :logoStyle="2" class="theme-switcher-logo" alt="The Weekly Output Style 2"></Logo>
+                                                                            </span>
                             <span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
-                                                                        <Logo :logoStyle="3" class="theme-switcher-logo" alt="The Weekly Output 3"></Logo>
-                                                                    </span>
+                                                                                <Logo :logoStyle="3" class="theme-switcher-logo" alt="The Weekly Output 3"></Logo>
+                                                                            </span>
             </div>
             </span>
             </li>
@@ -152,11 +152,6 @@
                 this.$store.commit(themeMuts.SET_STYLE, {
                     payload: themeNumber
                 })
-                this.$router.push({
-                    query: {
-                        design: this.currentStyle
-                    }
-                })
     
             },
             scrollHandler(state) {
@@ -169,34 +164,36 @@
         },
         watch: {
             currentStyle() {
-                if (this.$route.query.design !== this.currentStyle && this.$route.query.design !== undefined) {
+                if (Object.keys(this.$route.query) !== this.currentStyle.toString) {
                     this.$router.replace({
                         query: {
-                            design: this.currentStyle
+                            [this.currentStyle]: null
                         }
                     })
                 }
                 this.pushDesignMatomo()
             },
             $route(to, from) {
-                if (from.query.design === undefined || (from.query.design != 1 || from.query.design != 2 || from.query.design != 3)) {
-                    this.$router.push({
-                        query: {
-                            design: this.currentStyle
-                        }
+                // with same router query on change
+                if (from.query === to.query) {
+                    console.log('didn\'t change a thing')
+                    return
+                }
+
+                // with valid design number
     
+                if (Object.keys(to.query) == '1' || Object.keys(to.query) == '2' || Object.keys(to.query) == '3') {
+                    this.selectTheme(Object.keys(to.query))
+                } else {
+                    // with invalid design number
+                    console.log('hm')
+                    this.$router.replace({
+                        query: {
+                            [this.currentStyle]: null
+                        }
                     })
                 }
-    
-                const IS_VALID = to.query.design == 1 || to.query.design == 2 || to.query.design == 3
-                if (to.query.design !== this.currentStyle && to.query.design !== undefined && IS_VALID) {
-                    this.selectTheme(to.query.design)
-                    if (to.path != from.path) {
-                        this.$router.replace({
-                            query: from.query
-                        })
-                    }
-                }
+
     
             }
         },
@@ -436,7 +433,7 @@
     
     .theme-switcher-logo-mobile {
         width: 80% !important;
-        padding: 10px !important ;
+        padding: 10px !important;
         margin: auto !important;
         display: block !important;
         padding: 20px !important

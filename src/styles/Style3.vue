@@ -979,6 +979,7 @@
         }
         .style-3 .topper-image-wrapper {
             max-height: 250px;
+            grid-row: 1;
             width: 100%;
         }
         .style-3 .topper .topper-article-wrapper {}
@@ -988,6 +989,7 @@
         .style-3 .topper .topper-single-container {
             padding-bottom: 20px;
             position: relative;
+            height: 100%
         }
         .style-3 .topper .topper-image-wrapper {}
         .style-3 .topper> :nth-child(2) {
@@ -1088,8 +1090,6 @@
             }
         }
         .style-3 .topper> :nth-child(6) {
-            grid-column: 4;
-            grid-row: 3 / span 2;
             .topper-image-wrapper {
                 max-height: 600px;
             }

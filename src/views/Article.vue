@@ -38,7 +38,7 @@
                 <div v-else class="article-sidebar-wrapper desktop-only placeholder"></div>
 
                 <div class="article-bottombar-wrapper mobile-only" v-if="currentArticle">
-                    <p>You might also enjoy:</p>
+                    <h2>You might also enjoy:</h2>
                     <TopArticles class="sidebar" :categoryToRender="'highlights'" :showText="true" :showAuthor="false" :mode="'horizontal-list-'" :imageStyle="'no'">
                     </TopArticles>
                 </div>

@@ -407,6 +407,12 @@
         display: grid;
     }
     
+    .style-3 .article-author {
+        margin-bottom: 10px;
+        font-weight: 400;
+        font-family: "Fira Sans", sans-serif;
+    }
+    
     .style-3 .show-all-button {
         font-family: 'Roboto' !important;
         width: 130px;
@@ -654,9 +660,6 @@
             .topper-author-timestap-wrapper {
                 display: none
             }
-            .topper-article-text {
-                display: none;
-            }
             .topper-article-title:before {
                 content: "";
                 display: inline-block;
@@ -673,13 +676,30 @@
                 transition: all 0.2s ease-in-out;
                 padding: 4px;
             }
-            .topper-article-title:hover:before {
+            .topper-text:hover .topper-article-title:before {
                 width: 100%;
                 height: 100%;
                 top: -10px;
                 left: -10px;
                 bottom: 0;
                 padding: 10px;
+            }
+            .topper-article-text {
+                display: block;
+                opacity: 0;
+                position: absolute;
+                bottom: 50px;
+                padding: 30px;
+                z-index: 100;
+                transform: translate(0, 30px);
+                transition: all 0.4s ease-in-out;
+                transition-delay: 0.3s;
+                color: white;
+                line-height: 1.2
+            }
+            .topper-text:hover .topper-article-text {
+                transform: translate(0, 0);
+                opacity: 1;
             }
             .topper-image-wrapper {
                 max-height: none;
@@ -1033,7 +1053,7 @@
                 display: none
             }
             .topper-article-text {
-                display: none;
+                display: none
             }
             .topper-article-title:before {
                 content: "";
@@ -1267,10 +1287,6 @@
             grid-row: 2;
             margin-bottom: 0.6rem;
             position: relative;
-        }
-        .style-3 .article-author {
-            margin-bottom: 10px;
-            font-weight: 400;
         }
         .style-3 .article-headline-info {
             padding-left: 0;

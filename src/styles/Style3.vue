@@ -229,15 +229,19 @@
         padding: 50px 20px;
         display: grid;
     }
+
+    .style-3 a {
+        text-decoration: none
+    }
     
     .style-3 p {
-        font-size: .9em;
+        font-size: .8em;
         margin-bottom: 16px;
         margin-bottom: 16px;
         margin-bottom: 1rem;
         font-weight: 400;
         font-family: 'Merriweather', serif;
-        line-height: 1.2
+        line-height: 1.4
     }
     
     .style-3 .logo-style-1 {
@@ -692,8 +696,8 @@
                 padding: 30px;
                 z-index: 100;
                 transform: translate(0, 30px);
-                transition: all 0.4s ease-in-out;
-                transition-delay: 0.3s;
+                transition: all 0.2s ease-in-out;
+                transition-delay: 0.2s;
                 color: white;
                 line-height: 1.2
             }

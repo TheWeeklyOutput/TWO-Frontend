@@ -62,6 +62,7 @@
     
             function adBlockNotDetected() {
                 context.adDetected = false
+                console.log('NO ADS')
             }
             // Function called if AdBlock is detected 
             function adBlockDetected() {
@@ -164,11 +165,11 @@
     }
     
     .button-keep-footer {
-        float: left
+        float: right
     }
     
     .button-disable-footer {
         background-color: var(--red);
-        float: right
+        float: left
     }
 </style>

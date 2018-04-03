@@ -81,6 +81,7 @@
                 if (this.api.articles.hasOwnProperty(this.categoryToRender)) {
                     this.articleList = this.api.articles[this.categoryToRender]
                     this.api.currentCategoryPage = 1
+                    this.stopLoading = false
                 }
     
             },
@@ -137,7 +138,7 @@
                         this.articleList = this.articleList.concat(this.api.articles[this.categoryToRender])
                         $state.loaded()
                     } else {
-                        $state.complete()
+                        this.stopLoading = true
                     }
     
                 })

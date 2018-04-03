@@ -4,7 +4,7 @@
 
 <style>
     @import url('https://fonts.googleapis.com/css?family=Roboto:500');
-    .style-1 *  {
+    .style-1 * {
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         margin: 0;
         padding: 0;
@@ -230,9 +230,20 @@
     
     .style-1 p {
         font-size: 1.2em;
-        margin-bottom: 32px;
+        margin-bottom: 1em;
         font-family: 'Helvetica', 'sans-serif';
-        font-weight: 400
+        font-weight: 300;
+        line-height: 1.6
+    }
+    
+    .style-1 article:first-child:first-letter {
+        font-style: normal;
+        font-weight: normal;
+        line-height: 1;
+        font-size: 5em;
+        display: block;
+        float: left;
+        margin: 0 .1em -.2em 0;
     }
     
     .style-1 .logo-style-1-mobile {

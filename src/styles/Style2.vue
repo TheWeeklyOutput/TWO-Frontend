@@ -29,7 +29,7 @@
      :root {
         --main-text-color: black;
         --grey-stuff: #e3e3e3;
-        --red: #f11133;
+        --red: #ed2c24;
         --second-grey-stuff: #333333;
         --bg-color: #F9F9F9;
     }
@@ -114,6 +114,7 @@
         display: inline-block;
         vertical-align: top;
         padding: 0.1% 1% 0.1% 1%;
+
     }
     
     .style-2 .nav-categories li:nth-child(n+2) {
@@ -129,11 +130,12 @@
     }
     
     .style-2 .nav-categories li a {
-        font-family: 'Roboto' !important;
+        font-family: Impact, sans-serif !important; 
         text-decoration: none;
-        font-weight: 500;
+        font-weight: 800;
         letter-spacing: -0.2px;
-        color: #333333
+        color: #333333;
+        font-size: 1em
     }
     
     .style-2 .vue-affix {
@@ -230,17 +232,19 @@
     }
     
     .style-2 p {
-        font-size: .9em;
+        font-size: .8em;
         margin-bottom: 16px;
         margin-bottom: 16px;
         margin-bottom: 1rem;
         font-weight: 400;
+        line-height: 1.6
     }
     
     .style-2 .logo-style-1 {
         height: 50px;
         width: auto;
         max-width: 100%;
+        fill: var(--red)
     }
     
     .style-2 .category-header {
@@ -333,6 +337,7 @@
         background: var(--red);
         line-height: 1.8;
         padding: 0 5px;
+        font-size: 2em
     }
     
     .style-2 .topper-image-wrapper {
@@ -554,7 +559,7 @@
     
     #nav-spacer {
         width: 100%;
-        height: 200px !important;
+        height: 240px !important;
         display: block;
     }
     
@@ -659,14 +664,14 @@
             grid-row: 1;
             padding-left: 20px;
             position: absolute;
-            bottom: 40px;
+            top: 20%;
         }
         .style-2 .topper> :nth-child(n+3) .topper-text {
             grid-column: 1 / span 4;
             grid-row: 1;
             padding-left: 20px;
             position: absolute;
-            bottom: 40px;
+            top: 20%;
         }
         .style-2 .topper> :nth-child(3) {
             grid-column: 1 / span 3;
@@ -818,7 +823,7 @@
             grid-column: 1;
             grid-row: 1;
             position: absolute;
-            bottom: 10%
+            bottom: 40px
         }
         .style-2 .topper .topper-article-title {
             padding-right: 10px;

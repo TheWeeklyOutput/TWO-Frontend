@@ -30,8 +30,7 @@
      :root {
         --main-text-color: black;
         --grey-stuff: #e3e3e3;
-        --red: #f11133;
-        --second-grey-stuff: #333333;
+            --second-grey-stuff: #333333;
         --bg-color: white;
         --green: #34DB93;
         --grey-text: #9F9F9F

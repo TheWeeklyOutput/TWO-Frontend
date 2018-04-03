@@ -4,21 +4,23 @@
             <Titles :category="categoryToRender.name"></Titles>
             <hr>
         </div>
+        <Ticker v-if="themeSwitcher.currentStyle == 2" id="topper-ticker"></Ticker>
+    
         <div v-for="article in articleList" :class="'topper-article-wrapper'">
             <router-link :to="{ name: 'article', params: {  category: categoryToRender.slug, slug: article.slug }}" :class="'article-link'" transition="fade">
                 <div :class="'topper-single-container'">
                     <span :class="'topper-image-wrapper'">
-                                <progressive-img :src="article.image_url" :class="'topper-image ' + getOrientation(article.image_url)" />
-                            </span>
+                                    <progressive-img :src="article.image_url" :class="'topper-image ' + getOrientation(article.image_url)" />
+                                </span>
                     <span :class="'topper-text'">
-                        <h2 :class="'topper-article-title'">{{ article.title }}</h2>
-                        <span class="topper-author-timestap-wrapper desktop-only" v-if="themeSwitcher.currentStyle != 2">
-                            <span :class="'topper-author'" >By 
-                                <router-link :to="{ name: 'author', params: {  name: article.author.slug }}" transition="fade">
-                                    {{ article.author.name }}
-                                </router-link>
-                            </span>
-                        <span class="list-timestamp"> <timeago :since="article.date" v-if="themeSwitcher.currentStyle != 2"></timeago></span>
+                            <h2 :class="'topper-article-title'">{{ article.title }}</h2>
+                            <span class="topper-author-timestap-wrapper desktop-only" v-if="themeSwitcher.currentStyle != 2">
+                                <span :class="'topper-author'" >By 
+                                    <router-link :to="{ name: 'author', params: {  name: article.author.slug }}" transition="fade">
+                                        {{ article.author.name }}
+                                    </router-link>
+                                </span>
+                    <span class="list-timestamp"> <timeago :since="article.date" v-if="themeSwitcher.currentStyle != 2"></timeago></span>
                     </span>
                     <h3 :class="'topper-article-text'" v-if="themeSwitcher.currentStyle != 2">{{ article.description.substring(0, 200) }}...</h3>
                     <page-views :views="article.views"></page-views>
@@ -43,6 +45,7 @@
     import * as apiMuts from '../api/mutation-types.js'
     import * as apiActs from '../api/action-types.js'
     import themeSwitcherMixin from '../mixins/themeswitcher.js'
+    import Ticker from './Ticker'
     
     export default {
         mixins: [apiMixin, themeSwitcherMixin],
@@ -51,7 +54,8 @@
             ListArticles,
             PageViews,
             Titles,
-            AdComponent
+            AdComponent,
+            Ticker
         },
         data: function() {
             return {
@@ -110,7 +114,7 @@
                 }
                 console.log(orientation)
                 img.src = image
-                
+    
             },
             changeArticle(slug) {
                 this.$store.dispatch(apiActs.GET_ARTICLE_BY_SLUG, {

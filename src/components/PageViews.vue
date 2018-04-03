@@ -49,7 +49,7 @@
         font-family: 'Fira Sans', sans-serif;
         padding-left: 1.5%;
         width: auto;
-        background-color: red;
+        background-color: var(--red);
         padding: 5px 8px;
         color: white;
     }

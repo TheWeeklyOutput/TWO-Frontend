@@ -1,5 +1,6 @@
 <template>
   <div id="app" :class="'style-' + themeSwitcher.currentStyle + ' ' + 'overflow-' + isOverflowVisible">
+    <AdDetect @passValue="adDetect = $event">></AdDetect>
     <transition name="fade">
       <loading-overlay v-if="!loaded" :type="'quality output'"></loading-overlay>
     </transition>
@@ -34,6 +35,7 @@
   import * as apiActs from './api/action-types.js'
   import themeSwitcherMixin from './mixins/themeswitcher.js'
   import { mapState } from 'vuex'
+  import AdDetect from './components/AdDetect'
 
   export default {
     mixins: [
@@ -45,7 +47,13 @@
       Navbar,
       FooterBar,
       Style1,
-      Style2
+      Style2,
+      AdDetect
+    },
+    data: function() {
+      return {
+        adDetect: Boolean
+      }
     },
     created() {
       this.$store.dispatch(apiActs.SET_UP, {
@@ -54,7 +62,7 @@
     },
     computed: {
       isOverflowVisible() {
-        if(!this.loaded) {
+        if(!this.loaded || this.adDetect) {
           return 'hidden'
         } else {
           return 'shown'

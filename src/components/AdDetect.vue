@@ -20,12 +20,12 @@
                         <div class="modal-footer">
                             <slot name="footer">
                                 <button class="button-keep-footer button-ad-footer" @click="closeWindow()">
-                                    Continue
-                                </button>
+                                        Continue
+                                    </button>
     
                                 <button class="button-disable-footer button-ad-footer" @click="disableAdBlock()">
-                                    I disabled it!
-                                </button>
+                                        I disabled it!
+                                    </button>
                             </slot>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
     export default {
         data: function() {
             return {
-                adDetected: Boolean
+                adDetected: false
             }
         },
         methods: {
@@ -61,7 +61,8 @@
             let context = this
     
             function adBlockNotDetected() {
-                context.adDetected = false
+                context.$emit("passValue", context.adDetected);
+    
                 console.log('NO ADS')
             }
             // Function called if AdBlock is detected 
@@ -135,13 +136,13 @@
     
     
     /*
-                 * The following styles are auto-applied to elements with
-                 * transition="modal" when their visibility is toggled
-                 * by Vue.js.
-                 *
-                 * You can easily play with the modal transition by editing
-                 * these styles.
-                 */
+                     * The following styles are auto-applied to elements with
+                     * transition="modal" when their visibility is toggled
+                     * by Vue.js.
+                     *
+                     * You can easily play with the modal transition by editing
+                     * these styles.
+                     */
     
     .modal-enter {
         opacity: 0;

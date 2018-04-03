@@ -22,6 +22,7 @@ export default {
     categories: [],
     loaded: false,
     categoryCount: 0,
+    currentCategoryPage: 1
   },
   getters: {
     getMessagesFromRes: () => (res) => {
@@ -96,6 +97,9 @@ export default {
         onSuccess(res) {
           log.dir(res)
           commit(muts.UPDATE_ARTICLES, { category, articles: res.body })
+          return new Promise((resolve, reject) => {
+            resolve()
+          })
 
         }, onError(res) {
 
@@ -113,7 +117,10 @@ export default {
     [muts.UPDATE_ARTICLES] (state, { category, articles }) {
       if (!(articles.hasOwnProperty(category))) {
         state.articles[category] = []
-        state.categoryCount ++
+        if (state.categoryCount < state.categories.length) {
+          state.categoryCount ++
+        }
+
       }
       state.articles[category] = state.articles[category].concat(articles)
     },

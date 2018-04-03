@@ -5,10 +5,10 @@
                 <router-link :to="{ name: 'article', params: {  category: categoryToRender, slug: article.slug }}" :class="'article-link'" transition="fade" v-on:click="changeArticle(article.slug)">
                     <div :class="mode + imageStyle + '-container'" v-on:click="changeArticle(article.slug)">
                         <span :class="mode + imageStyle + '-image-wrapper'">
-                            <progressive-img :src="article.image_url" :class="imageStyle + ' ' + getOrientation(article.image_url)" v-if="(imageStyle === 'no-image') == false" />
-                        </span>
+                                                            <progressive-img :src="article.image_url" :class="imageStyle + ' ' + getOrientation(article.image_url)" v-if="(imageStyle === 'no-image') == false" />
+                                                        </span>
                         <span :class="mode + 'text'">
-                        <span> <h2 :class="mode + 'title'">{{ article.title }}</h2> </span>
+                                                        <span> <h2 :class="mode + 'title'">{{ article.title }}</h2> </span>
                         <span v-if="showText"><h3 :class="mode + 'description'">{{ article.description.substring(0, 200) }}...</h3></span>
                         <span :class="mode + 'author'" v-if="showAuthor">By {{ article.author.name }}</span>
                         <span class="list-timestamp" v-if="showAuthor && api.loaded"> <timeago :since="article.date"></timeago> </span>
@@ -18,7 +18,7 @@
                 </router-link>
             </div>
         </div>
-        <infinite-loading v-if="$route.path.endsWith('/articles/' + categoryToRender + '/')" @infinite="changePage($event, 2)"></infinite-loading>
+        <infinite-loading v-if="$route.path.endsWith('/articles/' + categoryToRender) && !stopLoading" @infinite="changePage($event)"></infinite-loading>
     
     </div>
 </template>
@@ -61,7 +61,8 @@
             return {
                 timestamp: String,
                 articleList: [],
-                articlePage: 1
+                articlePage: 1,
+                stopLoading: false
             }
         },
         computed: {
@@ -79,9 +80,9 @@
             categoryToRender() {
                 if (this.api.articles.hasOwnProperty(this.categoryToRender)) {
                     this.articleList = this.api.articles[this.categoryToRender]
-                    this.articlePage = 1
+                    this.api.currentCategoryPage = 1
                 }
-                console.log(this.$route.path.indexOf('/articles/'))
+    
             },
             categoryCount: {
                 handler: function(val) {
@@ -124,15 +125,24 @@
                 }
                 img.src = image
             },
-            changePage($state, page) {
+            changePage($state) {
+                this.api.currentCategoryPage += 1
+                let context = this
                 this.$store.dispatch(apiActs.GET_CATEGORY_PAGE, {
-                    context: this,
                     category: this.categoryToRender,
-                    page: this.articlePage
+                    page: this.api.currentCategoryPage,
+                    context: this
+                }).then(() => {
+                    if (this.api.articles[this.categoryToRender].length > 1) {
+                        this.articleList = this.articleList.concat(this.api.articles[this.categoryToRender])
+                        $state.loaded()
+                    } else {
+                        $state.complete()
+                    }
+    
                 })
-                const ctx = this
-                ctx.articleList = ctx.articleList.concat(ctx.api.articles[ctx.categoryToRender])
-                console.log(ctx.articleList)
+    
+    
             }
         }
     

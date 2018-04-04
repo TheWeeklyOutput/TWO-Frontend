@@ -33,14 +33,14 @@
                 <nav class="themeswitcher-mobile">
                     <div class="themeswitcher-mobile-wrapper">
                         <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
-                                                                                                    <Logo :logoStyle="1" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output Style 1"></Logo>
-                                                                                                </span>
+                                                                                                        <Logo :logoStyle="1" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output Style 1"></Logo>
+                                                                                                    </span>
                         <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
-                                                                                                    <Logo :logoStyle="2" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output Style 2"></Logo>
-                                                                                                </span>
+                                                                                                        <Logo :logoStyle="2" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output Style 2"></Logo>
+                                                                                                    </span>
                         <span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
-                                                                                                    <Logo :logoStyle="3" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output 3"></Logo>
-                                                                                                </span>
+                                                                                                        <Logo :logoStyle="3" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output 3"></Logo>
+                                                                                                    </span>
                     </div>
                 </nav>
             </div>
@@ -66,16 +66,16 @@
                             <settings-wheel style="height: 20px; cursor: pointer;"></settings-wheel>
                             <transition name="themeswitcher-transition">
                                 <span id="theme-switcher" v-if="expandedSwitcher">
-                                                        <div id="theme-switcher-wrapper">                
-                                                            <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
-                                                                <Logo :logoStyle="1" class="theme-switcher-logo" alt="The Weekly Output Style 1"></Logo>
-                                                            </span>
+                                                            <div id="theme-switcher-wrapper">                
+                                                                <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
+                                                                    <Logo :logoStyle="1" class="theme-switcher-logo" alt="The Weekly Output Style 1"></Logo>
+                                                                </span>
                                 <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
-                                                                <Logo :logoStyle="2" class="theme-switcher-logo" alt="The Weekly Output Style 2"></Logo>
-                                                            </span>
+                                                                    <Logo :logoStyle="2" class="theme-switcher-logo" alt="The Weekly Output Style 2"></Logo>
+                                                                </span>
                                 <span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
-                                                                <Logo :logoStyle="3" class="theme-switcher-logo" alt="The Weekly Output 3"></Logo>
-                                                            </span>
+                                                                    <Logo :logoStyle="3" class="theme-switcher-logo" alt="The Weekly Output 3"></Logo>
+                                                                </span>
             </div>
             </span>
             </transition>
@@ -189,43 +189,46 @@
                 }
             },
             generateImagePosition() {
-                let number = this.generateSeed()
-                console.log()
+                if (this.currentStyle == 3) {
+                    let number = this.generateSeed()
+                    console.log()
     
-                this.topOffset = number.first * 1000 * -1
-                this.leftOffset = number.second * 1000 * -1
+                    this.topOffset = number.first * 1000 * -1
+                    this.leftOffset = number.second * 1000 * -1
     
-                this.zoomFactor = (80 + number.third * 100 * number.fourth).toString() + '%'
+                    this.zoomFactor = (80 + number.third * 100 * number.fourth).toString() + '%'
     
-                /*this.topIllHeight = height * (number.third * wrapper.height)
-                this.topIllWidth = width * (number.third * wrapper.width)*/
+                    /*this.topIllHeight = height * (number.third * wrapper.height)
+                    this.topIllWidth = width * (number.third * wrapper.width)*/
     
-                let image = document.getElementById('top-illustration')
-                let wrapper = document.getElementById('top-illustration-wrapper')
-                let height = image.clientHeight
-                let width = image.clientWidth
+                    let image = document.getElementById('top-illustration')
+                    let wrapper = document.getElementById('top-illustration-wrapper')
+                    let height = image.clientHeight
+                    let width = image.clientWidth
     
-                let imageRect = image.getBoundingClientRect()
-                let wrapperRect = wrapper.getBoundingClientRect()
-                let offset = imageRect.bottom - wrapperRect.bottom
-                let offset2 = imageRect.right - wrapperRect.right
+                    let imageRect = image.getBoundingClientRect()
+                    let wrapperRect = wrapper.getBoundingClientRect()
+                    let offset = imageRect.bottom - wrapperRect.bottom
+                    let offset2 = imageRect.right - wrapperRect.right
     
-                if (imageRect.right < wrapperRect.width) {
-                    alert(imageRect.right)
-                } else {
-                    console.log('its good')
-                }
-                if (imageRect.bottom < wrapperRect.height) {
-                    this.topOffset += imageRect.bottom
+                    if (imageRect.right < wrapperRect.width) {
+                        alert(imageRect.right)
+                    } else {
+                        console.log('its good')
+                    }
+                    if (imageRect.bottom < wrapperRect.height) {
+                        this.topOffset += imageRect.bottom
     
-                } else {
-                    console.log('its good')
-                }
-                if (imageRect.top > 0) {
-                    this.topOffset = 0
-                }
-                if (imageRect.left > 0) {
-                    this.leftOffset = 0
+                    } else {
+                        console.log('its good')
+                    }
+                    if (imageRect.top > 0) {
+                        this.topOffset = 0
+                    }
+                    if (imageRect.left > 0) {
+                        this.leftOffset = 0
+                    }
+    
                 }
             }
         },
@@ -241,6 +244,7 @@
                 if (this.currentStyle == 3) {
                     setTimeout(() => {
                         this.generateImagePosition()
+    
                     }, 500)
     
                 }

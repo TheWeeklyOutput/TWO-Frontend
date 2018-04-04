@@ -570,7 +570,7 @@
     
     .style-2 #nav-spacer {
         width: 100%;
-        height: 210px !important;
+        height: 30vh !important;
         display: block;
     }
     

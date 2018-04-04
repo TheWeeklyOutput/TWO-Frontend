@@ -30,7 +30,7 @@
      :root {
         --main-text-color: black;
         --grey-stuff: #e3e3e3;
-            --second-grey-stuff: #333333;
+        --second-grey-stuff: #333333;
         --bg-color: white;
         --green: #34DB93;
         --grey-text: #9F9F9F
@@ -98,8 +98,8 @@
     .style-3 .nav-categories {
         text-align: center;
         width: 100%;
-        padding-top: 1%;
-        padding-bottom: 1%;
+        padding-top: 1.2%;
+        padding-bottom: 1.2%;
     }
     
     .style-3 #nav-absolute {
@@ -124,7 +124,7 @@
     }
     
     .style-3 .router-link-active {
-        border-bottom: 2px solid var(--second-grey-stuff);
+        border-bottom: 2px solid white;
     }
     
     .style-3 .nav-categories li a {
@@ -135,12 +135,28 @@
         color: #333333
     }
     
+    .style-3 .affix ul {}
+    
     .style-3 .vue-affix {
-        background-color: rgba(255, 255, 255, 1);
         z-index: 1030;
         width: 100%;
         right: 0;
         left: 0;
+    }
+
+    .style-3 .desktop-nav-container> .vue-affix {
+        background-color: black;
+        color: white;
+        top: 0 !important;
+
+    }
+    
+    .style-3 .vue-affix li a {
+        color: white
+    }
+    
+    .style-3 .vue-affix li {
+        fill: white
     }
     
     .style-3 #nav-logo-link {
@@ -228,7 +244,7 @@
         padding: 50px 20px;
         display: grid;
     }
-
+    
     .style-3 a {
         text-decoration: none
     }
@@ -244,7 +260,7 @@
     }
     
     .style-3 .logo-style-1 {
-        height: 50px;
+        height: 150px;
         width: auto;
         max-width: 100%;
     }
@@ -290,6 +306,7 @@
         margin-bottom: 0;
         margin-top: 0.5%;
         background-color: var(--grey-stuff);
+        display: none
     }
     
     
@@ -525,7 +542,7 @@
     
     #nav-spacer {
         width: 100%;
-        height: 200px !important;
+        height: 300px !important;
         display: block;
     }
     

@@ -34,14 +34,14 @@
                 <nav class="themeswitcher-mobile">
                     <div class="themeswitcher-mobile-wrapper">
                         <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
-                            <Logo :logoStyle="1" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output Style 1"></Logo>
-                        </span>
+                                                            <Logo :logoStyle="1" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output Style 1"></Logo>
+                                                        </span>
                         <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
-                            <Logo :logoStyle="2" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output Style 2"></Logo>
-                        </span>
+                                                            <Logo :logoStyle="2" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output Style 2"></Logo>
+                                                        </span>
                         <span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
-                            <Logo :logoStyle="3" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output 3"></Logo>
-                        </span>
+                                                            <Logo :logoStyle="3" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output 3"></Logo>
+                                                        </span>
                     </div>
                 </nav>
     
@@ -50,6 +50,10 @@
             <div id="desktop-nav-container" class="desktop-nav-container desktop-only">
                 <router-link :to="'/'">
                     <div id="logo">
+                        <div v-if="themeSwitcher.currentStyle == 3" class="top-illustration-wrapper">
+                            <top-illstration class="top-illustration" id="top-illustration" v-bind:style="{ top: topOffset + 'px', left: leftOffset + 'px', height: topIllHeight, width: topIllWidth}"></top-illstration>
+                        </div>
+    
                         <Logo :logoStyle="Number(themeSwitcher.currentStyle)" class="logo-style-1" alt="The Weekly Output"></Logo>
                     </div>
                 </router-link>
@@ -65,30 +69,30 @@
                             <settings-wheel style="height: 20px; cursor: pointer;"></settings-wheel>
                             <transition name="themeswitcher-transition">
                                 <span id="theme-switcher" v-if="expandedSwitcher">
-                                    <div id="theme-switcher-wrapper">                
-                                        <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
-                                            <Logo :logoStyle="1" class="theme-switcher-logo" alt="The Weekly Output Style 1"></Logo>
-                                        </span>
-                                        <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
-                                            <Logo :logoStyle="2" class="theme-switcher-logo" alt="The Weekly Output Style 2"></Logo>
-                                        </span>
-                                        <span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
-                                            <Logo :logoStyle="3" class="theme-switcher-logo" alt="The Weekly Output 3"></Logo>
-                                        </span>
-                                    </div>
-                                </span>
-                            </transition>
-                        </li>
-                        <li v-for="category in categories">
-                            <router-link :to="{ name: 'category', params: {  category:  category.slug}}" :class="'category-link'">
-                                {{ category.name }}
-                            </router-link>
-                        </li>
-                    </ul>
-                </affix>
-                <hr class="hr-categories" id="directly-below">
+                                                                    <div id="theme-switcher-wrapper">                
+                                                                        <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
+                                                                            <Logo :logoStyle="1" class="theme-switcher-logo" alt="The Weekly Output Style 1"></Logo>
+                                                                        </span>
+                                <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
+                                                                            <Logo :logoStyle="2" class="theme-switcher-logo" alt="The Weekly Output Style 2"></Logo>
+                                                                        </span>
+                                <span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
+                                                                            <Logo :logoStyle="3" class="theme-switcher-logo" alt="The Weekly Output 3"></Logo>
+                                                                        </span>
             </div>
+            </span>
+            </transition>
+            </li>
+            <li v-for="category in categories">
+                <router-link :to="{ name: 'category', params: {  category:  category.slug}}" :class="'category-link'">
+                    {{ category.name }}
+                </router-link>
+            </li>
+            </ul>
+            </affix>
+            <hr class="hr-categories" id="directly-below">
         </div>
+    </div>
     <div id="nav-spacer"></div>
     </div>
 </template>
@@ -96,6 +100,7 @@
 <script>
     import SettingsWheel from '../assets/svg/settings_wheel.svg'
     import SettingsArrow from '../assets/svg/arrow.svg'
+    import TopIllstration from '../assets/svg/Design3_Top-Illustration.svg'
     import apiMixin from '../mixins/api.js'
     import themeswitcherMixin from '../mixins/themeswitcher.js'
     import * as apiMuts from '../api/mutation-types.js'
@@ -115,7 +120,8 @@
             SettingsWheel,
             SettingsArrow,
             Slideout,
-            Logo
+            Logo,
+            TopIllstration
         },
         data() {
             return {
@@ -125,7 +131,11 @@
                     width: 0
                 },
                 loadAffix: false,
-                scrolling: false
+                scrolling: false,
+                topOffset: 0,
+                leftOffset: 0,
+                topIllHeight: 'unset',
+                topIllWidth: 'unset'
             }
         },
         computed: {
@@ -162,6 +172,34 @@
             pushDesignMatomo() {
                 _paq.push(['setCustomDimension', 1, this.currentStyle])
                 _paq.push(['trackPageView'])
+            },
+            generateSeed() {
+                Date.prototype.getWeekNumber = function() {
+                    var d = new Date(Date.UTC(this.getFullYear(), this.getMonth(), this.getDate()));
+                    var dayNum = d.getUTCDay() || 7;
+                    d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+                    var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+                    return Math.ceil((((d - yearStart) / 86400000) + 1) / 7)
+                };
+    
+                let mathSeedRandom = new Math.seedrandom(new Date(1999, 5, 19, 19, 28, 28, 299).getWeekNumber())
+                return {
+                    first: mathSeedRandom(),
+                    second: mathSeedRandom(),
+                    third: mathSeedRandom()
+                }
+            },
+            generateImagePosition() {
+                let number = this.generateSeed()
+                this.topOffset = number.first * 1000 * -1
+                this.leftOffset = number.second * 1000 * -1
+    
+                let height = document.getElementById('top-illustration').clientHeight
+                let width = document.getElementById('top-illustration').clientWidth
+                
+                this.topIllHeight = height * number.third * 10
+                this.topIllWidth = width * number.third * 10
+
             }
         },
         watch: {
@@ -201,9 +239,7 @@
         },
         mounted() {
             this.pushDesignMatomo()
-    
-    
-    
+            this.generateImagePosition()
             let hamburger = {
                 navToggle: document.querySelector('.nav-toggle'),
                 nav: document.querySelector('nav'),
@@ -242,7 +278,14 @@
         text-align: center;
         display: block;
         padding: 32px 16px 24px 16px;
-        font-size: 3em
+        font-size: 3em;
+    }
+    
+    .style-3 #logo {
+        z-index: 2;
+        position: relative;
+        fill: white;
+        padding: 64px 16px
     }
     
     #logo-mobile {
@@ -458,5 +501,21 @@
     .themeswitcher-transition-enter,
     .themeswitcher-transition-leave-active {
         opacity: 0;
+    }
+    
+    .top-illustration-wrapper {
+        position: absolute;
+        width: inherit;
+        height: inherit;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+    }
+    
+    .top-illustration {
+        position: absolute;
     }
 </style>

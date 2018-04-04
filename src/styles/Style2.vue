@@ -132,7 +132,7 @@
     .style-2 .nav-categories li a {
         font-family: Impact, sans-serif !important; 
         text-decoration: none;
-        font-weight: 800;
+        font-weight: 400;
         letter-spacing: -0.2px;
         color: #333333;
         font-size: 1em

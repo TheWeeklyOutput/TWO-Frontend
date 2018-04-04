@@ -182,7 +182,7 @@
                     return Math.ceil((((d - yearStart) / 86400000) + 1) / 7)
                 };
     
-                let mathSeedRandom = new Math.seedrandom(new Date(1999, 5, 19, 19, 28, 28, 299).getWeekNumber())
+                let mathSeedRandom = new Math.seedrandom(new Date().getWeekNumber())
                 return {
                     first: mathSeedRandom(),
                     second: mathSeedRandom(),

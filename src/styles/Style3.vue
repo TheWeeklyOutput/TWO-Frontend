@@ -100,6 +100,7 @@
         width: 100%;
         padding-top: 1.2%;
         padding-bottom: 1.2%;
+        border-top: 3px solid var(--green);
     }
     
     .style-3 #nav-absolute {
@@ -119,18 +120,17 @@
         padding: 0.1% 1% 0.1% 1%;
     }
     
-    .style-3 .nav-categories li:nth-child(n+2) {
-        border-left: 2px solid var(--grey-stuff);
-    }
+    .style-3 .nav-categories li:nth-child(n+2) {}
     
     .style-3 .router-link-active {
         border-bottom: 2px solid white;
     }
     
     .style-3 .nav-categories li a {
-        font-family: 'Roboto' !important;
+        font-family: "Fira Sans", sans-serif !important;
+        font-size: 1.2em;
         text-decoration: none;
-        font-weight: 500;
+        font-weight: 800;
         letter-spacing: -0.2px;
         color: #333333
     }
@@ -142,13 +142,12 @@
         width: 100%;
         right: 0;
         left: 0;
+        top: 0 !important
     }
-
-    .style-3 .desktop-nav-container> .vue-affix {
+    
+    .style-3 .desktop-nav-container>.vue-affix {
         background-color: black;
         color: white;
-        top: 0 !important;
-
     }
     
     .style-3 .vue-affix li a {
@@ -174,15 +173,16 @@
     
     .style-3 #theme-switcher {
         position: absolute;
-        background-color: #FCFCFC;
+        background-color: black;
         width: 500%;
         overflow-y: visible;
         transition: all 0.3s ease-out;
         padding: 50% 0%;
         left: 0;
-        border-radius: 5px;
+        /* border-radius: 5px; */
         box-shadow: 0px 0px 8px -4px rgba(0, 0, 0, 0.75);
         overflow: hidden;
+        border: 3px solid var(--green);
     }
     
     .active {
@@ -191,17 +191,7 @@
         height: auto !important;
     }
     
-    .style-3 #theme-switcher::after {
-        content: " ";
-        position: absolute;
-        bottom: 100%;
-        /* At the top of the tooltip */
-        left: 10%;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: transparent transparent var(--grey-stuff) transparent;
-    }
+    .style-3 #theme-switcher::after {}
     
     .style-3 .theme-switcher-logo-1 {
         height: 30px;
@@ -508,7 +498,7 @@
     
     .style-3 .footer-li a {
         text-decoration: none;
-        font-weight: 500;
+        font-weight: 800;
         text-align: center;
         color: white
     }
@@ -540,7 +530,7 @@
         display: inline-block;
     }
     
-    #nav-spacer {
+    .style-3 #nav-spacer {
         width: 100%;
         height: 300px !important;
         display: block;

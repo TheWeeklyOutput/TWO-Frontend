@@ -27,37 +27,34 @@
                     <div class="theme-toggle">
                         <div class="theme-toggle-bar">
                             <settings-wheel style="height: 20px; cursor: pointer;"></settings-wheel>
-    
                         </div>
                     </div>
                 </div>
                 <nav class="themeswitcher-mobile">
                     <div class="themeswitcher-mobile-wrapper">
                         <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
-                                                            <Logo :logoStyle="1" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output Style 1"></Logo>
-                                                        </span>
+                                                                                        <Logo :logoStyle="1" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output Style 1"></Logo>
+                                                                                    </span>
                         <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
-                                                            <Logo :logoStyle="2" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output Style 2"></Logo>
-                                                        </span>
+                                                                                        <Logo :logoStyle="2" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output Style 2"></Logo>
+                                                                                    </span>
                         <span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
-                                                            <Logo :logoStyle="3" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output 3"></Logo>
-                                                        </span>
+                                                                                        <Logo :logoStyle="3" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output 3"></Logo>
+                                                                                    </span>
                     </div>
                 </nav>
-    
-    
             </div>
             <div id="desktop-nav-container" class="desktop-nav-container desktop-only">
                 <router-link :to="'/'">
                     <div id="logo">
-                        <div v-if="themeSwitcher.currentStyle == 3" class="top-illustration-wrapper">
-                            <top-illstration class="top-illustration" id="top-illustration" v-bind:style="{ top: topOffset + 'px', left: leftOffset + 'px', height: topIllHeight, width: topIllWidth}"></top-illstration>
+                        <div v-if="themeSwitcher.currentStyle == 3" id="top-illustration-wrapper" class="top-illustration-wrapper">
+                            <top-illstration class="top-illustration" id="top-illustration" v-bind:style="{ top: topOffset + 'px', left: leftOffset + 'px', zoom: zoomFactor}"></top-illstration>
                         </div>
     
                         <Logo :logoStyle="Number(themeSwitcher.currentStyle)" class="logo-style-1" alt="The Weekly Output"></Logo>
                     </div>
                 </router-link>
-                <affix v-if="api.loaded" relative-element-selector="#router-link" :scroll-affix="false" :offset="{ top: 80, bottom: 200 }" v-on:affixtop="scrollHandler(false)" v-on:affix="scrollHandler(true)" id="desktop-navbar">
+                <affix v-if="api.loaded" relative-element-selector="#router-link" :scroll-affix="true" v-on:affixtop="scrollHandler(false)" v-on:affix="scrollHandler(true)" :offset="themeSwitcher.styleSettings[themeSwitcher.currentStyle].affix.offset" id="desktop-navbar">
                     <ul class="nav-categories">
                         <router-link :to="'/'" id="nav-logo-link">
                             <li class="theme-switcher-logo-wrapper" v-if="scrolling == true">
@@ -69,16 +66,16 @@
                             <settings-wheel style="height: 20px; cursor: pointer;"></settings-wheel>
                             <transition name="themeswitcher-transition">
                                 <span id="theme-switcher" v-if="expandedSwitcher">
-                                                                    <div id="theme-switcher-wrapper">                
-                                                                        <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
-                                                                            <Logo :logoStyle="1" class="theme-switcher-logo" alt="The Weekly Output Style 1"></Logo>
-                                                                        </span>
+                                            <div id="theme-switcher-wrapper">                
+                                                <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
+                                                    <Logo :logoStyle="1" class="theme-switcher-logo" alt="The Weekly Output Style 1"></Logo>
+                                                </span>
                                 <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
-                                                                            <Logo :logoStyle="2" class="theme-switcher-logo" alt="The Weekly Output Style 2"></Logo>
-                                                                        </span>
+                                                    <Logo :logoStyle="2" class="theme-switcher-logo" alt="The Weekly Output Style 2"></Logo>
+                                                </span>
                                 <span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
-                                                                            <Logo :logoStyle="3" class="theme-switcher-logo" alt="The Weekly Output 3"></Logo>
-                                                                        </span>
+                                                    <Logo :logoStyle="3" class="theme-switcher-logo" alt="The Weekly Output 3"></Logo>
+                                                </span>
             </div>
             </span>
             </transition>
@@ -134,8 +131,7 @@
                 scrolling: false,
                 topOffset: 0,
                 leftOffset: 0,
-                topIllHeight: 'unset',
-                topIllWidth: 'unset'
+                zoomFactor: '100%'
             }
         },
         computed: {
@@ -181,25 +177,56 @@
                     var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
                     return Math.ceil((((d - yearStart) / 86400000) + 1) / 7)
                 };
+
+                let date = Math.floor(new Date().getTime() / 1000 / 60 / 24 / 7 / 52)
     
-                let mathSeedRandom = new Math.seedrandom(new Date().getWeekNumber())
+                let mathSeedRandom = new Math.seedrandom(date)
                 return {
                     first: mathSeedRandom(),
                     second: mathSeedRandom(),
-                    third: mathSeedRandom()
+                    third: mathSeedRandom(),
+                    fourth: mathSeedRandom()
                 }
             },
             generateImagePosition() {
                 let number = this.generateSeed()
+                console.log( )
+    
                 this.topOffset = number.first * 1000 * -1
                 this.leftOffset = number.second * 1000 * -1
     
-                let height = document.getElementById('top-illustration').clientHeight
-                let width = document.getElementById('top-illustration').clientWidth
-                
-                this.topIllHeight = height * number.third * 10
-                this.topIllWidth = width * number.third * 10
+                this.zoomFactor = (80 + number.third * 100 * number.fourth).toString() + '%'
 
+                /*this.topIllHeight = height * (number.third * wrapper.height)
+                this.topIllWidth = width * (number.third * wrapper.width)*/
+
+                let image = document.getElementById('top-illustration')
+                let wrapper = document.getElementById('top-illustration-wrapper')
+                let height = image.clientHeight
+                let width = image.clientWidth
+
+                let imageRect = image.getBoundingClientRect()
+                let wrapperRect = wrapper.getBoundingClientRect()
+                let offset = imageRect.bottom - wrapperRect.bottom
+                let offset2 = imageRect.right - wrapperRect.right
+
+                if (imageRect.right < wrapperRect.width) {
+                    alert(imageRect.right)
+                } else {
+                    console.log('its good')
+                }
+                if (imageRect.bottom < wrapperRect.height) {
+                    this.topOffset += imageRect.bottom
+    
+                } else {
+                    console.log('its good')
+                }
+                if(imageRect.top > 0) {
+                    this.topOffset = 0
+                }
+                if(imageRect.left > 0) {
+                    this.leftOffset = 0
+                }
             }
         },
         watch: {
@@ -239,7 +266,6 @@
         },
         mounted() {
             this.pushDesignMatomo()
-            this.generateImagePosition()
             let hamburger = {
                 navToggle: document.querySelector('.nav-toggle'),
                 nav: document.querySelector('nav'),
@@ -268,6 +294,16 @@
             thememobile.navToggle.addEventListener('click', function(e) {
                 thememobile.doToggle(e);
             })
+            let ctx = this
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    setInterval(() => {
+                    ctx.generateImagePosition()
+                    }, 1000)
+                }, 100)
+            })
+    
+    
     
         }
     }

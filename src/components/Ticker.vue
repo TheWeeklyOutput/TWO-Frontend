@@ -1,15 +1,15 @@
 <template>
     <div id="ticker">
-        <BreakingNewsLogo style="position: absolute; z-index: 90; height: 60px; left: 0; width: auto"></BreakingNewsLogo>
-        <p class="marquee">
+        <BreakingNewsLogo class="breakingnewslogo" style="position: absolute; z-index: 90; height: 60px; left: 0; width: auto"></BreakingNewsLogo>
+        <span class="marquee">
             <span class="marquee-text"> 
-                    <span v-for="item in tickerString()">
+                    <span class="marqueeitem" v-for="item in tickerString()">
                         <router-link :to="{ name: 'article', params: {  category: 'highlights', slug: item.slug }}">
-                            {{ item.title.toUpperCase() }}
+                            <span>{{ item.title.toUpperCase() }}</span>
                         </router-link>
                     </span>
             </span>
-        </p>
+        </span>
     </div>
 </template>
 
@@ -90,7 +90,7 @@
         text-decoration: underline
     }
     
-    .marquee-text span::after {
+    .marquee-text .marqueeitem::after {
         content: "  \2215  ";
         padding: 0 10px;
         color: red;

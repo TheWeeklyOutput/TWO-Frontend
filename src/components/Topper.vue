@@ -4,7 +4,7 @@
             <Titles :category="categoryToRender.name"></Titles>
             <hr>
         </div>
-        <Ticker v-if="themeSwitcher.currentStyle == 2" id="topper-ticker"></Ticker>
+        <Ticker v-if="themeSwitcher.currentStyle == 2" id="topper-ticker" class="desktop-only"></Ticker>
     
         <div v-for="article in articleList" :class="'topper-article-wrapper'">
             <router-link :to="{ name: 'article', params: {  category: categoryToRender.slug, slug: article.slug }}" :class="'article-link'" transition="fade">

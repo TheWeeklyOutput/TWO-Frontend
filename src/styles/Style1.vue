@@ -137,6 +137,7 @@
         width: 100%;
         right: 0;
         left: 0;
+        top: 0 !important
     }
     
     .style-1 #nav-logo-link {

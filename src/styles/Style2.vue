@@ -114,7 +114,6 @@
         display: inline-block;
         vertical-align: top;
         padding: 0.1% 1% 0.1% 1%;
-
     }
     
     .style-2 .nav-categories li:nth-child(n+2) {
@@ -130,7 +129,7 @@
     }
     
     .style-2 .nav-categories li a {
-        font-family: Impact, sans-serif !important; 
+        font-family: Impact, sans-serif !important;
         text-decoration: none;
         font-weight: 400;
         letter-spacing: -0.2px;
@@ -144,6 +143,7 @@
         width: 100%;
         right: 0;
         left: 0;
+        top: 0 !important
     }
     
     .style-2 #nav-logo-link {
@@ -221,6 +221,17 @@
         z-index: 9999
     }
     
+    .style-2 #topper-ticker {
+        grid-column: span 4;
+        height: 30px;
+        /* width: 500px; */
+        position: relative
+    }
+
+    .style-2 #topper-ticker .breakingnewslogo {
+        height: 65px !important
+    }
+    
     .style-2 footer {
         background-color: #000;
         color: #fff;
@@ -241,7 +252,7 @@
     }
     
     .style-2 .logo-style-1 {
-        height: 50px;
+        height: 80px;
         width: auto;
         max-width: 100%;
         fill: var(--red)
@@ -557,9 +568,9 @@
         display: inline-block;
     }
     
-    #nav-spacer {
+    .style-2 #nav-spacer {
         width: 100%;
-        height: 240px !important;
+        height: 210px !important;
         display: block;
     }
     
@@ -656,7 +667,7 @@
             grid-row: 1;
         }
         .style-2 .topper> :nth-child(n+3) {
-            padding-top: 20px;
+            padding-top: 0;
         }
         .style-2 .topper> :nth-child(n+3) .topper-article-title {}
         .style-2 .topper .topper-text {

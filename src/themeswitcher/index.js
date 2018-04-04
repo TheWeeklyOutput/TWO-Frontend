@@ -13,6 +13,12 @@ export default {
         },
         home: {
           descriptionShown: false
+        },
+        affix: {
+          offset: {
+            top: 40,
+            bottom: 40,
+          }
         }
       },
       2: {        
@@ -22,7 +28,14 @@ export default {
         },
         home: {
           descriptionShown: false
+        },
+        affix: {
+          offset: {
+            top: 40,
+            bottom: 40,
+          }
         }
+
 
       },
       3: {        
@@ -32,7 +45,14 @@ export default {
         },
         home: {
           descriptionShown: true
+        },
+        affix: {
+          offset: {
+            top: 0,
+            bottom: 0,
+          }
         }
+
 
       }
     }

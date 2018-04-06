@@ -109,10 +109,8 @@
                     } else {
                         orientation = 'even'
                     }
-                    console.log(orientation)
                     return orientation
                 }
-                console.log(orientation)
                 img.src = image
     
             },

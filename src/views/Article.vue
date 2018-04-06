@@ -46,35 +46,6 @@
     
     
             </div>
-            <!-- Update your html tag to include the itemscope and itemtype attributes. -->
-            <div v-if="currentArticle">
-                <meta name="description" :content="currentArticle.description" />
-        
-                <!-- Schema.org markup for Google+ -->
-                <meta itemprop="name" :content="currentArticle.title">
-                <meta itemprop="description" :content="currentArticle.description">
-                <meta itemprop="image" :content="currentArticle.image_url">
-        
-                <!-- Twitter Card data -->
-                <meta name="twitter:card" content="summary_large_image">
-                <meta name="twitter:site" content="@theweeklyoutput">
-                <meta name="twitter:title" :content="currentArticle.title">
-                <meta name="twitter:description" :content="currentArticle.description">
-                <meta name="twitter:creator" :content="currentArticle.author.name">
-                <!-- Twitter summary card with large image must be at least 280x150px -->
-                <meta name="twitter:image:src" :content="currentArticle.image_url">
-        
-                <!-- Open Graph data -->
-                <meta property="og:title" :content="currentArticle.title" />
-                <meta property="og:type" content="article" />
-                <meta property="og:url" content="https://www.weekly-output.com" />
-                <meta property="og:image" :content="currentArticle.image_url" />
-                <meta property="og:description" :content="currentArticle.description" />
-                <meta property="og:site_name" content="'The Weekly Output'" />
-                <meta property="article:published_time" :content="currentArticle.date" />
-                <meta property="article:section" content="Article Section" />
-                <meta property="article:tag" :content="category" />
-            </div>
         </div>
     </div>
 </template>

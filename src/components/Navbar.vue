@@ -191,7 +191,6 @@
             generateImagePosition() {
                 if (this.currentStyle == 3) {
                     let number = this.generateSeed()
-                    console.log()
     
                     this.topOffset = number.first * 1000 * -1
                     this.leftOffset = number.second * 1000 * -1
@@ -214,13 +213,11 @@
                     if (imageRect.right < wrapperRect.width) {
                         alert(imageRect.right)
                     } else {
-                        console.log('its good')
                     }
                     if (imageRect.bottom < wrapperRect.height) {
                         this.topOffset += imageRect.bottom
     
                     } else {
-                        console.log('its good')
                     }
                     if (imageRect.top > 0) {
                         this.topOffset = 0
@@ -253,7 +250,6 @@
             $route(to, from) {
                 // with same router query on change
                 if (from.query === to.query) {
-                    console.log('didn\'t change a thing')
                     return
                 }
     

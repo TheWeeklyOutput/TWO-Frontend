@@ -63,13 +63,11 @@
             function adBlockNotDetected() {
                 context.$emit("passValue", context.adDetected);
     
-                console.log('NO ADS')
             }
             // Function called if AdBlock is detected 
             function adBlockDetected() {
                 context.adDetected = true
                 context.$emit("passValue", context.adDetected);
-                console.log('ADBLOCK')
     
             }
     

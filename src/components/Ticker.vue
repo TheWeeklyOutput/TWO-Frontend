@@ -23,19 +23,6 @@
         },
         methods: {
             tickerString(val) {
-                /*let start = null
-                            let finish = null
-                            if (val === 1) {
-                                start = 0
-                                finish = this.api.articles.highlights.length / 2
-                            }
-                    
-                            if (val === 2) {
-                                start = this.api.articles.highlights.length / 2
-                                finish = this.api.articles.highlights.length
-                            }
-                            let string = this.api.articles.highlights.splice(start, finish)
-                            console.log(string)*/
                 let string = this.api.articles.highlights
                 return string
             }

@@ -1,4 +1,5 @@
 import './promise-polyfill'
+import 'es6-object-assign/auto'
 import Vue from 'vue'
 import VueResource from 'vue-resource'
 import Router from 'vue-router'
@@ -10,7 +11,6 @@ import Affix from 'vue-affix'
 import VueTimeago from 'vue-timeago'
 import VueProgressiveImage from 'vue-progressive-image'
 import infiniteScroll from 'vue-infinite-scroll'
-require('es6-object-assign/auto')
 
 Vue.use(infiniteScroll)
 Vue.directive({infiniteScroll})

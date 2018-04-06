@@ -263,7 +263,6 @@
                     this.selectTheme(Object.keys(to.query))
                 } else {
                     // with invalid design number
-                    console.log('hm')
                     this.$router.replace({
                         query: {
                             [this.currentStyle]: null

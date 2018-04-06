@@ -10,6 +10,8 @@ import Affix from 'vue-affix'
 import VueTimeago from 'vue-timeago'
 import VueProgressiveImage from 'vue-progressive-image'
 import infiniteScroll from 'vue-infinite-scroll'
+require('es6-object-assign/auto')
+
 Vue.use(infiniteScroll)
 Vue.directive({infiniteScroll})
 

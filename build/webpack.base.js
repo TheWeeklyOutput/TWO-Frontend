@@ -75,7 +75,7 @@ module.exports = {
       {
         from: _.cwd('./frontend/static'),
         // to the root of dist path
-        to: './frontend/dist'
+        to: './static'
       }
     ])
   ],

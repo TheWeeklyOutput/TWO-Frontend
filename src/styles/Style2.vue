@@ -356,7 +356,6 @@
         overflow: hidden;
         display: inline-block;
         background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.7) 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#b3000000', GradientType=0);
     }
     
     .style-2 .topper-image {
@@ -748,13 +747,7 @@
             grid-row: 1;
             max-height: 400px;
             grid-row: 1;
-            /* FF3.6-15 */
-            background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.42) 60%, rgba(0, 0, 0, 0.7) 100%);
-            /* Chrome10-25,Safari5.1-6 */
             background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.42) 60%, rgba(0, 0, 0, 0.7) 100%);
-            /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#b3000000', GradientType=0);
-            /* IE6-9 */
             overflow: hidden;
         }
         .style-2 .next-to-article-image-wrapper {

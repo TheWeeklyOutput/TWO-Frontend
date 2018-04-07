@@ -39,14 +39,8 @@ module.exports = {
     loaders: [
       {
         test: /\.vue$/,
-        use: [
-          {
-            loader: 'vue-loader',
-            options: {
-              postcss: [require('autoprefixer')()]
-            }
-          }
-        ]
+        loaders: ['vue-loader'],
+
       },
       {
         test: /\.js$/,
@@ -67,15 +61,6 @@ module.exports = {
       {
         test: /\.svg$/,
         loader: 'vue-svg-loader', // `vue-svg` for webpack 1.x,
-        options: {
-          // optional [svgo](https://github.com/svg/svgo) options
-          svgo: {
-            plugins: [
-              {removeDoctype: true},
-              {removeComments: true}
-            ]
-          }
-        }
       }
     ]
   },

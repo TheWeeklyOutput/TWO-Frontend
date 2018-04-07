@@ -31,14 +31,13 @@
         --main-text-color: black;
         --grey-stuff: #e3e3e3;
         --second-grey-stuff: #333333;
-        --bg-color: white;
         --green: #34DB93;
         --grey-text: #9F9F9F
     }
     
     body {
         font-size: 1em;
-        background-color: var(--bg-color);
+        background-color: white;
         min-height: 100%
     }
     
@@ -532,7 +531,7 @@
     
     .style-3 #nav-spacer {
         width: 100%;
-        height: 300px !important;
+        height: 340px !important;
         display: block;
     }
     

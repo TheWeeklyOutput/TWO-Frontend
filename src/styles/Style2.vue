@@ -569,7 +569,7 @@
     
     .style-2 #nav-spacer {
         width: 100%;
-        height: 30vh !important;
+        height: 200px !important;
         display: block;
     }
     

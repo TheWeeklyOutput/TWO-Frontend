@@ -552,6 +552,12 @@
     }
     
     @media (min-width: 880px) {
+        .style-3 .category {
+            padding-top: 4%
+        }
+        .style-3 #home {
+            padding-top: 4%
+        }
         .style-3 .article-wrapper {
             grid-template-columns: repeat(5, 1fr);
             height: fit-content;

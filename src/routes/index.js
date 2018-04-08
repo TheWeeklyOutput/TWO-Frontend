@@ -2,7 +2,7 @@ import Home from '../views/Home.vue'
 import DevTools from '../views/DevTools.vue'
 
 export default {
-  mode: 'history',
+  mode: 'hash',
   routes: [
     {
       path: '/',

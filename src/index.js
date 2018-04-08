@@ -46,7 +46,6 @@ Vue.http.options.root = window.location.protocol + '//' + window.location.hostna
 
 // vue-router
 Vue.use(Router)
-console.log(routes)
 const router = new Router(routes)
 Vue.router = router
 

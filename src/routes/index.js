@@ -2,17 +2,18 @@ import Home from '../views/Home.vue'
 import DevTools from '../views/DevTools.vue'
 
 export default {
-  mode: 'hash',
+  mode: 'history',
+  base: '/',
   routes: [
     {
       path: '/',
       name: 'home',
       component: () => import('../views/Home'),
-      meta: {title: 'The Weekly Output | ' + 'Home' }
+      meta: { title: 'The Weekly Output | ' + 'Home' }
     }, {
       path: '/dev',
       name: 'dev',
-      component: DevTools,
+      component: DevTools
     }, {
       path: '/articles/:category/:slug',
       name: 'article',

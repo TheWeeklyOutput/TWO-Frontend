@@ -3,5 +3,5 @@
 *.log
 log.txt
 
-dist/*
-!dist/.keep
+/dist/*
+!/dist/.keep

@@ -240,8 +240,8 @@
     .style-1 article:first-child:first-letter {
         font-style: normal;
         font-weight: normal;
-        line-height: 1;
-        font-size: 5em;
+        line-height: 0.8;
+        font-size: 3.6em;
         display: block;
         float: left;
         margin: 0 .1em -.2em 0;

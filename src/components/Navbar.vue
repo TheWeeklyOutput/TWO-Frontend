@@ -409,7 +409,7 @@
         font-size: 2rem;
         line-height: 2;
         height: 100vh;
-        left: -20rem;
+        left: -30rem;
         padding: 6rem 2rem 2rem 2rem;
         position: fixed;
         top: 0;
@@ -454,7 +454,7 @@
         font-size: 2rem;
         line-height: 2;
         height: 100vh;
-        right: -20rem;
+        right: -30rem;
         padding: 6rem 2rem 2rem 2rem;
         position: fixed;
         top: 0;

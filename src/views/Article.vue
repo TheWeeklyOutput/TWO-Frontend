@@ -4,25 +4,25 @@
     
         <div class="article-wrapper">
             <span class="headline-single-article">
-                                            <h1 class="article-heading" v-if="currentArticle">{{ currentArticle.title }}</h1>
-                                            <div v-else class="article-heading placeholder"></div>
-                                        </span>
+                <h1 class="article-heading" v-if="currentArticle">{{ currentArticle.title }}</h1>
+                <div v-else class="article-heading placeholder"></div>
+            </span>
             <span class="article-heading-filler">
-                                            <page-views :views="currentArticle.views" :showShares="false" class="twitter-icon-container-article" v-if="currentArticle"></page-views>
-                                        </span>
+                <page-views :views="currentArticle.views" :showShares="false" class="twitter-icon-container-article" v-if="currentArticle"></page-views>
+            </span>
             <span class="article-headline-info">
-                                            <p class="article-author" v-if="currentArticle">
-                                                By {{ currentArticle.author.name.toUpperCase() }} | <span class="article-timestamp"> <timeago :since="currentArticle.date"></timeago> </span>
-            </p>
+                <p class="article-author" v-if="currentArticle">
+                    By {{ currentArticle.author.name.toUpperCase() }} | <span class="article-timestamp"> <timeago :since="currentArticle.date"></timeago> </span>
+                </p>
             <div v-else class="article-author placeholder"></div>
     
             </span>
             <span class="article-image-wrapper">
-                            <progressive-background :src="currentArticle.image_url" class="article-image-full" v-if="currentArticle" />
-                            <div v-else class="article-image-full placeholder"></div>
-                            <h3 class="image-credit" v-if="currentArticle">photo by {{ currentArticle.image_credit }}</h3>
-                            <div v-else class="image-credit placeholder"></div>
-                        </span>
+                <progressive-background :src="currentArticle.image_url" class="article-image-full" v-if="currentArticle" />
+                <div v-else class="article-image-full placeholder"></div>
+                <h3 class="image-credit" v-if="currentArticle">photo by {{ currentArticle.image_credit }}</h3>
+                <div v-else class="image-credit placeholder"></div>
+            </span>
             <div class="article-three-columns">
                 <div class="article-text" v-if="currentArticle">
                     <div v-html="currentArticle.html_content"></div>
@@ -46,8 +46,6 @@
                 </div>
     
                 <div v-else class="article-bottombar-wrapper mobile-only placeholder"></div>
-    
-    
             </div>
         </div>
     </div>

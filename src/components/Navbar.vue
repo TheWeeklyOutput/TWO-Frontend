@@ -33,14 +33,14 @@
                 <nav class="themeswitcher-mobile">
                     <div class="themeswitcher-mobile-wrapper">
                         <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
-                                                                                                        <Logo :logoStyle="1" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output Style 1"></Logo>
-                                                                                                    </span>
+                                                                                                            <Logo :logoStyle="1" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output Style 1"></Logo>
+                                                                                                        </span>
                         <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
-                                                                                                        <Logo :logoStyle="2" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output Style 2"></Logo>
-                                                                                                    </span>
+                                                                                                            <Logo :logoStyle="2" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output Style 2"></Logo>
+                                                                                                        </span>
                         <span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
-                                                                                                        <Logo :logoStyle="3" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output 3"></Logo>
-                                                                                                    </span>
+                                                                                                            <Logo :logoStyle="3" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output 3"></Logo>
+                                                                                                        </span>
                     </div>
                 </nav>
             </div>
@@ -66,16 +66,16 @@
                             <settings-wheel style="height: 20px; cursor: pointer;"></settings-wheel>
                             <transition name="themeswitcher-transition">
                                 <span id="theme-switcher" v-if="expandedSwitcher">
-                                                            <div id="theme-switcher-wrapper">                
-                                                                <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
-                                                                    <Logo :logoStyle="1" class="theme-switcher-logo" alt="The Weekly Output Style 1"></Logo>
-                                                                </span>
+                                                                <div id="theme-switcher-wrapper">                
+                                                                    <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
+                                                                        <Logo :logoStyle="1" class="theme-switcher-logo" alt="The Weekly Output Style 1"></Logo>
+                                                                    </span>
                                 <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
-                                                                    <Logo :logoStyle="2" class="theme-switcher-logo" alt="The Weekly Output Style 2"></Logo>
-                                                                </span>
+                                                                        <Logo :logoStyle="2" class="theme-switcher-logo" alt="The Weekly Output Style 2"></Logo>
+                                                                    </span>
                                 <span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
-                                                                    <Logo :logoStyle="3" class="theme-switcher-logo" alt="The Weekly Output 3"></Logo>
-                                                                </span>
+                                                                        <Logo :logoStyle="3" class="theme-switcher-logo" alt="The Weekly Output 3"></Logo>
+                                                                    </span>
             </div>
             </span>
             </transition>
@@ -212,13 +212,11 @@
     
                     if (imageRect.right < wrapperRect.width) {
                         alert(imageRect.right)
-                    } else {
-                    }
+                    } else {}
                     if (imageRect.bottom < wrapperRect.height) {
                         this.topOffset += imageRect.bottom
     
-                    } else {
-                    }
+                    } else {}
                     if (imageRect.top > 0) {
                         this.topOffset = 0
                     }
@@ -421,6 +419,13 @@
     
     .nav.expanded {
         left: 0;
+    }
+    
+    @media (max-width: 1160px) and (min-width: 880px) {
+        .affix .nav-categories li {
+            padding: 0.1% 0.5% 0.1% 0.5% !important;
+            font-size: 0.8em;
+        }
     }
     
     .nav ul {

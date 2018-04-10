@@ -19,6 +19,7 @@
 
     <style1></style1>
     <style2></style2>
+    <style3></style3>
   
   </div>
 </template>
@@ -48,6 +49,7 @@
       FooterBar,
       Style1,
       Style2,
+      Style3,
       AdDetect
     },
     data: function() {

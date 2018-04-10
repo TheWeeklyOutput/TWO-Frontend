@@ -110,8 +110,8 @@
     
     .modal-container {
         width: 300px;
-        margin: 0px auto;
-        padding: 20px 30px;
+        margin: 0px auto !important;
+        padding: 20px 30px !important;
         background-color: #fff;
         border-radius: 2px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
@@ -120,27 +120,17 @@
     }
     
     .modal-header h3 {
-        margin-top: 0;
+        margin-top: 0 !important;
         color: #42b983;
     }
     
     .modal-body {
-        margin: 20px 0;
+        margin: 20px 0 !important;
     }
     
     .modal-default-button {
         float: right;
     }
-    
-    
-    /*
-                     * The following styles are auto-applied to elements with
-                     * transition="modal" when their visibility is toggled
-                     * by Vue.js.
-                     *
-                     * You can easily play with the modal transition by editing
-                     * these styles.
-                     */
     
     .modal-enter {
         opacity: 0;
@@ -159,7 +149,7 @@
     .button-ad-footer {
         display: block !important;
         background-color: var(--grey-text);
-        padding: 15px;
+        padding: 15px !important;
         color: white
     }
     

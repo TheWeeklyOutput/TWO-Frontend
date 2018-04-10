@@ -136,17 +136,15 @@
     
     .style-3 .affix ul {}
     
-    .style-3 .vue-affix {
+    
+    .style-3 .desktop-nav-container>.vue-affix {
+        background-color: black;
+        color: white;
         z-index: 1030;
         width: 100%;
         right: 0;
         left: 0;
         top: 0 !important
-    }
-    
-    .style-3 .desktop-nav-container>.vue-affix {
-        background-color: black;
-        color: white;
     }
     
     .style-3 .vue-affix li a {
@@ -1238,7 +1236,7 @@
             grid-template-columns: repeat(1, 1fr);
             background-color: white;
             grid-column: 1;
-            padding: 20px;
+            padding: 0;
             font-size: 1.2em;
         }
         .style-3 .article-image-wrapper {
@@ -1316,7 +1314,7 @@
             padding-left: 0;
         }
         .style-3 .article-text {
-            padding-left: 0;
+            padding: 20px;
             font-weight: 400;
         }
         .style-3 .headline-single-article {

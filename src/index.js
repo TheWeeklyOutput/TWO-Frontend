@@ -12,6 +12,8 @@ import VueTimeago from 'vue-timeago'
 import VueProgressiveImage from 'vue-progressive-image'
 import infiniteScroll from 'vue-infinite-scroll'
 
+Vue.use(require('vue-social-sharing'))
+
 Vue.use(infiniteScroll)
 Vue.directive({infiniteScroll})
 

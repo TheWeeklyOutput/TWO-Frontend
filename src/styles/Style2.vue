@@ -137,7 +137,7 @@
         font-size: 1em
     }
     
-    .style-2 .vue-affix {
+    .style-2 .desktop-nav-container>.vue-affix {
         background-color: rgba(255, 255, 255, 1);
         z-index: 1030;
         width: 100%;

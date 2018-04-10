@@ -131,7 +131,7 @@
         color: #333333
     }
     
-    .style-1 .vue-affix {
+    .style-1 .desktop-nav-container>.vue-affix {
         background-color: rgba(255, 255, 255, 1);
         z-index: 1030;
         width: 100%;

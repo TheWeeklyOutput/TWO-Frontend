@@ -19,7 +19,7 @@
                     </div>
                 </div>
             </div>
-            <affix v-if="api.articles && api.loaded" relative-element-selector="#home-bottom" id="twitter-affix" :scroll-affix="true" class="desktop-only">
+            <affix v-if="api.articles && api.loaded" relative-element-selector="#home-bottom" id="twitter-affix" :offset="{ top: 100, bottom: 100 }" :scroll-affix="true" class="desktop-only">
                 <TweetFeed class="twitter-sidebar " />
             </affix>
     
@@ -97,15 +97,32 @@
             margin: auto;
             background-color: transparent;
         }
-        #twitter-affix {
-            width: fit-content !important;
+       .affix-top#twitter-affix {
+            width: 24% !important;
             float: right;
         }
-        .twitter-sidebar {
-            float: right
+       .affix-top#twitter-affix {
+            width: 24% !important;
+            float: right;
+        }
+       .vue-affix#twitter-affix {
+            width: 24%;
+            float: right;
+        }
+       .affix#twitter-affix {
+            width: unset;
+            float: right;
+        }
+        .affix .twitter-sidebar {
+            float: right;
+            width: 24%
         }
         .twitter-sidebar h1 {
-            padding-left: 0
+            padding: 10px
+        }
+
+        .twitter-sidebar div {
+            padding: 10px
         }
     }
 </style>

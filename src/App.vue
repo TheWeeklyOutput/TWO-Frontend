@@ -7,7 +7,6 @@
     <div class="site-wrapper">
       <Navbar v-on:click="test1 = false">
       </Navbar>
-      
       <div id="router-link">
         <transition name="fade">
           <router-view></router-view>

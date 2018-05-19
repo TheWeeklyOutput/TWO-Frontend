@@ -22,7 +22,20 @@
                         <Logo :logoStyle="Number(themeSwitcher.currentStyle)" class="logo-style-1-mobile" alt="The Weekly Output"></Logo>
                     </div>
                 </router-link>
-    
+                <nav class="themeswitcher-mobile">
+                    <div class="themeswitcher-mobile-wrapper">
+                        <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
+                            <Logo :logoStyle="1" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output Style 1"></Logo>
+                        </span>
+                        <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
+                            <Logo :logoStyle="2" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output Style 2"></Logo>
+                        </span>
+                        <span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
+                            <Logo :logoStyle="3" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output 3"></Logo>
+                        </span>
+                    </div>
+                </nav>
+
                 <div class="theme-toggle-wrapper">
                     <div class="theme-toggle">
                         <div class="theme-toggle-bar">
@@ -30,19 +43,6 @@
                         </div>
                     </div>
                 </div>
-                <nav class="themeswitcher-mobile">
-                    <div class="themeswitcher-mobile-wrapper">
-                        <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
-                                                                                                            <Logo :logoStyle="1" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output Style 1"></Logo>
-                                                                                                        </span>
-                        <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
-                                                                                                            <Logo :logoStyle="2" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output Style 2"></Logo>
-                                                                                                        </span>
-                        <span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
-                                                                                                            <Logo :logoStyle="3" class="theme-switcher-logo theme-switcher-logo-mobile" alt="The Weekly Output 3"></Logo>
-                                                                                                        </span>
-                    </div>
-                </nav>
             </div>
             <div id="desktop-nav-container" class="desktop-nav-container desktop-only">
                 <router-link :to="'/'">
@@ -66,30 +66,30 @@
                             <settings-wheel style="height: 20px; cursor: pointer;"></settings-wheel>
                             <transition name="themeswitcher-transition">
                                 <span id="theme-switcher" v-if="expandedSwitcher">
-                                                                <div id="theme-switcher-wrapper">                
-                                                                    <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
-                                                                        <Logo :logoStyle="1" class="theme-switcher-logo" alt="The Weekly Output Style 1"></Logo>
-                                                                    </span>
-                                <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
-                                                                        <Logo :logoStyle="2" class="theme-switcher-logo" alt="The Weekly Output Style 2"></Logo>
-                                                                    </span>
-                                <span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
-                                                                        <Logo :logoStyle="3" class="theme-switcher-logo" alt="The Weekly Output 3"></Logo>
-                                                                    </span>
-            </div>
-            </span>
-            </transition>
-            </li>
-            <li v-for="category in categories">
-                <router-link :to="{ name: 'category', params: {  category:  category.slug}}" :class="'category-link'">
-                    {{ category.name }}
-                </router-link>
-            </li>
-            </ul>
-            </affix>
+                                    <div id="theme-switcher-wrapper" v-click-outside="clickedOutside">                
+                                        <span class="theme-switcher-logo-wrapper" @click="selectTheme(1)" v-bind:class="{ active: themeSwitcher.currentStyle === 1}">
+                                            <Logo :logoStyle="1" class="theme-switcher-logo" alt="The Weekly Output Style 1"></Logo>
+                                        </span>
+                                        <span class="theme-switcher-logo-wrapper" @click="selectTheme(2)" v-bind:class="{ active: themeSwitcher.currentStyle === 2}">
+                                            <Logo :logoStyle="2" class="theme-switcher-logo" alt="The Weekly Output Style 2"></Logo>
+                                        </span>
+                                        <span class="theme-switcher-logo-wrapper" @click="selectTheme(3)" v-bind:class="{ active: themeSwitcher.currentStyle === 3}">
+                                            <Logo :logoStyle="3" class="theme-switcher-logo" alt="The Weekly Output 3"></Logo>
+                                        </span>
+                                    </div>
+                                </span>
+                            </transition>
+                        </li>
+                        <li v-for="category in categories">
+                            <router-link :to="{ name: 'category', params: {  category:  category.slug}}" :class="'category-link'">
+                                {{ category.name }}
+                            </router-link>
+                        </li>
+                    </ul>
+                </affix>
             <hr class="hr-categories" id="directly-below">
+            </div>
         </div>
-    </div>
     <div id="nav-spacer"></div>
     </div>
 </template>
@@ -155,6 +155,12 @@
             toggleActiveExpand() {
                 this.expandedSwitcher = !this.expandedSwitcher
             },
+
+            clickedOutside() {
+                if(this.expandedSwitcher) {
+                    this.toggleActiveExpand()
+                }
+             },
     
             selectTheme(themeNumber) {
                 this.$store.commit(themeMuts.SET_STYLE, {
@@ -333,7 +339,7 @@
         user-select: none;
         cursor: pointer;
         height: 1rem;
-        left: 6%;
+        right: 6%;
         position: fixed;
         top: 1.5rem;
         width: 1rem;
@@ -398,51 +404,6 @@
     }
     
     .nav {
-        -webkit-transition: left 0.5s ease;
-        -moz-transition: left 0.5s ease;
-        -ms-transition: left 0.5s ease;
-        -o-transition: left 0.5s ease;
-        transition: left 0.5s ease;
-        background: white;
-        color: black;
-        cursor: pointer;
-        font-size: 2rem;
-        line-height: 2;
-        height: 100vh;
-        left: -30rem;
-        padding: 6rem 2rem 2rem 2rem;
-        position: fixed;
-        top: 0;
-        width: 20rem;
-        z-index: 1;
-    }
-    
-    .nav.expanded {
-        left: 0;
-    }
-    
-    @media (max-width: 1160px) and (min-width: 880px) {
-        .affix .nav-categories li {
-            padding: 0.1% 0.5% 0.1% 0.5% !important;
-            font-size: 0.8em;
-        }
-    }
-    
-    .nav ul {
-        position: absolute;
-        top: 50%;
-        -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        transform: translateY(-50%);
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-    
-    
-    /* themeswitcher-mobile */
-    
-    .themeswitcher-mobile {
         -webkit-transition: right 0.5s ease;
         -moz-transition: right 0.5s ease;
         -ms-transition: right 0.5s ease;
@@ -462,8 +423,53 @@
         z-index: 1;
     }
     
-    .themeswitcher-mobile.expanded {
+    .nav.expanded {
         right: 0;
+    }
+    
+    @media (max-width: 1160px) and (min-width: 880px) {
+        .affix .nav-categories li {
+            padding: 0.1% 0.5% 0.1% 0.5% !important;
+            font-size: 0.8em;
+        }
+    }
+    
+    .nav ul {
+        position: absolute;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        list-style: none;
+        margin: auto;
+        padding: 10%;
+    }
+    
+    
+    /* themeswitcher-mobile */
+    
+    .themeswitcher-mobile {
+        -webkit-transition: left 0.5s ease;
+        -moz-transition: left 0.5s ease;
+        -ms-transition: left 0.5s ease;
+        -o-transition: left 0.5s ease;
+        transition: left 0.5s ease;
+        background: white;
+        color: black;
+        cursor: pointer;
+        font-size: 2rem;
+        line-height: 2;
+        height: 100vh;
+        left: -30rem;
+        padding: 6rem 2rem 2rem 2rem;
+        position: fixed;
+        top: 0;
+        width: 20rem;
+        z-index: 1;
+    }
+    
+    .themeswitcher-mobile.expanded {
+        left: 0;
     }
     
     .themeswitcher-mobile-wrapper {
@@ -484,18 +490,18 @@
     }
     
     .themeswitcher-mobile {
-        -webkit-transition: right 0.5s ease;
-        -moz-transition: right 0.5s ease;
-        -ms-transition: right 0.5s ease;
-        -o-transition: right 0.5s ease;
-        transition: right 0.5s ease;
+        -webkit-transition: left 0.5s ease;
+        -moz-transition: left 0.5s ease;
+        -ms-transition: left 0.5s ease;
+        -o-transition: left 0.5s ease;
+        transition: left 0.5s ease;
         background: white;
         color: black;
         cursor: pointer;
         font-size: 2rem;
         line-height: 2;
         height: 100vh;
-        right: -20rem;
+        left: -30rem;
         padding: 6rem 2rem 2rem 2rem;
         position: fixed;
         top: 0;
@@ -509,7 +515,6 @@
     
     .theme-toggle-wrapper {
         position: absolute;
-        right: 0;
         top: 1.4em;
         z-index: 2;
     }
@@ -517,7 +522,6 @@
     .theme-switcher-logo-mobile {
         width: 80% !important;
         padding: 10px !important;
-        margin: auto !important;
         display: block !important;
         padding: 20px !important
     }

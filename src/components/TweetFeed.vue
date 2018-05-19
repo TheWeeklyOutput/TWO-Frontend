@@ -13,15 +13,20 @@
     
         </div>
     
-        <h1 style="font-size: 20px">Recent tweets</h1>
-        <div>
-            <a class="twitter-timeline" data-dnt="true" target="_blank" href="https://twitter.com/theWeeklyOutput?ref_src=twsrc%5Etfw">Tweets by TheWeeklyOutput</a>
+        <div style="max-height: 500px; overflow: auto">
+            <Timeline class="twitter-timeline" :id="'theweeklyoutput'" :sourceType="'profile'" :options="{ tweetLimit: '10' }"/>
         </div>
     </div>
 </template>
 
 <script>
     import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
+    import {
+        Tweet,
+        Moment,
+        Timeline
+    } from 'vue-tweet-embed'
+    
     import {
         faTwitter,
         faGithub,
@@ -31,7 +36,9 @@
     
     export default {
         components: {
-            FontAwesomeIcon
+            FontAwesomeIcon,
+            Timeline,
+            Tweet
         },
         data() {
             return {
@@ -61,7 +68,8 @@
     .social-icons a {
         flex-grow: 1;
         flex-basis: 0;
-        transition: color 0.2s ease-out
+        transition: color 0.2s ease-out;
+        color: black
     }
     
     .fa-icon {

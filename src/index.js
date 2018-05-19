@@ -19,10 +19,10 @@ Vue.directive({infiniteScroll})
 
 Vue.use(VueTimeago, {
   name: 'timeago', // component name, `timeago` by default
-  locale: 'en-US',
+  locale: undefined,
   locales: {
     // you will need json-loader in webpack 1
-    'en-US': require('vue-timeago/locales/en-US.json')
+    'en-US': require('date-fns/locale/en')
   }
 })
 
@@ -55,6 +55,23 @@ Vue.router.beforeEach(function (to, from, next) {
   window.scrollTo(0, 0);
   next();
 });
+
+Vue.directive('click-outside', {
+  bind: function (el, binding, vnode) {
+    el.event = function (event) {
+      // here I check that click was outside the el and his childrens
+      if (!(el == event.target || el.contains(event.target))) {
+        // and if it did, call method provided in attribute value
+        vnode.context[binding.expression](event);
+      }
+    };
+    document.body.addEventListener('click', el.event)
+  },
+  unbind: function (el) {
+    document.body.removeEventListener('click', el.event)
+  },
+});
+
 
 window['_paq'] = window['_paq'] || []
 

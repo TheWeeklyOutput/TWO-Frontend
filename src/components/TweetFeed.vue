@@ -59,7 +59,20 @@
     }
 </script>
 
-<style>
+<style>    
+    :root {
+        --main-text-color: black;
+        --grey-stuff: #e3e3e3;
+        --second-grey-stuff: #333333;
+        --bg-color: #f8f6f7;
+        --red: #ed2c24;
+        --green: #34DB93;
+        --second-grey-stuff: #333333;
+        --bg-color: #F9F9F9;
+        --grey-text: #9F9F9F
+
+    }
+
     .social-icons {
         width: 100%;
         display: flex;

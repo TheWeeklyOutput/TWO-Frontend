@@ -96,6 +96,7 @@
             width: 100% !important;
             margin: auto;
             background-color: transparent;
+            z-index: -1
         }
        .affix-top#twitter-affix {
             width: 24% !important;
@@ -118,11 +119,12 @@
             width: 24%
         }
         .twitter-sidebar h1 {
-            padding: 10px
+            padding: 20px
         }
 
         .twitter-sidebar div {
-            padding: 10px
+            padding: 10px 0
         }
+
     }
 </style>

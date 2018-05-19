@@ -1,14 +1,14 @@
 <template>
     <div :class="mode + 'article-list'" v-if="api.articles && api.loaded && articleList.length >= 1">
-        <div v-for="article in articleList" :class="mode + 'article'">
+        <div v-for="article in articleList" :key="article.slug" :class="mode + 'article'">
             <div :class="mode + 'article-text'">
                 <router-link :to="{ name: 'article', params: {  category: categoryToRender, slug: article.slug }}" :class="'article-link'" transition="fade" v-on:click="changeArticle(article.slug)">
                     <div :class="mode + imageStyle + '-container'" v-on:click="changeArticle(article.slug)">
                         <span :class="mode + imageStyle + '-image-wrapper'">
-                                                            <progressive-img :src="article.image_url" :class="imageStyle + ' ' + getOrientation(article.image_url)" v-if="(imageStyle === 'no-image') == false" />
-                                                        </span>
+                                    <progressive-img :src="article.image_url" :class="imageStyle + ' ' + getOrientation(article.image_url)" v-if="(imageStyle === 'no-image') == false" />
+                                </span>
                         <span :class="mode + 'text'">
-                                                        <span> <h2 :class="mode + 'title'">{{ article.title }}</h2> </span>
+                                <span> <h2 :class="mode + 'title'">{{ article.title }}</h2> </span>
                         <span v-if="showText"><h3 :class="mode + 'description'">{{ article.description.substring(0, 200) }}...</h3></span>
                         <span :class="mode + 'author'" v-if="showAuthor">By {{ article.author.name }}</span>
                         <span class="list-timestamp" v-if="showAuthor && api.loaded"> <timeago :since="article.date"></timeago> </span>
@@ -19,7 +19,7 @@
             </div>
         </div>
         <infinite-loading v-if="$route.path.endsWith('/articles/' + categoryToRender) && !stopLoading" @infinite="changePage($event)"></infinite-loading>
-    
+        <div style="width: 100%; text-align: center" v-else-if="$route.path.endsWith('/articles/' + categoryToRender) && stopLoading">No more articles</div>
     </div>
 </template>
 
@@ -34,8 +34,7 @@
     import PageViews from './PageViews'
     import InfiniteLoading from 'vue-infinite-loading'
     import infiniteScroll from 'vue-infinite-scroll'
-    
-    
+    import uniq from 'lodash/uniq'
     import {
         SET_UP
     } from '../api/action-types.js';
@@ -75,6 +74,7 @@
             if (this.api.articles.hasOwnProperty(this.categoryToRender)) {
                 this.articleList = this.api.articles[this.categoryToRender]
             }
+    
         },
         watch: {
             categoryToRender() {
@@ -134,12 +134,17 @@
                     page: this.api.currentCategoryPage,
                     context: this
                 }).then(() => {
-                    if (this.api.articles[this.categoryToRender].length > 1) {
-                        this.articleList = this.articleList.concat(this.api.articles[this.categoryToRender])
-                        $state.loaded()
-                    } else {
-                        this.stopLoading = true
-                    }
+                    setTimeout(() => {
+                        if (this.api.articles[this.categoryToRender].length > 1) {
+                            let tempList = [...this.articleList, ...this.api.articles[this.categoryToRender]]
+                            this.articleList = null
+                            this.articleList = uniq(tempList)
+                            $state.loaded()
+                        } else {
+                            this.stopLoading = true
+                        }
+                    }, 100)
+    
     
                 })
     

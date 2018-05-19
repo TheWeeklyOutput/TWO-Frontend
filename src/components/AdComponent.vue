@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="ad-container">
-            <div class="ad"
+            <div class="ad"></div>
         </div>
     </div>
 </template>

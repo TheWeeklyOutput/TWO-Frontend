@@ -95,15 +95,13 @@ export default {
         promise: context.$http.get('corpora/' + category + '/' + page + '/'),
         action: acts.GET_CATEGORY_PAGE, context,
         onSuccess(res) {
-          log.dir(res)
-          commit(muts.UPDATE_ARTICLES, { category, articles: res.body })
           return new Promise((resolve, reject) => {
+
+            log.dir(res)
+            commit(muts.UPDATE_ARTICLES, { category, articles: res.body })
             resolve()
           })
-
-        }, onError(res) {
-
-         }
+        }, onError(res) {}
       })
     },
     [acts.CHANGE_PAGE_TITLE]({ state, dispatch, commit, getters }, { title }) {
@@ -115,14 +113,14 @@ export default {
       state.currentArticle = article
     },
     [muts.UPDATE_ARTICLES] (state, { category, articles }) {
-      if (!(articles.hasOwnProperty(category))) {
-        state.articles[category] = []
-        if (state.categoryCount < state.categories.length) {
-          state.categoryCount ++
-        }
 
-      }
-      state.articles[category] = state.articles[category].concat(articles)
+        if (!(articles.hasOwnProperty(category))) {
+          state.articles[category] = []
+          if (state.categoryCount < state.categories.length) {
+            state.categoryCount ++
+          }
+        }
+        state.articles[category] = state.articles[category].concat(articles)      
     },
     [muts.SET_LOADED] (state, { status }) {
       state.loaded = status

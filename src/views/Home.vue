@@ -87,6 +87,7 @@
 </script>
 
 <style>
+    @import url('https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,500,600,700,800,900|Merriweather:300,400,700,900|Roboto:300,400,500,700,900');
 
     :root {
         --main-text-color: black;

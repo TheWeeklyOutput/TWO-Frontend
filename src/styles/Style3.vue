@@ -3,9 +3,6 @@
 </template>
 
 <style>
-    @import url('https://fonts.googleapis.com/css?family=Roboto:500');
-    @import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,800');
-    @import url('https://fonts.googleapis.com/css?family=Merriweather');
     :root {
         --main-text-color: black;
         --grey-stuff: #e3e3e3;

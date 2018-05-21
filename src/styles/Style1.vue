@@ -3,8 +3,7 @@
 </template>
 
 <style>
-    @import url('https://fonts.googleapis.com/css?family=Roboto:500');
-        :root {
+    :root {
         --main-text-color: black;
         --grey-stuff: #e3e3e3;
         --second-grey-stuff: #333333;

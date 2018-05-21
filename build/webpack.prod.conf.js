@@ -37,7 +37,8 @@ const webpackConfig = merge(baseWebpackConfig, {
     // extract css into its own file
     new ExtractTextPlugin({
       filename: 'css/styles.[hash].css', // "[name].[contenthash].css",
-      disable: process.env.NODE_ENV === 'development'
+      disable: process.env.NODE_ENV === 'development',
+      allChunks: true
     }),
 
     // Compress extracted CSS. We are using this plugin so that possible
